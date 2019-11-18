@@ -6,16 +6,12 @@
 /* eslint-disable prefer-rest-params */
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
-// import Img from 'gatsby-image'
+import { graphql } from "gatsby"
+import get from "lodash/get"
+import Img from "gatsby-image"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import { colors, fonts, media } from "../../../style-utils"
-
-import project from "../../../assets/dekruen.png"
-import blade from "../../../assets/blade.png"
-import daikin from "../../../assets/daikin.png"
-import kreun from "../../../assets/deKreun.png"
-import baby from "../../../assets/educaded-baby.png"
 
 const MainSection = styled.div`
   display: flex;
@@ -59,7 +55,7 @@ const ImgBox = styled.div`
   cursor: pointer;
 `
 
-const Img = styled.img`
+const Image = styled(Img)`
   max-width: 20rem;
   max-height: 25rem;
   object-fit: cover;
@@ -110,10 +106,12 @@ const InfoTitle = styled.div`
   }
 `
 
-const Projects = () => {
+const Projects = props => {
   const requestRef = useRef()
-  const section = document.getElementById("project")
+  const section = document.getElementById("projectBox")
+  const projects = get(props, "data.allContentfulProject.edges", [])
 
+  console.warn(projects)
   let currentPos = window.pageYOffset
 
   const update = () => {
@@ -142,13 +140,32 @@ const Projects = () => {
         <span>All</span>
         Cases
       </InfoTitle>
-      <ProjectBox id="project">
+      <ProjectBox id="projectBox">
+        {projects.map(({ node: project }) => {
+          if (!project) return null
+
+          return (
+            <Project key={project.id}>
+              <UnderTitle> WEB, UI / UX</UnderTitle>
+              <ImgBox>
+                <Image fluid={project.photo.fluid} alt="de kreun" />
+              </ImgBox>
+              <Title paintDrip to="detail" duration={1} hex="#191919">
+                {project.name}
+              </Title>
+              <Description>{project.body.body}`</Description>
+            </Project>
+          )
+        })}
+
         <Project>
           <UnderTitle> WEB, UI / UX</UnderTitle>
           <ImgBox>
             <Img src={kreun} alt="de kreun" />
           </ImgBox>
-          <Title paintDrip to="detail" duration={1} hex="#191919">De Kreun</Title>
+          <Title paintDrip to="detail" duration={1} hex="#191919">
+            De Kreun
+          </Title>
           <Description>
             A branding and design concept for the real-time public transit
             tracking system on a mobile application.
@@ -204,3 +221,30 @@ const Projects = () => {
 }
 
 export default Projects
+
+export const query = graphql`
+  query GetProjects {
+    allContentfulProject {
+      edges {
+        node {
+          id
+          name
+          body {
+            body
+          }
+          cover {
+            fluid {
+              ...GatsbyContentfulFluid
+            }
+          }
+          photos {
+            fluid {
+              ...GatsbyContentfulFluid
+            }
+          }
+          video
+        }
+      }
+    }
+  }
+`
