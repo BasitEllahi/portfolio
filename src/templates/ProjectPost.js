@@ -1,16 +1,17 @@
-import React, { useEffect, useRef } from "react"
+import React from "react"
 
 import { graphql } from "gatsby"
 import styled from "styled-components"
-// import Img from 'gatsby-image'
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-import { colors, fonts, media } from "../style-utils"
+import Footer from "../components/layout/Footer"
+import Header from "../components/layout/Header"
 
 import blade1 from "../assets/blade-1.png"
 import blade2 from "../assets/blade-2.png"
 import blade3 from "../assets/blade-3.png"
 import blade4 from "../assets/blade-4.png"
+
+import { colors, fonts, media } from "../style-utils"
 
 const MainSection = styled.div`
   display: flex;
@@ -129,74 +130,49 @@ const InfoTitle = styled.div`
 `
 
 const ProjectPage = data => {
-  const project = data.data.contentfulExperience
-  const requestRef = useRef()
-  const section = document.getElementById("project")
+  const project = data.data.contentfulProject
 
-  let currentPos = window.pageYOffset
-
-  const update = () => {
-    const newPos = window.pageYOffset
-    const diff = newPos - currentPos
-    const speed = diff * 0.05
-
-    section.style.transform = `skewY(${speed}deg)`
-
-    currentPos = newPos
-
-    requestRef.current = requestAnimationFrame(update)
-  }
-
-  useEffect(() => {
-    requestRef.current = requestAnimationFrame(update)
-
-    return () => {
-      cancelAnimationFrame(requestRef.current)
-    }
-  })
+  const Photos = project.photos.map(img => (
+    <ImgBox key={img}>
+      <Img src={img.fluid.src} alt="img" />
+    </ImgBox>
+  ))
 
   return (
-    <MainSection>
-      <ProjectBox id="project">
-        <InfoTitle>{project.name}</InfoTitle>
-        <InfoBox>
-          <Description>{project.body.body}</Description>
-          <YearInfo>
-            <List>
-              <InnerList>
-                <Title>Year: </Title>
-                <UnderTitle>2019</UnderTitle>
-              </InnerList>
-              <InnerList>
-                <Title>Role: </Title>
-                <UnderTitle> Webdesign, UI / UX</UnderTitle>
-              </InnerList>
-            </List>
-          </YearInfo>
-        </InfoBox>
-      </ProjectBox>
-      <VideoBox
-        title="video"
-        src={project.video}
-        width="640"
-        height="360"
-        frameBorder="0"
-        allow="autoplay; fullscreen"
-        allowFullScreen
-      />
-      <ImgBox>
-        <Img src={blade1} alt="de kreun" />
-      </ImgBox>
-      <ImgBox>
-        <Img src={blade2} alt="de kreun" />
-      </ImgBox>
-      <ImgBox>
-        <Img src={blade3} alt="de kreun" />
-      </ImgBox>
-      <ImgBox>
-        <Img src={blade4} alt="de kreun" />
-      </ImgBox>
-    </MainSection>
+    <div>
+      <Header />
+      <MainSection>
+        <ProjectBox id="project">
+          <InfoTitle>{project.name}</InfoTitle>
+          <InfoBox>
+            <Description>{project.body.body}</Description>
+            <YearInfo>
+              <List>
+                <InnerList>
+                  <Title>Year: </Title>
+                  <UnderTitle>{project.year}</UnderTitle>
+                </InnerList>
+                <InnerList>
+                  <Title>Role: </Title>
+                  <UnderTitle> {project.role}</UnderTitle>
+                </InnerList>
+              </List>
+            </YearInfo>
+          </InfoBox>
+        </ProjectBox>
+        <VideoBox
+          title="video"
+          src={project.video}
+          width="640"
+          height="360"
+          frameBorder="0"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+        />
+        {Photos}
+      </MainSection>
+      <Footer />
+    </div>
   )
 }
 
@@ -207,6 +183,8 @@ export const query = graphql`
     contentfulProject(id: { eq: $id }) {
       id
       name
+      role
+      year
       body {
         body
       }

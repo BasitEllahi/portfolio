@@ -164,7 +164,7 @@ const SecondPage = props => {
 
             return (
               <Project key={detail.id}>
-                <UnderTitle> WEB, UI / UX</UnderTitle>
+                <UnderTitle>{detail.role}</UnderTitle>
                 <ImgBox>
                   <Image src={detail.cover.fluid.src} alt="de kreun" />
                 </ImgBox>
@@ -173,10 +173,11 @@ const SecondPage = props => {
                   to={`/post/${detail.slug}`}
                   duration={1}
                   hex="#191919"
+                  direction="up"
                 >
                   {detail.name}
                 </Title>
-                <Description>{detail.body.body}`</Description>
+                <Description>{detail.body.body}</Description>
               </Project>
             )
           })}
@@ -196,6 +197,7 @@ export const query = graphql`
         node {
           id
           slug
+          role
           name
           body {
             body
