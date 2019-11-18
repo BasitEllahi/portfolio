@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@reach/router": "^1.2.1",
+    "dotenv": "^8.2.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-prettier": "^3.1.1",
@@ -19,6 +20,7 @@
     "gatsby-plugin-sharp": "^2.2.34",
     "gatsby-plugin-transition-link": "^1.16.1",
     "gatsby-plugin-web-font-loader": "^1.0.4",
+    "gatsby-source-contentful": "^2.1.60",
     "gatsby-source-filesystem": "^2.1.35",
     "gatsby-transformer-sharp": "^2.3.1",
     "gsap": "^3.0.1",
