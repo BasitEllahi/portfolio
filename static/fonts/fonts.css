@@ -1,0 +1,19 @@
+/*---
+This is the fade in animation for the back to top button
+--*/
+@font-face {
+  font-family: 'bebas';
+  font-weight: normal; /* or 400 */
+  src: url(BebasNeue-Regular.ttf);
+}
+@font-face {
+  font-family: 'acumin';
+  font-weight: normal; /* or 400 */
+  src: url(Acumin-BdPro.otf);
+}
+
+@font-face {
+  font-family: 'avenir';
+  font-weight: normal; /* or 400 */
+  src: url(Avenir.ttc);
+}

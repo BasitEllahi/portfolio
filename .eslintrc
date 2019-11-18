@@ -1,0 +1,58 @@
+{
+  "parser": "babel-eslint",
+  "plugins": ["prettier", "react"],
+  "settings": {
+    "react": {
+      "version": "15.0"
+    }
+  },
+  "globals": {
+    "graphql": false
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true,
+    "mocha": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "classes": true,
+      "experimentalObjectRestSpread": true,
+      "impliedStrict": true,
+      "jsx": true
+    },
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "extends": ["airbnb", "plugin:react/recommended", "prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+
+    "newline-after-var": ["error", "always"],
+    "newline-before-return": ["error"],
+    "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-unused-expressions": ["error", { "allowTaggedTemplates": true }],
+
+    "react/destructuring-assignment": "warn",
+    "react/display-name": "off",
+    "react/forbid-prop-types": ["error", { "forbid": ["any", "object"] }],
+    "react/jsx-filename-extension": "off",
+    "react/jsx-one-expression-per-line": "warn",
+    "react/no-deprecated": "warn",
+    "react/prop-types": "error",
+
+    "react/jsx-no-bind": ["warn", {
+      "ignoreDOMComponents": false,
+      "ignoreRefs": false,
+      "allowArrowFunctions": false,
+      "allowFunctions": false,
+      "allowBind": false
+    }],
+
+    "jsx-a11y/mouse-events-have-key-events": "off"
+  }
+}

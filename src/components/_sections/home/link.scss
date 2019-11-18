@@ -1,0 +1,175 @@
+
+/*---
+This is the fade in animation for the back to top button
+--*/
+
+.animation {
+  animation: fadeIn 500ms ease-in-out;
+}
+
+.sidebar {
+  animation: fadeInSide 500ms ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInSide {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.link {
+	outline: none;
+	text-decoration: none;
+	position: relative;
+	font-size: 3rem;
+	line-height: 1;
+	color: #F0D66B;
+	display: inline-block;
+	padding-right: 1rem;
+}
+
+.link--kukuri {
+	text-transform: uppercase;
+	font-weight: 900;
+	overflow: hidden;
+	line-height: 1;
+	color: #F0D66B;
+}
+
+.link--kukuri:hover {
+	color: #b2b0a9;
+}
+
+.link--kukuri::after {
+	content: '';
+	position: absolute;
+	height: 16px;
+	width: 100%;
+	top: 50%;
+	margin-top: -8px;
+	right: 0;
+	background: #F9F9F9;
+	transform: translate3d(-100%,0,0);
+	transition: transform 0.4s;
+	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+}
+
+.link--kukuri:hover::after {
+	transform: translate3d(100%,0,0);
+}
+
+.link--kukuri::before {
+	content: attr(data-letters);
+	position: absolute;
+	z-index: 2;
+	overflow: hidden;
+	color: #424242;
+	white-space: nowrap;
+	width: 0%;
+	transition: width 0.4s 0.3s;
+}
+
+.link--kukuri:hover::before {
+	width: 100%;
+}
+
+
+$primaryColor: black;
+$secondaryColor: white;
+$steps: 20;
+
+
+.glitch {
+    position: relative;
+    margin: 0 auto;
+    color: $primaryColor;
+    font-size: 3rem;
+    font-family: "Exo", sans-serif;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    transform: scale3d(1,1,1);
+   
+
+    &::before,
+    &::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        background: $secondaryColor;
+        color: $primaryColor;
+        clip: rect(0, 900px, 0, 0);
+
+    }
+
+    &::before {
+        left: 7px;
+        text-shadow: 1px 0 green;
+        animation-delay: 6s;
+        animation: glitch-effect 3s infinite linear alternate-reverse;
+    }
+
+    &::after {
+        left: 3px;
+        text-shadow: -1px 0 red;
+        animation-delay: 5s;
+        animation: glitch-effect 2s infinite linear alternate-reverse;
+    }
+}
+
+@keyframes glitch-effect{
+  
+    @for $i from 0 through $steps{
+        #{percentage($i*(1/$steps))}{
+            clip:rect(random(100)+px,9999px,random(100)+px,0);
+        }
+    }
+    
+}
+
+.cursor {
+  pointer-events: none;
+  z-index: 99999;
+  position: fixed;
+}
+.mobile .cursor {
+  opacity: 0;
+}
+.cursor__ball {
+    background: transparent;
+    border-radius: 50%;
+    position: fixed;
+    border: 1px solid black;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+}
+.cursor__ball--small {
+  border: none;
+  width: 8px;
+  height: 8px;
+  background: #000000;
+}
+.darkmode .cursor__ball--small {
+  background: #fff;
+}
+
+#home-illustration {
+  cursor: pointer;
+}
