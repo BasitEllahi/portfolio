@@ -133,7 +133,7 @@ const ProjectPage = data => {
   const project = data.data.contentfulProject
 
   const Photos = project.photos.map(img => (
-    <ImgBox key={img}>
+    <ImgBox key={img.fluid.src}>
       <Img src={img.fluid.src} alt="img" />
     </ImgBox>
   ))
@@ -160,15 +160,17 @@ const ProjectPage = data => {
             </YearInfo>
           </InfoBox>
         </ProjectBox>
-        <VideoBox
-          title="video"
-          src={project.video}
-          width="640"
-          height="360"
-          frameBorder="0"
-          allow="autoplay; fullscreen"
-          allowFullScreen
-        />
+        {project.video && (
+          <VideoBox
+            title="video"
+            src={project.video}
+            width="640"
+            height="360"
+            frameBorder="0"
+            allow="autoplay; fullscreen"
+            allowFullScreen
+          />
+        )}
         {Photos}
       </MainSection>
       <Footer />

@@ -19,6 +19,12 @@ const Wrapper = styled.div`
   padding: 2rem;
   padding-bottom: 0;
   height: 100%;
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: black;
+      color: white;
+    }
+  }
 `
 const MainSection = styled.div`
   display: flex;
@@ -155,7 +161,7 @@ const SecondPage = props => {
     <div>
       <Header />
       <Wrapper>
-        <Slider heading="Example Slider" slides={slideData} />
+        <Slider heading="Example Slider" slides={projects} />
       </Wrapper>
       <MainSection>
         <ProjectBox>
