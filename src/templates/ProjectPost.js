@@ -78,7 +78,7 @@ const BannerBox = styled.div`
 `
 
 const BannerImg = styled.img`
-  max-width: 100%;
+  width: 100%;
   object-fit: cover;
   cursor: pointer;
 `
