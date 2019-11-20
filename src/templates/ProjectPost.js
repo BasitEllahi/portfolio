@@ -69,6 +69,20 @@ const VideoBox = styled.iframe`
   margin-bottom: 3rem;
   margin-top: 2rem;
 `
+
+const BannerBox = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  margin-bottom: 5rem;
+`
+
+const BannerImg = styled.img`
+  max-width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+`
+
 const ImgBox = styled.div`
   display: flex;
   justify-content: center;
@@ -171,6 +185,11 @@ const ProjectPage = data => {
             allowFullScreen
           />
         )}
+        {project.banner && (
+          <BannerBox key={project.banner.fluid.src}>
+            <BannerImg src={project.banner.fluid.src} alt="img" />
+          </BannerBox>
+        )}
         {Photos}
       </MainSection>
       <Footer />
@@ -187,6 +206,11 @@ export const query = graphql`
       name
       role
       year
+      banner {
+        fluid {
+          src
+        }
+      }
       body {
         body
       }
