@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from "react"
 
 import { graphql } from "gatsby"
-import { TimelineLite, TweenMax, Power3, gsap } from "gsap"
+import { TimelineLite, Power3 } from "gsap"
+import CSSRulePlugin from "gsap/CSSRulePlugin"
 import styled from "styled-components"
 import Img from "gatsby-image"
 
@@ -48,6 +49,7 @@ const YearInfo = styled.div`
   margin-bottom: 2rem;
   font-family: ${fonts.helvetica};
   font-size: 1rem;
+  width: 8rem;
 `
 
 const List = styled.ul`
@@ -120,24 +122,6 @@ const Description = styled.p`
 const InfoTitle = styled.div`
   color: black;
   font-size: 2.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-  line-height: 1;
-  font-family: ${fonts.acumin};
-  display: flex;
-  jusfity-content: right;
-
-  & span {
-    color: ${colors.main};
-    margin-right: 0.5rem;
-  }
-`
-
-const HeroContentTitle = styled.div`
-  color: black;
-  font-size: 2.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
   line-height: 1;
   font-family: ${fonts.acumin};
   display: flex;
@@ -153,7 +137,15 @@ const ProjectPage = data => {
   const project = data.data.contentfulProject
 
   let content = useRef(null)
+
+  let year = useRef(null)
+
+  let image = useRef(null)
+
+  const imageReveal = CSSRulePlugin.getRule(".img-container:after")
+
   const tl = new TimelineLite({ delay: 0.8 })
+  const tlInfo = new TimelineLite({ delay: 0.8 })
 
   useEffect(() => {
     // Images Vars
@@ -161,6 +153,9 @@ const ProjectPage = data => {
     // content vars
     const headlineFirst = content.children[0].children[0]
     const contentP = content.children[1]
+
+    const contentYear = year.children[0].children[0].children[0]
+    const contentRole = year.children[0].children[1].children[0]
 
     // Content Animation
 
@@ -174,7 +169,22 @@ const ProjectPage = data => {
       0.15,
       "Start"
     ).to(contentP, 1, { y: 0, opacity: 1, ease: Power3.easeOut }, 0.4)
-  }, [tl])
+
+    tl.to(imageReveal, 1, { width: "0%", ease: Power3.easeInOut })
+
+    tlInfo
+      .staggerTo(
+        [contentYear],
+        1,
+        {
+          y: 0,
+          ease: Power3.easeOut,
+        },
+        0.15,
+        "Start"
+      )
+      .to(contentRole, 1, { y: 0, opacity: 1, ease: Power3.easeOut }, 0.4)
+  }, [tl, tlInfo])
 
   const Photos = project.photos.map((img, i) => (
     <ImgBox key={i}>
@@ -189,40 +199,28 @@ const ProjectPage = data => {
         <ProjectBox id="project">
           <InfoBox>
             <div className="hero-content-inner" ref={el => (content = el)}>
-              <h1>
+              <Title>
                 <div className="hero-content-line">
                   <InfoTitle className="hero-content-line-inner">
                     {project.name}
                   </InfoTitle>
                 </div>
-              </h1>
+              </Title>
               <Description>{project.body.body}</Description>
             </div>
-            <YearInfo>
+            <YearInfo ref={el => (year = el)}>
               <List>
-                <InnerList>
-                  <Title>Year: </Title>
-                  <UnderTitle>{project.year}</UnderTitle>
+                <InnerList className="date-content-line">
+                  <div className="date-line-inner">
+                    <Title>Year: </Title>
+                    <UnderTitle>{project.year}</UnderTitle>
+                  </div>
                 </InnerList>
-                <InnerList>
-                  <Title>Role: </Title>
-                  <UnderTitle> {project.role}</UnderTitle>
-                </InnerList>
-              </List>
-            </YearInfo>
-          </InfoBox>
-          <InfoTitle>{project.name}</InfoTitle>
-          <InfoBox>
-            <Description>{project.body.body}</Description>
-            <YearInfo>
-              <List>
-                <InnerList>
-                  <Title>Year: </Title>
-                  <UnderTitle>{project.year}</UnderTitle>
-                </InnerList>
-                <InnerList>
-                  <Title>Role: </Title>
-                  <UnderTitle> {project.role}</UnderTitle>
+                <InnerList className="date-content-line">
+                  <div className="date-line-inner">
+                    <Title>Role: </Title>
+                    <UnderTitle> {project.role}</UnderTitle>
+                  </div>
                 </InnerList>
               </List>
             </YearInfo>
@@ -230,7 +228,10 @@ const ProjectPage = data => {
         </ProjectBox>
         {project.banner && (
           <div className="img-container">
-            <BannerImg fluid={project.banner.localFile.childImageSharp.fluid} />
+            <BannerImg
+              ref={el => (image = el)}
+              fluid={project.banner.localFile.childImageSharp.fluid}
+            />
           </div>
         )}
         {project.video && (
