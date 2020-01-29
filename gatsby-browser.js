@@ -4,6 +4,8 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
+require("./static/fonts/fonts.css")
+
 const React = require("react")
 const Layout = require("./src/components/layout/index").default
 
