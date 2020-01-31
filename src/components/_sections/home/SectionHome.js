@@ -1,5 +1,5 @@
-import { Link } from "@reach/router"
-import React from "react"
+import React, { useEffect, useRef } from "react"
+import { TimelineLite, Power3, Power4 } from "gsap"
 import styled, { keyframes } from "styled-components"
 import Fade from "react-reveal/Fade"
 import { fadeInRight, slideOutLeft } from "react-animations"
@@ -8,7 +8,8 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { colors, fonts } from "../../../style-utils"
 import "./link.scss"
 
-import illustration from "../../../assets/me.svg"
+import illustration from "../../../assets/grain.jpg"
+import Home from "../../../assets/home.svg"
 
 const MainSection = styled.div`
   display: flex;
@@ -80,13 +81,14 @@ const InfoSubTitle = styled.div`
 `
 
 const InfoTitle = styled.div`
-  color: black;
+  color: white;
   font-size: 3rem;
   margin-top: 1rem;
   margin-bottom: 1.5rem;
   line-height: 1;
-  font-family: ${fonts.acumin};
+  font-family: ${fonts.Black};
   display: flex;
+  z-index: 106;
 `
 
 const InfoP = styled.div`
@@ -102,17 +104,13 @@ const WorkLink = styled(AniLink)`
   color: black;
   text-decoration: none;
 
-  & span {
-    margin-left: 0.5rem;
-  }
-
   :hover {
     color: white;
   }
 `
 
 const PhotoSection = styled.div`
-  background-color: ${colors.main};
+  background-color: #e9e9e9;
   width: 50%;
   height: 90vh;
   display: flex;
@@ -153,37 +151,157 @@ const Img = styled.img`
     cursor: pointer;
   }
 `
+const Grain = styled.img`
+  display: flex;
+  width: 100%0.9rem;
+  height: 100%;
+  mix-blend-mode: overlay;
+  opacity: 0.7;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: url("../../../assets/grain.jpg");
+`
 
-const SectionHome = () => (
-  <MainSection>
-    <Topsection />
-    <Line />
-    <InfoSection id="home">
-      <InfoBox>
-        <Fade bottom>
-          <InfoSubTitle>DEV, UI, WEBSITES, INTERIOR, ANIMATION</InfoSubTitle>
-          <InfoTitle>
-            <span className="link link--kukuri" data-letters="Hello">
-              Hello
-            </span>
-            <span className="glitch" data-text="THERE">
-              THERE
-            </span>
+const SectionHome = () => {
+  let title = useRef(null)
+
+  let info = useRef(null)
+  const tl = new TimelineLite({ delay: 0.1 })
+  const tlInfo = new TimelineLite({ delay: 0.1 })
+
+  useEffect(() => {
+    // Images Vars
+
+    const ContainerFirst = title.children[0]
+    const ContainerSecond = title.children[1]
+
+    const InfoSub = info.children[0]
+    const InfoP = info.children[1]
+    const InfoLink = info.children[2]
+
+    console.warn(InfoSub)
+    // Content Animation
+
+    // tl.staggerTo(ContainerFirst, 1, { width: "0%", ease: Power3.easeInOut })
+
+    tl.staggerTo(
+      [ContainerFirst.children],
+      1,
+      {
+        y: 0,
+        ease: Power3.easeInOut,
+      },
+      0.7,
+      "Start"
+    )
+      .to(
+        [ContainerSecond.children],
+        1,
+        {
+          y: 0,
+          ease: Power3.easeInOut,
+        },
+        0.3,
+        "Start"
+      )
+      .to(
+        [ContainerFirst.children, ContainerSecond.children],
+        1.5,
+        {
+          x: "10px",
+          color: "black",
+          ease: Power4.easeInOut,
+        },
+        0.8
+      )
+    tlInfo
+      .to(
+        [InfoSub.children],
+        1,
+        {
+          y: 0,
+          ease: Power3.easeInOut,
+        },
+        1.1
+      )
+      .to(
+        [InfoP.children],
+        1,
+        {
+          y: 0,
+          ease: Power3.easeInOut,
+        },
+        1.2
+      )
+      .to(
+        [InfoLink.children],
+        1,
+        {
+          y: 0,
+          ease: Power3.easeInOut,
+        },
+        1.3
+      )
+
+    /*
+    tl.from(ContainerFirst, 1, {
+      scaleX: 0,
+      transformOrigin: "left",
+      ease: Power3.easeInOut,
+    }).to(
+      ContainerFirst,
+      1,
+      { scaleX: 0, transformOrigin: "right", ease: Power3.easeInOut },
+      "reveal"
+    )
+    */
+  }, [tl, tlInfo])
+
+  return (
+    <MainSection>
+      <Topsection />
+      <Line />
+      <InfoSection id="home">
+        <InfoBox>
+          <InfoTitle ref={el => (title = el)}>
+            <div className="home-content-line">
+              <span className="home-line-inner">HELLO</span>
+            </div>
+            <div className="home-content-line">
+              <span className="home-line-inner">THERE</span>
+            </div>
           </InfoTitle>
-          <InfoP>
-            I am Basit Ellahi, and i am a passionate developer and motion
-            designer. Living in Belgium
-          </InfoP>
-          <WorkLink paintDrip to="work" duration={1} hex="#191919">
-            See my work &gt;
-          </WorkLink>
-        </Fade>
-      </InfoBox>
-    </InfoSection>
-    <PhotoSection>
-      <Img src={illustration} id="home-illustration" alt="Basit" />
-    </PhotoSection>
-  </MainSection>
-)
+          <div ref={el => (info = el)}>
+            <InfoSubTitle className="sub-content-line">
+              <span className="sub-line-inner">
+                DEV, UI, WEBSITES, INTERIOR, ANIMATION
+              </span>
+            </InfoSubTitle>
+            <InfoP className="p-content-line">
+              <span className="p-line-inner">
+                I am Basit Ellahi, and i am a passionate developer and motion
+                designer. Living in Belgium
+              </span>
+            </InfoP>
+            <WorkLink
+              paintDrip
+              to="work"
+              duration={1}
+              hex="#191919"
+              className="link-content-line"
+            >
+              <span className="link-line-inner">See my work &gt;</span>
+            </WorkLink>
+          </div>
+        </InfoBox>
+      </InfoSection>
+      <PhotoSection>
+        <Img src={Home} id="home-illustration" alt="Basit" />
+        <Grain src={illustration} />
+      </PhotoSection>
+    </MainSection>
+  )
+}
 
 export default SectionHome

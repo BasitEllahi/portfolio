@@ -1,8 +1,9 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { graphql } from "gatsby"
 import get from "lodash/get"
 // import Img from "gatsby-image"
+import { slideOutLeft } from "react-animations"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import { colors, fonts, media } from "../style-utils"
@@ -46,43 +47,116 @@ const ProjectBox = styled.div`
   transition: transform 0.3s;
   will-change: transform;
   ${media.desktop`
-    grid-template-columns: 20rem 20rem;
-    justify-content: space-around;
+    grid-template-columns: 50rem;
+    justify-content: center;
   `};
 `
 
 const Project = styled.div`
   display: flex;
   flex-direction: column;
-  width: 20rem;
-  height: 25rem;
+  width: 43rem;
+  height: 100%;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  position: relative;
+  justify-self: center;
+`
+const scale = keyframes`
+  0% {
+    background-color: ${colors.customWhite};
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(27.9);
+  }
+  80% {
+    transform: scale(27.1);
+  }
+  100% {
+    transform: scale(27.1);
+  }
+`
+const scaleBack = keyframes`
+  100% {
+    background-color: ${colors.customWhite};
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1);
+  }
+  0% {
+    transform: scale(26.1);
+  }
+`
+
+const ProjectBack = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: black;
+  position: absolute;
+  bottom: 50%;
+  left: 5%;
+  right: 50%;
+  top: 84%;
+  z-index: 1;
+  transition: all 600ms ease;
+  animation: 0.8s ${scaleBack} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
+  :hover {
+  }
 `
 const ImgBox = styled.div`
   display: flex;
-  width: 20rem;
-  height: 25rem;
+  flex-direction: row-reverse;
+  width: 100%;
+  max-height: 25rem;
   margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
   background-color: ${colors.lightGrey};
-  cursor: pointer;
+  :hover {
+    > div {
+      animation: 0.5s ${scale} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
+    }
+
+    > img {
+      filter: grayscale(0);
+    }
+  }
 `
 
 const Image = styled.img`
   max-width: 20rem;
   max-height: 25rem;
   object-fit: cover;
+  z-index: 0;
+  transition: all 600ms ease;
+  filter: grayscale(1);
 `
 
 const Title = styled(AniLink)`
-  color: black;
-  font-size: 1.5rem;
+  color: white;
+  font-size: 3rem;
   margin-top: 0.5rem;
   line-height: 1;
-  font-family: ${fonts.acumin};
-  font-weight: 500;
+  font-family: Black;
+  font-weight: 200;
   text-align: center;
+  -webkit-text-decoration: none;
   text-decoration: none;
+  position: absolute;
+  z-index: 2;
+  left: -3rem;
+  top: 3rem;
+  text-shadow: 0px 1px 4px rgba(150, 150, 150, 0.36);
+  background-color: #fc1c1c;
+  padding: 1rem;
 `
 const UnderTitle = styled.span`
   color: #2d2d2d;
@@ -161,7 +235,7 @@ const SecondPage = props => {
     <div>
       <Header />
       <Wrapper>
-        <Slider heading="Example Slider" slides={projects} />
+        <Slider heading="Example Slider" slides={slideData} />
       </Wrapper>
       <MainSection>
         <ProjectBox>
@@ -173,6 +247,7 @@ const SecondPage = props => {
                 <UnderTitle>{detail.role}</UnderTitle>
                 <ImgBox>
                   <Image src={detail.cover.fluid.src} alt="de kreun" />
+                  <ProjectBack />
                 </ImgBox>
                 <Title
                   paintDrip
@@ -183,7 +258,6 @@ const SecondPage = props => {
                 >
                   {detail.name}
                 </Title>
-                <Description>{detail.body.body}</Description>
               </Project>
             )
           })}

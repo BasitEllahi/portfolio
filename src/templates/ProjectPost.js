@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react"
 import { graphql } from "gatsby"
 import { TimelineLite, Power3 } from "gsap"
 import CSSRulePlugin from "gsap/CSSRulePlugin"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import Img from "gatsby-image"
 
 import Footer from "../components/layout/Footer"
@@ -145,6 +145,7 @@ const ProjectPage = data => {
   const imageReveal = CSSRulePlugin.getRule(".img-container:after")
 
   const tl = new TimelineLite({ delay: 0.8 })
+  const tlImage = new TimelineLite({ delay: 1 })
   const tlInfo = new TimelineLite({ delay: 0.8 })
 
   useEffect(() => {
@@ -170,7 +171,7 @@ const ProjectPage = data => {
       "Start"
     ).to(contentP, 1, { y: 0, opacity: 1, ease: Power3.easeOut }, 0.4)
 
-    tl.to(imageReveal, 1, { width: "0%", ease: Power3.easeInOut })
+    tlImage.staggerTo(imageReveal, 1, { width: "0%", ease: Power3.easeInOut })
 
     tlInfo
       .staggerTo(
@@ -184,7 +185,7 @@ const ProjectPage = data => {
         "Start"
       )
       .to(contentRole, 1, { y: 0, opacity: 1, ease: Power3.easeOut }, 0.4)
-  }, [tl, tlInfo])
+  }, [tl, tlInfo, tlImage])
 
   const Photos = project.photos.map((img, i) => (
     <ImgBox key={i}>
@@ -199,13 +200,13 @@ const ProjectPage = data => {
         <ProjectBox id="project">
           <InfoBox>
             <div className="hero-content-inner" ref={el => (content = el)}>
-              <Title>
+              <h1>
                 <div className="hero-content-line">
                   <InfoTitle className="hero-content-line-inner">
                     {project.name}
                   </InfoTitle>
                 </div>
-              </Title>
+              </h1>
               <Description>{project.body.body}</Description>
             </div>
             <YearInfo ref={el => (year = el)}>

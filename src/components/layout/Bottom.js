@@ -74,7 +74,7 @@ const Links = styled(AniLink)`
 
 const MenuBottom = () => (
   <Container>
-    <Links paintDrip to="/work" hex="#F0D66B">
+    <Links paintDrip to="/work" hex="#ff1d25">
       Work
     </Links>
     <Links to="/contact">About</Links>

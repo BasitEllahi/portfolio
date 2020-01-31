@@ -35,7 +35,7 @@ This is the fade in animation for the back to top button
 	position: relative;
 	font-size: 3rem;
 	line-height: 1;
-	color: #F0D66B;
+	color: #fc1c1c;
 	display: inline-block;
 	padding-right: 1rem;
 }
@@ -45,7 +45,7 @@ This is the fade in animation for the back to top button
 	font-weight: 900;
 	overflow: hidden;
 	line-height: 1;
-	color: #F0D66B;
+	color: #fc1c1c;
 }
 
 .link--kukuri:hover {
@@ -96,7 +96,7 @@ $steps: 20;
     margin: 0 auto;
     color: $primaryColor;
     font-size: 3rem;
-    font-family: "Exo", sans-serif;
+    font-family: "Black", sans-serif;
     font-weight: 600;
     text-align: center;
     text-transform: uppercase;
@@ -109,7 +109,7 @@ $steps: 20;
         position: absolute;
         top: 0;
         left: 0;
-        right: 0;
+        right: -7px;
         overflow: hidden;
         background: $secondaryColor;
         color: $primaryColor;
@@ -172,4 +172,57 @@ $steps: 20;
 
 #home-illustration {
   cursor: pointer;
+}
+
+// letter aniamtion
+
+.home-content-line {
+  margin: 0;
+  overflow: hidden;
+  height: 66px;
+  width: 100%;
+  display: flex;
+  margin-right: 1rem;
+}
+
+.home-line-inner {
+  width: 10rem;
+  transform: translate(0px, 66px);
+}
+
+.sub-content-line {
+  margin: 0;
+  overflow: hidden;
+  height: 26px;
+  width: 100%;
+  display: flex;
+}
+
+.sub-line-inner {
+  transform: translate(0px, 26px);
+}
+
+.p-content-line {
+  margin: 0;
+  overflow: hidden;
+  height: 66px;
+  width: 100%;
+  display: flex;
+}
+
+.p-line-inner {
+  transform: translate(0px, 66px);
+}
+
+
+.link-content-line {
+  margin: 0;
+  overflow: hidden;
+  height: 66px;
+  width: 100%;
+  display: flex;
+}
+
+.link-line-inner {
+  transform: translate(0px, 66px);
 }

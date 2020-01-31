@@ -8,6 +8,9 @@ import { colors, fonts, media } from "../../style-utils"
 const OuterSection = styled.div`
   background-color: ${colors.lightGrey};
   animation: 1s ${keyframes`${slideInUp}`} cubic-bezier(0.51, 0.05, 0.38, 1.01);
+  animation-fill-mode: forwards;
+  animation-delay: 1.6s;
+  transform: translateY(100%);
 `
 
 const fadeIn = keyframes`
@@ -34,7 +37,7 @@ const Section = styled.div`
   animation: 0.6s ${fadeIn} cubic-bezier(0.51, 0.05, 0.38, 1.01);
   animation-fill-mode: forwards;
 
-  animation-delay: 0.7s;
+  animation-delay: 1.8s;
 `
 
 const Location = styled.div``

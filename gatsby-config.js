@@ -53,9 +53,23 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         custom: {
-          families: ["bebas", "acumin", "avenir"],
+          families: ["bebas", "acumin", "avenir", "Black"],
           urls: ["fonts/fonts.css"],
         },
+        google: {
+          families: ["Poppin"],
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Poppins`,
+            subsets: [`latin`],
+          },
+        ],
       },
     },
     {

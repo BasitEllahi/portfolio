@@ -1,8 +1,8 @@
 .img-container {
-  width: 1440px;
-  height: 960px;
+  width: 100%;
   position: relative;
   overflow: hidden;
+  margin-bottom: 2rem;
   &:after {
     position: absolute;
     content: "";

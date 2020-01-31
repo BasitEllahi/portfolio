@@ -15,6 +15,10 @@ import Cursor from "../_sections/home/Cursor"
 
 import "./reset.scss"
 
+const Container = styled.div`
+  position: relative;
+`
+
 const Wrapper = styled.div`
   margin: 0 auto;
   padding: 0;
@@ -33,14 +37,18 @@ export default class Layout extends PureComponent {
     const { children } = this.props
 
     return (
-      <div>
+      <Container>
         <Helmet title={data.site.siteMetadata.title}>
           <html lang="nl" />
           <meta name="viewport" content="width=device-width" />
+          <link
+            rel="stylesheet"
+            href="https://unpkg.com/kursor/dist/kursor.css"
+          />
         </Helmet>
         <Cursor />
         <Wrapper>{children}</Wrapper>
-      </div>
+      </Container>
     )
   }
 

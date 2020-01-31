@@ -33,6 +33,7 @@ module.exports = {
     helvetica: "Helvetica, arial, Serif",
     acumin: "acumin",
     avenir: "avenir, arial, Serif",
+    Black: "Black",
   },
   size: {
     xlDesltop: "1640",
