@@ -9,7 +9,9 @@ import { colors, fonts } from "../../../style-utils"
 import "./link.scss"
 
 import illustration from "../../../assets/grain.jpg"
-import Home from "../../../assets/home.svg"
+// import Home from "../../../assets/home.svg"
+import Svg from "./SvgAnimation"
+// import SvgRect from "./SvgAnimationRect"
 
 const MainSection = styled.div`
   display: flex;
@@ -55,6 +57,7 @@ const Line = styled.div`
   padding: 0;
   animation: 1s ${scale} cubic-bezier(0.51, 0.05, 0.38, 1.01);
   animation-fill-mode: forwards;
+  animation-delay: 1.2s;
 `
 
 const InfoSection = styled.div`
@@ -110,7 +113,7 @@ const WorkLink = styled(AniLink)`
 `
 
 const PhotoSection = styled.div`
-  background-color: #e9e9e9;
+  background-color: #ff3db7;
   width: 50%;
   height: 90vh;
   display: flex;
@@ -121,6 +124,7 @@ const PhotoSection = styled.div`
   top: 0;
   animation: 1.2s ${keyframes`${fadeInRight}`}
     cubic-bezier(0.51, 0.05, 0.38, 1.01);
+  animation-delay: 1.3s;
 `
 const flash = keyframes`
   0% {
@@ -156,7 +160,7 @@ const Grain = styled.img`
   width: 100%0.9rem;
   height: 100%;
   mix-blend-mode: overlay;
-  opacity: 0.7;
+  opacity: 0.3;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -297,11 +301,12 @@ const SectionHome = () => {
         </InfoBox>
       </InfoSection>
       <PhotoSection>
-        <Img src={Home} id="home-illustration" alt="Basit" />
-        <Grain src={illustration} />
+        <Svg />
       </PhotoSection>
     </MainSection>
   )
 }
 
 export default SectionHome
+
+// <Grain src={illustration} />

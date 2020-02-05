@@ -9,11 +9,11 @@ const Animation = styled.div`
   transform-origin: right;
   top: 0;
   left: 0;
-  background-color: #ff1d25;
+  background-color: ${props => props.color};
   z-index: 1;
 `
 
-const Container = () => {
+const Container = props => {
   let image = useRef(null)
   const tl = new TimelineLite({ delay: 1 })
 
@@ -28,7 +28,7 @@ const Container = () => {
 
     tl.to(
       ContainerFirst,
-      1.6,
+      props.time,
       { xPercent: 100, ease: Power3.easeInOut },
       "Start"
     )
@@ -46,7 +46,7 @@ const Container = () => {
     */
   }, [tl])
 
-  return <Animation ref={el => (image = el)} />
+  return <Animation ref={el => (image = el)} color={props.color} />
 }
 
 export default Container

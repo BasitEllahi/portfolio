@@ -16,7 +16,8 @@ const IndexPage = () => (
     <Header />
     <SectionHome />
     <Footer />
-    <Animation />
+    <Animation time={1.9} color="#FFDC21" />
+    <Animation time={1.6} color="#336AF3" />
   </Container>
 )
 

@@ -44,8 +44,6 @@ export const handleMouseOut = (bigMouseCircle, smallMouseCircle) => e => {
   e = e ? e : window.event
   const from = e.relatedTarget || e.toElement
 
-  console.warn("out")
-
   if (!from || from.nodeName === "HTML") {
     gsap.to(smallMouseCircle.current, {
       duration: 0.2,
@@ -117,7 +115,6 @@ export const handleMouseHoverEnter = (
   bigMouseCircle,
   smallMouseCircle
 ) => e => {
-  console.warn("enter")
   console.warn(window.getComputedStyle(e.target).cursor)
   if (window.getComputedStyle(e.target).cursor === customMouse) {
     handleMouseMove(bigMouseCircle, smallMouseCircle)
