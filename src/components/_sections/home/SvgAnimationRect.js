@@ -129,14 +129,88 @@ const SvgBackgroundRect = () => {
   }, [tl])
 
   return (
-    <Animation id="rects_svg__animation" width="100%">
+    <Animation viewBox="0 0 670 691" width="1em" height="1em">
       <defs>
-        <style>{".rects_svg__cls-1{fill:#176bfc}"}</style>
+        <style>
+          {
+            ".design_svg__cls-1{fill:#2b2d2c}.design_svg__cls-2{fill:#fff}.design_svg__cls-3{fill:none;stroke:#2b2d2c;stroke-miterlimit:10;stroke-width:.5px}.design_svg__cls-5{fill:#176bfc}"
+          }
+        </style>
       </defs>
-      <path className="rect1" d="M.61-2H93v544H.61z" ref={el => (rect = el)} />
-      <path className="rect2" d="M92.21-2H186v544H92.21z" />
-      <path className="rect3" d="M183.81-2H279v544h-95.19z" />
-      <path className="rect4" d="M275.41-2H367v544h-91.59z" />
+      <g id="design_svg__background">
+        <circle className="design_svg__cls-1" cx={481.5} cy={258.5} r={6} />
+        <circle className="design_svg__cls-2" cx={347.5} cy={341.5} r={170} />
+        <circle className="design_svg__cls-3" cx={348.5} cy={341.5} r={146} />
+        <circle
+          cx={350.5}
+          cy={343.5}
+          r={125}
+          stroke="#fff"
+          strokeWidth={0.5}
+          strokeMiterlimit={10}
+          fill="#fff"
+        />
+      </g>
+      <g id="design_svg__Layer_2" data-name="Layer 2">
+        <path
+          className="design_svg__cls-5"
+          transform="rotate(90 336 351)"
+          d="M300 315h72v72h-72z"
+        />
+        <circle className="design_svg__cls-1" cx={321} cy={198} r={10} />
+        <path fill="#ffdc21" d="M233 215h227v252H233z" />
+        <path
+          d="M278.8 397.51a79.5 79.5 0 11115.52-109.25"
+          strokeWidth={35}
+          strokeMiterlimit={10}
+          stroke="#2b2d2c"
+          fill="none"
+        />
+        <circle
+          cx={333.5}
+          cy={343.5}
+          r={79}
+          stroke="#fff"
+          strokeWidth={0.5}
+          strokeMiterlimit={10}
+          fill="none"
+        />
+        <path className="design_svg__cls-2" d="M314 273h134v150H314z" />
+        <path
+          className="design_svg__cls-5"
+          d="M313.12 344.73L223.7 422.5h89.8l-.38-77.77z"
+        />
+        <path className="design_svg__cls-1" d="M413 192h32v32h-32z" />
+        <circle className="design_svg__cls-1" cx={402} cy={323} r={3} />
+        <circle className="design_svg__cls-2" cx={255} cy={353} r={3} />
+        <circle
+          cx={388}
+          cy={385}
+          r={21}
+          strokeWidth={22}
+          stroke="#fff"
+          strokeMiterlimit={10}
+          fill="none"
+        />
+        <circle
+          cx={388}
+          cy={385}
+          r={21}
+          strokeWidth={6}
+          stroke="#176bfc"
+          strokeMiterlimit={10}
+          fill="none"
+        />
+        <path
+          strokeWidth={2}
+          stroke="#176bfc"
+          strokeMiterlimit={10}
+          fill="none"
+          d="M429 306V176"
+        />
+        <circle className="design_svg__cls-3" cx={347.5} cy={345.5} r={59} />
+        <path fill="#ff3db7" d="M265 283h127v18H265z" />
+      </g>
     </Animation>
   )
 }

@@ -2,15 +2,26 @@ import React, { useEffect, useRef } from "react"
 import { TimelineLite, Power3, Power4 } from "gsap"
 import styled, { keyframes } from "styled-components"
 
+const rotate = keyframes`
+  100% {
+    transform: rotate(360deg);
+  }
+`
+
 const scale = keyframes`
   0% {
     transform: scale(0)
   }
-  85% {
-    transform: scale(1.4)
-  }
   100% {
     transform: scale(1)
+  }
+`
+const clip = keyframes`
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 80% 0 0);
   }
 `
 const scaleBlue = keyframes`
@@ -49,38 +60,68 @@ const scaleTriangle = keyframes`
 const transform = keyframes`
   0% {
     transform: translateX(0px);
+    clip-path: inset(0 0 0 0);
   }
   25% {
     transform: translateX(-80px);
+    clip-path: inset(0 50% 0 0);
+  }
+  50% {
+    transform: translateX(0px);
+    clip-path: inset(0 0 0 0);
   }
   75% {
     transform: translateX(-80px);
+    clip-path: inset(0 50% 0 0);
   }
   100% {
     transform: translateX(0px);
+    clip-path: inset(0 0 0 0);
   }
 `
-const transformPink = keyframes`
+const textClip = keyframes`
   0% {
-    transform: translateX(-120px)
+    clip-path: inset(0 0 0 0);
   }
   25% {
-    transform: translateX(0px);
+    clip-path: inset(0 50% 0 0);
+  }
+  50% {
+    clip-path: inset(0 0 0 0);
   }
   75% {
-    transform: translateX(0px);
+    clip-path: inset(0 50% 0 0);
   }
   100% {
-    transform: translateX(-120px)
+    clip-path: inset(0 0 0 0);
   }
 `
 
-const trapezium = keyframes`
+const transformPink = keyframes`
   0% {
-    transform: scale(1)
+    transform: translateX(-30px);
+    clip-path: inset(0 30% 0 30%);
+  }
+  25% {
+    transform: translateX(0px);
+    clip-path: inset(0 0 0 0);
+  }
+  75% {
+    transform: translateX(0px);
+    clip-path: inset(0 0 0 0);
   }
   100% {
-    transform: scale(2)
+    transform: translateX(-30px);
+    clip-path: inset(0 30% 0 30%);
+  }
+`
+
+const path = keyframes`
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
   }
 `
 
@@ -109,19 +150,64 @@ const Animation = styled.svg`
   animation: 1s cubic-bezier(0.51, 0.05, 0.38, 1.01);
   animation-fill-mode: forwards;
   transform-origin: 50% 50%;
-  width: 60%;
-  height: 60%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 
-  & .rect-back {
-    animation: 2s ${scale} cubic-bezier(0.51, 0.05, 0.38, 1.01);
+  & .yellow-rect {
+    animation: 8s ${rotate} linear infinite;
     animation-fill-mode: forwards;
     animation-delay: 1s;
+    transform-origin: center center;
+    transform-box: fill-box;
+  }
+
+  & .big-circle {
+    animation: 1.8s ${scale} cubic-bezier(0.51, 0.05, 0.38, 1.01);
+    animation-fill-mode: forwards;
+    animation-delay: 1.2s;
+    transform-origin: center center;
+    transform-box: fill-box;
+  }
+
+  & .black-rect {
+    animation: 1.8s ${scale} cubic-bezier(0.51, 0.05, 0.38, 1.01);
+    animation-fill-mode: forwards;
+    animation-delay: 1.2s;
+    transform-origin: center center;
+    transform-box: fill-box;
+  }
+
+  & .black-circle-1 {
+    animation: 20s ${path} linear infinite;
+    animation-fill-mode: forwards;
+    animation-delay: 1.8s;
+    transform-origin: center center;
+    transform-box: fill-box;
+    offset-path: path("M202.5,341.5a146,146 0 1,0 292,0a146,146 0 1,0 -292,0");
+    offset-distance: 0%;
+  }
+
+  & .white-circle-2 {
+    animation: 15s ${path} linear infinite;
+    animation-fill-mode: forwards;
+    animation-delay: 1.8s;
+    transform-origin: center center;
+    transform-box: fill-box;
+    fill: white;
+    mix-blend-mode: difference;
+    offset-path: path("M254.5,343.5a79,79 0 1,0 158,0a79,79 0 1,0 -158,0");
+    offset-distance: 0%;
   }
 
   & .white-rect {
     animation: 3s ${transform} cubic-bezier(0.51, 0.05, 0.38, 1.01) infinite;
     animation-fill-mode: forwards;
-    animation-delay: 1.7s;
+  }
+
+  & .text-group {
+    animation: 3s ${textClip} cubic-bezier(0.51, 0.05, 0.38, 1.01) infinite;
+    animation-fill-mode: forwards;
   }
 
   & .pink-rect {
@@ -139,9 +225,7 @@ const Animation = styled.svg`
   }
 
   & .trapezium {
-    animation: 1.5s ${trapezium} cubic-bezier(0.42, 0, 0.58, 1);
-    animation-fill-mode: forwards;
-    animation-delay: 1.8s;
+    fill: #176bfc;
     transform-origin: 50% 50%;
   }
 
@@ -194,13 +278,59 @@ const Animation = styled.svg`
   }
 `
 
+const Title = styled.text`
+  position: absolute;
+  font-size: 1rem;
+  font-family: bebas;
+  color: black;
+`
+
 const SvgBackgroundShapes = () => {
-  let rect = useRef(null)
+  // let rect = useRef(null)
   const tl = new TimelineLite({ delay: 0.1 })
 
   useEffect(() => {
-    const eyeBall = document.querySelector(".white-rect")
+    const text = document.querySelector(".svgText")
+    const rect = document.querySelector(".mainSvg")
+    // const words = ["Designer", "Developer", "Motion"]
 
+    const words = [
+      {
+        name: "Designer",
+        color: "#336AF3",
+      },
+      {
+        name: "Developer",
+        color: "#EB4FB3",
+      },
+      {
+        name: "Motion",
+        color: "#F9DD51",
+      },
+    ]
+
+    let loopItem = 0
+
+    rect.addEventListener("animationend", () => {
+      console.warn("end")
+    })
+
+    const changeText = () => {
+      loopItem += 1
+      if (loopItem === words.length) {
+        loopItem = 0
+      }
+      rect.style.backgroundColor = words[loopItem].color
+      text.innerHTML = words[loopItem].name
+    }
+
+    const interval = setInterval(() => {
+      changeText()
+    }, 1550)
+
+    return () => clearInterval(interval)
+
+    /*
     const pupil = document.querySelector(".line")
     const circle = document.querySelector(".pink-circle")
 
@@ -242,102 +372,130 @@ const SvgBackgroundShapes = () => {
         rCircle}px`}) rotate(${`${angle}deg`})`
       circle.style.transformOrigin = `${`${r}px`} center`
     })
+    */
   }, [tl])
 
   return (
     <Animation
       id="background-shapes_svg__animation"
-      viewBox="0 0 342.24 342.24"
-      width="50%"
-      height="50%"
+      viewBox="0 0 670 691"
+      width="80%"
+      height="80%"
+      className="mainSvg"
     >
       <defs>
         <style>
           {
-            ".background-shapes_svg__cls-1{fill:#176bfc}.background-shapes_svg__cls-5{fill:#ff3db7}"
+            ".design_svg__cls-1{fill:#2b2d2c}.design_svg__cls-2{fill:#fff}.design_svg__cls-3{fill:none;stroke:#2b2d2c;stroke-miterlimit:10;stroke-width:.5px}.design_svg__cls-5{fill:#176bfc}"
           }
         </style>
       </defs>
-      <path
-        id="background-shapes_svg__rect-back"
-        className="background-shapes_svg__cls-1 rect-back"
-        d="M259 353h72v72h-72z"
-        ref={el => (rect = el)}
-      />
-      <path
-        className="yellow"
-        id="yellowBox"
-        transform="rotate(45 497.236 114.032)"
-        fill="#ffdc21"
-        d="M186 264h242v242H186z"
-      />
-      <path
-        d="M101.92 221.63a79.5 79.5 0 11115.52-109.25"
-        className="black-stroke"
-        stroke="#2b2d2c"
-        strokeWidth={35}
-        fill="none"
-        strokeMiterlimit={10}
-      />
-      <path
-        id="background-shapes_svg__rect-middle"
-        fill="#fff"
-        className="white-rect"
-        d="M137.12 97.12h134v150h-134z"
-      />
-      <path
-        id="background-shapes_svg__rechthoek"
-        className="background-shapes_svg__cls-5 pink-rect"
-        d="M88.12 107.12h127v18h-127z"
-      />
-      <path
-        id="background-shapes_svg__blauw-driehoek"
-        className="triangle"
-        d="M136.24 168.85l-89.42 77.77h89.8l-.38-77.77z"
-      />
-      <path
-        id="background-shapes_svg__rect-small"
-        className="blue-rect "
-        d="M236.12 16.12h32v32h-32z"
-      />
-      <circle
-        id="background-shapes_svg__kleine-circkel"
-        className="pink-circle"
-        cx={86.12}
-        cy={45.12}
-        r={11}
-      />
-      <circle
-        id="background-shapes_svg__stroke-white"
-        cx={211.12}
-        cy={209.12}
-        r={21}
-        stroke="#ffdc21"
-        strokeWidth={22}
-        fill="none"
-        strokeMiterlimit={10}
-        className="stroke-white"
-      />
-      <circle
-        id="background-shapes_svg__stroke-blue"
-        cx={211.12}
-        cy={209.12}
-        r={21}
-        strokeWidth={6}
-        stroke="#176bfc"
-        fill="none"
-        strokeMiterlimit={10}
-        className="stroke-blue"
-      />
-      <path
-        id="background-shapes_svg__line"
-        strokeWidth={2}
-        stroke="#176bfc"
-        fill="none"
-        strokeMiterlimit={10}
-        d="M252.12 130.12V.12"
-        className="line"
-      />
+      <g id="design_svg__background">
+        <circle
+          cx={350.5}
+          cy={343.5}
+          r={250}
+          stroke="#fff"
+          strokeWidth={0.5}
+          strokeMiterlimit={10}
+          fill="none"
+        />
+        <circle
+          cx={347.5}
+          cy={341.5}
+          r={170}
+          className="big-circle"
+          fill="white"
+        />
+        <circle className="design_svg__cls-3" cx={348.5} cy={341.5} r={146} />
+        <circle
+          cx={350.5}
+          cy={343.5}
+          r={125}
+          stroke="#fff"
+          strokeWidth={0.5}
+          strokeMiterlimit={10}
+          fill="#fff"
+        />
+      </g>
+      <g id="design_svg__Layer_2" data-name="Layer 2">
+        <path transform="rotate(90 336 351)" d="M300 315h72v72h-72z" />
+        <circle
+          className="black-circle-1"
+          fill="black"
+          cx={321}
+          cy={198}
+          r={10}
+        />
+        <path
+          fill="#ffdc21"
+          d="M233 215h227v252H233z"
+          className="yellow-rect"
+        />
+        <path
+          d="M278.8 397.51a79.5 79.5 0 11115.52-109.25"
+          strokeWidth={35}
+          strokeMiterlimit={10}
+          stroke="#2b2d2c"
+          fill="none"
+        />
+        <circle
+          cx={333.5}
+          cy={343.5}
+          r={79}
+          stroke="#fff"
+          strokeWidth={0.5}
+          strokeMiterlimit={10}
+          fill="none"
+          className="white-circle"
+        />
+        <g className="text-group">
+          <path d="M314 273h134v150H314z" className="white-rect" fill="white" />
+          <Title className="svgText" x={320.5} y={350.5}>
+            Designer
+          </Title>
+        </g>
+        <path
+          className="trapezium"
+          d="M313.12 344.73L223.7 422.5h89.8l-.38-77.77z"
+        />
+        <path d="M413 192h32v32h-32z" className="black-rect" />
+        <circle
+          cx={402}
+          cy={323}
+          r={3}
+          className="black-circle-3"
+          fill="green"
+        />
+        <circle className="white-circle-2" cx={255} cy={353} r={3} />
+        <circle
+          cx={388}
+          cy={385}
+          r={21}
+          strokeWidth={22}
+          stroke="#fff"
+          strokeMiterlimit={10}
+          fill="none"
+        />
+        <circle
+          cx={388}
+          cy={385}
+          r={21}
+          strokeWidth={6}
+          stroke="#176bfc"
+          strokeMiterlimit={10}
+          fill="none"
+        />
+        <path
+          strokeWidth={2}
+          stroke="#176bfc"
+          strokeMiterlimit={10}
+          fill="none"
+          d="M429 306V176"
+        />
+        <circle className="design_svg__cls-3" cx={347.5} cy={345.5} r={59} />
+        <path fill="#ff3db7" d="M265 283h127v18H265z" className="pink-rect" />
+      </g>
     </Animation>
   )
 }
