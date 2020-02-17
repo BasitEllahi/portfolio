@@ -186,8 +186,14 @@ $steps: 20;
 }
 
 .home-line-inner {
-  width: 10rem;
   transform: translate(0px, 66px);
+  width: 10rem;
+}
+
+@media (max-width: 996px) {
+  .home-line-inner {
+    width: 8.5rem;
+  }
 }
 
 .sub-content-line {
@@ -208,6 +214,26 @@ $steps: 20;
   height: 66px;
   width: 100%;
   display: flex;
+}
+
+@media (max-width: 768px) {
+  .p-content-line {
+    height: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+  .home-content-line {
+    margin: 0;
+    overflow: hidden;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    margin-right: 0;
+  }
+  .home-line-inner {
+    width: 7.5rem;
+  }
 }
 
 .p-line-inner {

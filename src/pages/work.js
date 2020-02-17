@@ -32,22 +32,19 @@ const MainSection = styled.div`
   flex-direction: column;
   height: 100%;
   margin-top: 4rem;
-  width: 100%;
   justify-content: center;
   align-items: center;
 `
 
 const ProjectBox = styled.div`
-  display: grid;
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  grid-template-columns: unset;
   width: 80%;
   justify-content: center;
   transition: transform 0.3s;
   will-change: transform;
   ${media.desktop`
-    grid-template-columns: 50rem;
     justify-content: center;
   `};
 `
@@ -55,7 +52,6 @@ const ProjectBox = styled.div`
 const Project = styled.div`
   display: flex;
   flex-direction: column;
-  width: 43rem;
   height: 100%;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -68,13 +64,13 @@ const scale = keyframes`
     transform: scale(1);
   }
   60% {
-    transform: scale(27.9);
+    transform: scale(22.9);
   }
   80% {
-    transform: scale(27.1);
+    transform: scale(22.1);
   }
   100% {
-    transform: scale(27.1);
+    transform: scale(22.1);
   }
 `
 const scaleBack = keyframes`
@@ -89,7 +85,16 @@ const scaleBack = keyframes`
     transform: scale(1);
   }
   0% {
-    transform: scale(26.1);
+    transform: scale(22.1);
+  }
+`
+
+const stroke = keyframes`
+  from {
+      stroke-dashoffset: 1000;
+  }
+  to {
+      stroke-dashoffset: 0;
   }
 `
 
@@ -99,7 +104,7 @@ const ProjectBack = styled.div`
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
-  background-color: black;
+  background-color: #176bfc;
   position: absolute;
   bottom: 50%;
   left: 5%;
@@ -111,6 +116,40 @@ const ProjectBack = styled.div`
   :hover {
   }
 `
+const Arrow = styled.svg`
+  display: flex;
+  flex-direction: column;
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  left: 5rem;
+  bottom: 2rem;
+  z-index: 1;
+  fill: none;
+  transition: all 600ms ease;
+  & .stroke-1 {
+    stroke-dashoffset: 1000;
+    stroke-dasharray: 1000;
+    fill: none;
+    stroke: white;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3px;
+  }
+
+  & .stroke-2 {
+    stroke-dashoffset: 1000;
+    stroke-dasharray: 1000;
+    fill: none;
+    stroke: white;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3px;
+  }
+  :hover {
+  }
+`
+
 const ImgBox = styled.div`
   display: flex;
   flex-direction: row-reverse;
@@ -123,11 +162,35 @@ const ImgBox = styled.div`
   :hover {
     > div {
       animation: 0.5s ${scale} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
+      opacity: 0.7;
     }
 
     > img {
       filter: grayscale(0);
     }
+    > svg {
+      & .stroke-1 {
+        animation: 1.7s ${stroke} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
+        animation-fill-mode: forwards;
+        animation-delay: 0.1s;
+      }
+
+      & .stroke-2 {
+        animation: 1.9s ${stroke} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
+        animation-fill-mode: forwards;
+        animation-delay: 0.1s;
+      }
+    }
+    > span {
+      opacity: 1;
+    }
+  }
+  & :after {
+    display: flex;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: green;
   }
 `
 
@@ -145,7 +208,7 @@ const Title = styled(AniLink)`
   font-size: 3rem;
   margin-top: 0.5rem;
   line-height: 1;
-  font-family: Black;
+  font-family: bebas;
   font-weight: 200;
   text-align: center;
   -webkit-text-decoration: none;
@@ -155,9 +218,29 @@ const Title = styled(AniLink)`
   left: -3rem;
   top: 3rem;
   text-shadow: 0px 1px 4px rgba(150, 150, 150, 0.36);
-  background-color: #fc1c1c;
+  background-color: #eb4fb3;
   padding: 1rem;
 `
+
+const BackgroundTitle = styled.span`
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  line-height: 1;
+  font-family: Black;
+  font-weight: 200;
+  text-align: center;
+  -webkit-text-decoration: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  position: absolute;
+  z-index: 3;
+  left: -18rem;
+  top: 0;
+  padding: 1rem;
+  width: 100%;
+`
+
 const UnderTitle = styled.span`
   color: #2d2d2d;
   font-size: 0.6rem;
@@ -168,31 +251,18 @@ const UnderTitle = styled.span`
   margin-bottom: 0.3rem;
 `
 
-const Description = styled.p`
-  color: ${colors.darkGrey};
+const SvgTitle = styled.span`
+  position: absolute;
+  left: 1.5rem;
+  bottom: 2.8rem;
   font-size: 0.8rem;
-  line-height: 1.2;
-  font-family: ${fonts.helvetica};
-  font-weight: 200;
-  text-align: center;
-  margin-top: 0.5rem;
+  font-family: bebas;
+  color: white;
+  z-index: 3;
+  opacity: 0;
+  transition: 0.3s;
 `
 
-const InfoTitle = styled.div`
-  color: black;
-  font-size: 3rem;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-  line-height: 1;
-  font-family: ${fonts.acumin};
-  display: flex;
-  jusfity-content: center;
-
-  & span {
-    color: ${colors.main};
-    margin-right: 0.5rem;
-  }
-`
 const slideData = [
   {
     index: 0,
@@ -247,17 +317,33 @@ const SecondPage = props => {
                 <UnderTitle>{detail.role}</UnderTitle>
                 <ImgBox>
                   <Image src={detail.cover.fluid.src} alt="de kreun" />
+                  <SvgTitle x={0} y={0}>
+                    Check case
+                  </SvgTitle>
                   <ProjectBack />
+                  <Arrow viewBox="0 0 72 35" width="4rem" height="4rem">
+                    <path
+                      className="stroke-1"
+                      d="M7.5 16.5h41"
+                      id="arrow_svg__line"
+                    />
+                    <path
+                      className="stroke-2"
+                      d="M47.81 4.81l15 11.59a.61.61 0 010 .82l-15 11.59"
+                      id="arrow_svg__line2"
+                    />
+                  </Arrow>
                 </ImgBox>
                 <Title
                   paintDrip
                   to={`/post/${detail.slug}`}
                   duration={1}
-                  hex="#191919"
+                  hex="#176bfc"
                   direction="up"
                 >
                   {detail.name}
                 </Title>
+                <BackgroundTitle>{detail.number}</BackgroundTitle>
               </Project>
             )
           })}
@@ -272,13 +358,14 @@ export default SecondPage
 
 export const query = graphql`
   query GetWorks {
-    allContentfulProject {
+    allContentfulProject(sort: { fields: createdAt, order: DESC }) {
       edges {
         node {
           id
           slug
           role
           name
+          number
           body {
             body
           }

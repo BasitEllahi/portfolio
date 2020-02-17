@@ -35,11 +35,12 @@ const Links = styled(AniLink)`
   text-align: center;
   color: black;
   text-decoration: none;
-  padding: 10px 10px;
+  padding: 20px 10px;
   font-weight: 700;
   font-size: 0.7rem;
   font-family: ${fonts.avenir};
   border-bottom: 1px solid transparent;
+  background: white;
 
   & > span {
     position: relative;

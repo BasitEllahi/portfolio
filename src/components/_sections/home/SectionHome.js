@@ -5,7 +5,7 @@ import Fade from "react-reveal/Fade"
 import { fadeInRight, slideOutLeft } from "react-animations"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-import { colors, fonts } from "../../../style-utils"
+import { colors, fonts, media } from "../../../style-utils"
 import "./link.scss"
 
 import illustration from "../../../assets/grain.jpg"
@@ -15,8 +15,13 @@ import Svg from "./SvgAnimation"
 
 const MainSection = styled.div`
   display: flex;
-  flex-direction: row;
-  height: 76vh;
+  flex-direction: column;
+  height: 100%;
+
+  ${media.tablet`
+    flex-direction: row;
+    height: 76vh;
+  `};
 `
 
 const Topsection = styled.div`
@@ -58,22 +63,33 @@ const Line = styled.div`
   animation: 1s ${scale} cubic-bezier(0.51, 0.05, 0.38, 1.01);
   animation-fill-mode: forwards;
   animation-delay: 1.2s;
+  z-index: 5;
 `
 
 const InfoSection = styled.div`
   background-color: ${colors.customWhite};
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: center;
+  order: 2;
+  ${media.tablet`
+    width: 50%;
+  `};
 `
 
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 24rem;
+  width: 17rem;
   height: 100%;
   justify-content: center;
   align-items: flex-start;
+  ${media.tablet`
+    width: 17rem;
+  `};
+  ${media.desktop`
+    width: 24rem;
+  `};
 `
 
 const InfoSubTitle = styled.div`
@@ -85,13 +101,20 @@ const InfoSubTitle = styled.div`
 
 const InfoTitle = styled.div`
   color: white;
-  font-size: 3rem;
   margin-top: 1rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
   line-height: 1;
   font-family: ${fonts.Black};
   display: flex;
   z-index: 106;
+
+  ${media.tablet`
+    font-size: 2.5rem;
+  `};
+  ${media.desktop`
+    font-size: 3rem;
+  `};
 `
 
 const InfoP = styled.div`
@@ -108,23 +131,31 @@ const WorkLink = styled(AniLink)`
   text-decoration: none;
 
   :hover {
-    color: white;
+    color: black;
   }
+`
+const InfoContainer = styled.div`
+  padding-left: 0.6rem;
 `
 
 const PhotoSection = styled.div`
   background-color: #ff3db7;
-  width: 50%;
-  height: 90vh;
+  width: 100%;
+  height: 20rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  left: 50vw;
-  top: 0;
   animation: 1.2s ${keyframes`${fadeInRight}`}
     cubic-bezier(0.51, 0.05, 0.38, 1.01);
   animation-delay: 1.3s;
+  order: 1;
+  ${media.tablet`
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: 50vw;
+    top: 0;
+  `};
 `
 const flash = keyframes`
   0% {
@@ -138,33 +169,6 @@ const flash = keyframes`
     width: 100%;
     transform: scale(1);
   }
-`
-
-const Img = styled.img`
-  display: flex;
-  max-width: 25rem;
-  max-height: 25rem;
-  height: 100%;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
-  animation: 1.2s ${flash} cubic-bezier(0.51, 0.05, 0.38, 1.01);
-  animation-fill-mode: forwards;
-  transition: all 200ms cubic-bezier(0.77, 0, 0.175, 1);
-  & :hover {
-    cursor: pointer;
-  }
-`
-const Grain = styled.img`
-  display: flex;
-  width: 100%0.9rem;
-  height: 100%;
-  mix-blend-mode: overlay;
-  opacity: 0.3;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  background: url("../../../assets/grain.jpg");
 `
 
 const SectionHome = () => {
@@ -184,10 +188,7 @@ const SectionHome = () => {
     const InfoP = info.children[1]
     const InfoLink = info.children[2]
 
-    console.warn(InfoSub)
     // Content Animation
-
-    // tl.staggerTo(ContainerFirst, 1, { width: "0%", ease: Power3.easeInOut })
 
     tl.staggerTo(
       [ContainerFirst.children],
@@ -247,19 +248,6 @@ const SectionHome = () => {
         },
         1.3
       )
-
-    /*
-    tl.from(ContainerFirst, 1, {
-      scaleX: 0,
-      transformOrigin: "left",
-      ease: Power3.easeInOut,
-    }).to(
-      ContainerFirst,
-      1,
-      { scaleX: 0, transformOrigin: "right", ease: Power3.easeInOut },
-      "reveal"
-    )
-    */
   }, [tl, tlInfo])
 
   return (
@@ -276,7 +264,7 @@ const SectionHome = () => {
               <span className="home-line-inner">THERE</span>
             </div>
           </InfoTitle>
-          <div ref={el => (info = el)}>
+          <InfoContainer ref={el => (info = el)}>
             <InfoSubTitle className="sub-content-line">
               <span className="sub-line-inner">
                 DEV, UI, WEBSITES, INTERIOR, ANIMATION
@@ -292,12 +280,12 @@ const SectionHome = () => {
               paintDrip
               to="work"
               duration={1}
-              hex="#191919"
+              hex="#336AF3"
               className="link-content-line"
             >
               <span className="link-line-inner">See my work &gt;</span>
             </WorkLink>
-          </div>
+          </InfoContainer>
         </InfoBox>
       </InfoSection>
       <PhotoSection>

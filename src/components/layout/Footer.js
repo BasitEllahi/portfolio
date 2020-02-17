@@ -90,6 +90,10 @@ const List = styled.ul`
     font-family: ${fonts.helvetica};
     font-weight: 100;
     margin-right: 1rem;
+    a {
+      text-decoration: none;
+      color: black;
+    }
   }
 `
 

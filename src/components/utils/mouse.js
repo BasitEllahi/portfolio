@@ -136,7 +136,7 @@ export const handleMouseHoverEnter = (
       duration: 2,
       ease: "elastic.out(1, 0.5)",
       css: {
-        scale: 1.2,
+        scale: 1.6,
       },
     })
   }
