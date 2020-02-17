@@ -220,6 +220,14 @@ $steps: 20;
   .p-content-line {
     height: 100%;
   }
+
+  .home-content-line {
+    height: 40px;
+    margin-right: unset;
+  }
+  .home-line-inner {
+    width: 7.5rem;
+  }
 }
 
 @media (max-width: 450px) {

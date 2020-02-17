@@ -84,8 +84,10 @@ const InfoBox = styled.div`
   height: 100%;
   justify-content: center;
   align-items: flex-start;
+  margin-top: 1rem;
   ${media.tablet`
     width: 17rem;
+    margin-top: unset;
   `};
   ${media.desktop`
     width: 24rem;

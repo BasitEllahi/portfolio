@@ -14,7 +14,7 @@ const Container = styled.nav`
   left: 0;
   box-shadow: 0px 0px 11px 0px #0000003d;
   z-index: 10;
-  ${media.desktop`
+  ${media.tablet`
     display: inline-block;
     width: auto;
     height: auto;
@@ -48,7 +48,7 @@ const Links = styled(AniLink)`
   &:hover,
   &:active {
     user-select: none;
-    border-bottom: 1px solid ${colors.main};
+    border-bottom: 1px solid black;
   }
   &:active {
     padding-top: 6px;
@@ -58,8 +58,11 @@ const Links = styled(AniLink)`
   }
   ${media.phoneXL`
     font-size: 0.8rem;
+  `};  color: black;
+  ${media.tablet`
+    color: black;
   `};
-  ${media.desktop`
+  ${media.tablet`
     font-size: 0.8rem;
     display: inline-block;
     flex-grow: unset;
@@ -75,7 +78,7 @@ const Links = styled(AniLink)`
 
 const MenuBottom = () => (
   <Container>
-    <Links paintDrip to="/work" hex="#ff1d25">
+    <Links paintDrip to="/work" hex="#336AF3">
       Work
     </Links>
     <Links to="/contact">About</Links>

@@ -195,17 +195,25 @@ const ImgBox = styled.div`
 `
 
 const Image = styled.img`
-  max-width: 20rem;
+  max-width: 15rem;
   max-height: 25rem;
   object-fit: cover;
   z-index: 0;
   transition: all 600ms ease;
   filter: grayscale(1);
+
+  ${media.phoneXL`
+    max-width: 17rem;
+  `};
+
+  ${media.phablet`
+    max-width: 20rem;
+  `};
 `
 
 const Title = styled(AniLink)`
-  color: #2b2d2c;
-  font-size: 3rem;
+  color: white;
+  font-size: 2rem;
   margin-top: 0.5rem;
   line-height: 1;
   font-family: bebas;
@@ -215,16 +223,23 @@ const Title = styled(AniLink)`
   text-decoration: none;
   position: absolute;
   z-index: 2;
-  left: -3rem;
-  top: 3rem;
+
   text-shadow: 0px 1px 4px rgba(150, 150, 150, 0.36);
   background-color: #eb4fb3;
-  padding: 1rem;
+  padding: 0.5rem;
+  left: -1rem;
+  top: 3rem;
+  ${media.phablet`
+    font-size: 3rem;
+    left: -3rem;
+    top: 3rem;
+    padding: 1rem;
+  `};
 `
 
 const BackgroundTitle = styled.span`
   color: rgba(0, 0, 0, 0.8);
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-top: 0.5rem;
   line-height: 1;
   font-family: Black;
@@ -235,10 +250,21 @@ const BackgroundTitle = styled.span`
   text-decoration: none;
   position: absolute;
   z-index: 3;
-  left: -18rem;
-  top: 0;
   padding: 1rem;
   width: 100%;
+  left: 6rem;
+  top: -3rem;
+
+  ${media.phablet`
+    font-size: 3rem;
+    left: 8rem;
+    top: 0;
+  `};
+
+  ${media.tablet`
+    left: -17rem;
+    font-size: 2rem;
+  `};
 `
 
 const UnderTitle = styled.span`
