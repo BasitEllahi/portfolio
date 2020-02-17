@@ -204,7 +204,7 @@ const Image = styled.img`
 `
 
 const Title = styled(AniLink)`
-  color: white;
+  color: #2b2d2c;
   font-size: 3rem;
   margin-top: 0.5rem;
   line-height: 1;
