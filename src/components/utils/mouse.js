@@ -80,6 +80,7 @@ export const handleMouseOut = (bigMouseCircle, smallMouseCircle) => e => {
       css: {
         mixBlendMode: "normal",
         scale: 1,
+        backgroundColor: "black",
       },
     })
     gsap.to(smallMouseCircle.current, {
@@ -87,6 +88,7 @@ export const handleMouseOut = (bigMouseCircle, smallMouseCircle) => e => {
       ease: "elastic.out(1, 0.75)",
       css: {
         scale: 1,
+        backgroundColor: "black",
       },
     })
   }
@@ -102,6 +104,7 @@ export const handleMouseEnter = (bigMouseCircle, smallMouseCircle) => e => {
       duration: 0.2,
       scale: 1,
       opacity: 1,
+      backgroundColor: "black",
     })
     gsap.to(bigMouseCircle.current, {
       duration: 0.2,
@@ -129,7 +132,7 @@ export const handleMouseHoverEnter = (
       duration: 2,
       ease: "elastic.out(1, 0.5)",
       css: {
-        mixBlendMode: "difference",
+        mixBlendMode: "overlay",
       },
     })
     gsap.to(smallMouseCircle.current, {
@@ -137,6 +140,7 @@ export const handleMouseHoverEnter = (
       ease: "elastic.out(1, 0.5)",
       css: {
         scale: 1.6,
+        backgroundColor: "#336AF3",
       },
     })
   }

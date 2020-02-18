@@ -41,6 +41,7 @@ const Links = styled(AniLink)`
   font-family: ${fonts.avenir};
   border-bottom: 1px solid transparent;
   background: white;
+  transition: all 0.3s;
 
   & > span {
     position: relative;
@@ -48,7 +49,10 @@ const Links = styled(AniLink)`
   &:hover,
   &:active {
     user-select: none;
-    border-bottom: 1px solid black;
+    color: #336af3;
+    ${media.tablet`
+      color: white;
+    `};
   }
   &:active {
     padding-top: 6px;

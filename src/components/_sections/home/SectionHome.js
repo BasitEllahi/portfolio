@@ -8,19 +8,17 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { colors, fonts, media } from "../../../style-utils"
 import "./link.scss"
 
-import illustration from "../../../assets/grain.jpg"
-// import Home from "../../../assets/home.svg"
 import Svg from "./SvgAnimation"
 // import SvgRect from "./SvgAnimationRect"
 
 const MainSection = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
-
-  ${media.tablet`
+  height: auto;
+  width: 100%;
+  ${media.desktop`
     flex-direction: row;
-    height: 76vh;
+    height: 80%;
   `};
 `
 
@@ -72,7 +70,7 @@ const InfoSection = styled.div`
   display: flex;
   justify-content: center;
   order: 2;
-  ${media.tablet`
+  ${media.desktop`
     width: 50%;
   `};
 `
@@ -112,7 +110,7 @@ const InfoTitle = styled.div`
   z-index: 106;
 
   ${media.tablet`
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   `};
   ${media.desktop`
     font-size: 3rem;
@@ -124,6 +122,7 @@ const InfoP = styled.div`
   font-size: 0.9rem;
   font-weight: 200;
   margin-bottom: 2rem;
+  height: 5rem;
 `
 
 const WorkLink = styled(AniLink)`
@@ -151,7 +150,7 @@ const PhotoSection = styled.div`
     cubic-bezier(0.51, 0.05, 0.38, 1.01);
   animation-delay: 1.3s;
   order: 1;
-  ${media.tablet`
+  ${media.desktop`
     width: 50%;
     height: 100%;
     position: absolute;

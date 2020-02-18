@@ -9,6 +9,7 @@ import Animation from "../components/_sections/home/Container"
 
 const Container = styled.div`
   position: relative;
+  height: 100vh;
 `
 
 const IndexPage = () => (

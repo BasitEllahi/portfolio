@@ -39,7 +39,6 @@
     font-size: 14px;
     line-height: 24px;
     font-weight: 300;
-    padding-right: 48px;
     margin-bottom: 56px;
     opacity: 0;
     transform: translate(0px, 33px);
@@ -53,4 +52,13 @@
 
 .date-line-inner {
   transform: translate(0px, 50px);
+}
+
+@media (max-width: 768px) {
+  .hero-content-line {
+    height: 40px !important;
+    .hero-content-line-inner {
+      transform: translate(0px, 40px);
+    }
+  }
 }

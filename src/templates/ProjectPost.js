@@ -3,7 +3,8 @@ import React, { useEffect, useRef } from "react"
 import { graphql } from "gatsby"
 import { TimelineLite, Power3 } from "gsap"
 import CSSRulePlugin from "gsap/CSSRulePlugin"
-import styled, { keyframes } from "styled-components"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+import styled from "styled-components"
 import Img from "gatsby-image"
 
 import Footer from "../components/layout/Footer"
@@ -16,20 +17,27 @@ const MainSection = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin-top: 2rem;
+  margin-top: unset;
   width: 100%;
   justify-content: center;
   align-items: center;
+  ${media.tablet`
+    margin-top: 2rem;
+  `};
 `
 
 const ProjectBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: right;
-  width: 80%;
+  width: 90%;
   justify-content: right;
   transition: transform 0.3s;
   will-change: transform;
+
+  ${media.tablet`
+    width: 80%;
+  `};
   ${media.desktop`
     justify-content: space-around;
   `};
@@ -37,10 +45,15 @@ const ProjectBox = styled.div`
 
 const InfoBox = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-bottom: 2rem;
   font-size: 1rem;
   justify-content: space-between;
+
+  ${media.tablet`
+    flex-direction: row;
+    justify-content: space-between;
+  `};
 `
 
 const YearInfo = styled.div`
@@ -50,6 +63,7 @@ const YearInfo = styled.div`
   font-family: ${fonts.helvetica};
   font-size: 1rem;
   width: 8rem;
+  justify-content: flex-end;
 `
 
 const List = styled.ul`
@@ -83,10 +97,14 @@ const ImgBox = styled.div`
 `
 
 const Image = styled(Img)`
-  width: 30rem;
+  width: 80%;
   max-height: 45rem;
   object-fit: cover;
   cursor: pointer;
+
+  ${media.tablet`
+    width: 30rem;
+  `};
 `
 
 const Title = styled.span`
@@ -116,7 +134,13 @@ const Description = styled.p`
   font-family: ${fonts.helvetica};
   font-weight: 200;
   margin-top: 0.5rem;
-  width: 50%;
+  width: 100%;
+  ${media.tablet`
+    width: 90%;
+  `};
+  ${media.desktop`
+    width: 60%;
+  `};
 `
 
 const InfoTitle = styled.div`
@@ -132,7 +156,20 @@ const InfoTitle = styled.div`
     margin-right: 0.5rem;
   }
 `
-
+const Backbutton = styled(AniLink)`
+  color: black;
+  font-size: 0.7rem;
+  font-family: ${fonts.bebas};
+  text-decoration: none;
+  font-weight: light;
+  display: flex;
+  jusfity-content: center;
+  align-items: center;
+  & span {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+  }
+`
 const ProjectPage = data => {
   const project = data.data.contentfulProject
 
@@ -198,6 +235,16 @@ const ProjectPage = data => {
       <Header />
       <MainSection>
         <ProjectBox id="project">
+          <Backbutton
+            paintDrip
+            to="/work"
+            duration={1}
+            hex="#176bfc"
+            direction="up"
+          >
+            <span>&larr;</span>
+            Back to projects
+          </Backbutton>
           <InfoBox>
             <div className="hero-content-inner" ref={el => (content = el)}>
               <h1>

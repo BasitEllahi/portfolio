@@ -8,6 +8,7 @@ const OuterSection = styled.div`
   background-color: transparent;
   position: absolute;
   width: 100%;
+  height: 10%;
   position: relative;
   ${media.desktop`
     background-color: transparent;
@@ -20,7 +21,7 @@ const Section = styled.div`
   text-align: center;
   padding-top: 1rem;
   padding: 1rem;
-  ${media.desktop`
+  ${media.tablet`
     text-align: left;
     padding-top: 1rem;
   `};
@@ -34,25 +35,8 @@ const MenuContainer = styled.div`
   }
 `
 
-const Socials = styled.div`
-  display: none;
-  ${media.desktop`
-    line-height: 1;
-    text-align: left;
-    display: inline-block;
-    margin-left:60px;
-  `};
-`
-
 const SiteLogo = styled(Logo)`
   float: left;
-`
-
-const SocialLink = styled.a`
-  margin-left: 14px;
-  &:first-child {
-    margin-left: 0;
-  }
 `
 
 const SectionHeader = () => (

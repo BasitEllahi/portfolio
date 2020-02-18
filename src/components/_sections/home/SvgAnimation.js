@@ -292,20 +292,24 @@ const SvgBackgroundShapes = () => {
   useEffect(() => {
     const text = document.querySelector(".svgText")
     const rect = document.querySelector(".mainSvg")
+    const circle = document.querySelector(".big-circl-stroke")
     // const words = ["Designer", "Developer", "Motion"]
 
     const words = [
       {
         name: "Designer",
         color: "#336AF3",
+        colorStroke: "white",
       },
       {
         name: "Developer",
         color: "#EB4FB3",
+        colorStroke: "white",
       },
       {
         name: "Motion",
         color: "#F9DD51",
+        colorStroke: "black",
       },
     ]
 
@@ -321,6 +325,7 @@ const SvgBackgroundShapes = () => {
         loopItem = 0
       }
       rect.style.backgroundColor = words[loopItem].color
+      circle.style.stroke = words[loopItem].colorStroke
       text.innerHTML = words[loopItem].name
     }
 
@@ -399,6 +404,7 @@ const SvgBackgroundShapes = () => {
           strokeWidth={0.5}
           strokeMiterlimit={10}
           fill="none"
+          className="big-circl-stroke"
         />
         <circle
           cx={347.5}
