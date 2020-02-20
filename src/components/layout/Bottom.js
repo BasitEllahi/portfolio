@@ -4,16 +4,10 @@ import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { colors, fonts, media } from "../../style-utils"
 
+import "./hamburger.scss"
+
 const Container = styled.nav`
-  display: flex;
-  justify-content: center;
-  background-color: ${colors.customWhite};
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  box-shadow: 0px 0px 11px 0px #0000003d;
-  z-index: 10;
+  display: none;
   ${media.tablet`
     display: inline-block;
     width: auto;
@@ -24,6 +18,16 @@ const Container = styled.nav`
     justify-content: flex-end;
     box-shadow: none;
     background-color: transparent;
+  `};
+`
+const Menu = styled.div`
+  display: flex;
+`
+
+const HamburgerMenu = styled.nav`
+  display: flex;
+  ${media.tablet`
+    display: none;
   `};
 `
 
@@ -62,7 +66,8 @@ const Links = styled(AniLink)`
   }
   ${media.phoneXL`
     font-size: 0.8rem;
-  `};  color: black;
+  `};
+  color: black;
   ${media.tablet`
     color: black;
   `};
@@ -79,15 +84,66 @@ const Links = styled(AniLink)`
     }
   `};
 `
+const BurgerLinks = styled(AniLink)`
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  flex-grow: 1;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  padding: 20px 10px;
+  font-weight: 700;
+  font-size: 1.7rem;
+  font-family: ${fonts.avenir};
+  transition: all 0.3s;
+
+  & > span {
+    position: relative;
+  }
+  &:hover,
+  &:active {
+    user-select: none;
+    color: white;
+    ${media.tablet`
+      color: white;
+    `};
+  }
+  &:active {
+    padding-top: 6px;
+    ${media.desktop`
+      padding-top: 0;
+    `};
+  }
+`
 
 const MenuBottom = () => (
-  <Container>
-    <Links paintDrip to="/work" hex="#336AF3">
-      Work
-    </Links>
-    <Links to="/contact">About</Links>
-    <Links to="/team">Contact</Links>
-  </Container>
+  <Menu>
+    <HamburgerMenu>
+      <nav role="navigation">
+        <div id="menuToggle">
+          <input type="checkbox" />
+          <span />
+          <span />
+          <span />
+          <ul id="menu">
+            <BurgerLinks paintDrip to="/work" hex="#336AF3">
+              Work
+            </BurgerLinks>
+            <BurgerLinks to="/contact">About</BurgerLinks>
+            <BurgerLinks to="/team">Contact</BurgerLinks>
+          </ul>
+        </div>
+      </nav>
+    </HamburgerMenu>
+    <Container>
+      <Links paintDrip to="/work" hex="#336AF3">
+        Work
+      </Links>
+      <Links to="/contact">About</Links>
+      <Links to="/team">Contact</Links>
+    </Container>
+  </Menu>
 )
 
 export default MenuBottom

@@ -14,8 +14,11 @@ import Svg from "./SvgAnimation"
 const MainSection = styled.div`
   display: flex;
   flex-direction: column;
-  height: auto;
+  height: 80%;
   width: 100%;
+  ${media.tablet`
+    height: 80%;
+  `};
   ${media.desktop`
     flex-direction: row;
     height: 80%;
@@ -55,13 +58,16 @@ const scale = keyframes`
 const Line = styled.div`
   height: 80%;
   position: absolute;
-  display: flex;
+  display: none;
   background-color: black;
   padding: 0;
   animation: 1s ${scale} cubic-bezier(0.51, 0.05, 0.38, 1.01);
   animation-fill-mode: forwards;
   animation-delay: 1.2s;
   z-index: 5;
+  ${media.desktop`
+    display: flex;
+  `};
 `
 
 const InfoSection = styled.div`
@@ -95,21 +101,25 @@ const InfoBox = styled.div`
 const InfoSubTitle = styled.div`
   color: ${colors.darkGrey};
   font-weight: 500;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-family: ${fonts.avenir};
+
+  ${media.tablet`
+    font-size: 0.7rem;
+  `};
 `
 
 const InfoTitle = styled.div`
   color: white;
   margin-top: 1rem;
   font-size: 2rem;
-  margin-bottom: 1.5rem;
   line-height: 1;
   font-family: ${fonts.Black};
   display: flex;
   z-index: 106;
 
   ${media.tablet`
+    margin-bottom: 1.5rem;
     font-size: 2.2rem;
   `};
   ${media.desktop`
@@ -142,7 +152,7 @@ const InfoContainer = styled.div`
 const PhotoSection = styled.div`
   background-color: #ff3db7;
   width: 100%;
-  height: 20rem;
+  height: 16rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,6 +160,11 @@ const PhotoSection = styled.div`
     cubic-bezier(0.51, 0.05, 0.38, 1.01);
   animation-delay: 1.3s;
   order: 1;
+
+  ${media.tablet`
+    height: 20rem;
+  `};
+
   ${media.desktop`
     width: 50%;
     height: 100%;

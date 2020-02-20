@@ -48,16 +48,6 @@ const ProjectBox = styled.div`
     justify-content: center;
   `};
 `
-
-const Project = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  position: relative;
-  justify-self: center;
-`
 const scale = keyframes`
   0% {
     background-color: ${colors.customWhite};
@@ -98,6 +88,44 @@ const stroke = keyframes`
   }
 `
 
+const Project = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  justify-self: center;
+
+  :hover {
+    div {
+      > div {
+        animation: 0.5s ${scale} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
+        opacity: 0.7;
+      }
+
+      > img {
+        filter: grayscale(0);
+      }
+      > svg {
+        & .stroke-1 {
+          animation: 1.7s ${stroke} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
+          animation-fill-mode: forwards;
+          animation-delay: 0.1s;
+        }
+
+        & .stroke-2 {
+          animation: 1.9s ${stroke} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
+          animation-fill-mode: forwards;
+          animation-delay: 0.1s;
+        }
+      }
+      > span {
+        opacity: 1;
+      }
+    }
+  }
+`
 const ProjectBack = styled.div`
   display: flex;
   flex-direction: column;
@@ -159,32 +187,6 @@ const ImgBox = styled.div`
   position: relative;
   overflow: hidden;
   background-color: ${colors.lightGrey};
-  :hover {
-    > div {
-      animation: 0.5s ${scale} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
-      opacity: 0.7;
-    }
-
-    > img {
-      filter: grayscale(0);
-    }
-    > svg {
-      & .stroke-1 {
-        animation: 1.7s ${stroke} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
-        animation-fill-mode: forwards;
-        animation-delay: 0.1s;
-      }
-
-      & .stroke-2 {
-        animation: 1.9s ${stroke} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
-        animation-fill-mode: forwards;
-        animation-delay: 0.1s;
-      }
-    }
-    > span {
-      opacity: 1;
-    }
-  }
   & :after {
     display: flex;
     width: 4rem;

@@ -7,9 +7,19 @@ import Header from "../components/layout/Header"
 import SectionHome from "../components/_sections/home/SectionHome"
 import Animation from "../components/_sections/home/Container"
 
+import { media } from "../style-utils"
+
 const Container = styled.div`
   position: relative;
   height: 100vh;
+
+  ${media.tablet`
+    height: 100%;
+  `};
+
+  ${media.desktop`
+    height: 100vh;
+  `};
 `
 
 const IndexPage = () => (

@@ -9,7 +9,7 @@ import React, { PureComponent } from "react"
 import Helmet from "react-helmet"
 import styled from "styled-components"
 import { StaticQuery, graphql } from "gatsby"
-import { colors } from "../../style-utils"
+import { colors, media } from "../../style-utils"
 
 import Cursor from "../_sections/home/Cursor"
 
@@ -17,6 +17,13 @@ import "./reset.scss"
 
 const Container = styled.div`
   position: relative;
+`
+const CursorSection = styled(Cursor)`
+  display: none;
+
+  ${media.tablet`
+    display: flex;
+  `};
 `
 
 const Wrapper = styled.div`
@@ -46,7 +53,7 @@ export default class Layout extends PureComponent {
             href="https://unpkg.com/kursor/dist/kursor.css"
           />
         </Helmet>
-        <Cursor />
+        <CursorSection />
         <Wrapper>{children}</Wrapper>
       </Container>
     )
