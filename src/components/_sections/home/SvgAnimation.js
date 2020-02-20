@@ -153,6 +153,7 @@ const Animation = styled.svg`
   position: relative;
   width: 100%;
   height: 100%;
+  transition: all 0.3 ease;
 
   & .yellow-rect {
     animation: 8s ${rotate} linear infinite;
@@ -293,7 +294,7 @@ const SvgBackgroundShapes = () => {
     const text = document.querySelector(".svgText")
     const rect = document.querySelector(".mainSvg")
     const circle = document.querySelector(".big-circl-stroke")
-    // const words = ["Designer", "Developer", "Motion"]
+    const button = document.querySelector(".link-content-line")
 
     const words = [
       {
@@ -327,6 +328,9 @@ const SvgBackgroundShapes = () => {
       rect.style.backgroundColor = words[loopItem].color
       circle.style.stroke = words[loopItem].colorStroke
       text.innerHTML = words[loopItem].name
+      button.style.backgroundColor = words[loopItem].color
+      button.style.transition = "all 0.6s"
+      rect.style.transition = "all 0.6s"
     }
 
     const interval = setInterval(() => {

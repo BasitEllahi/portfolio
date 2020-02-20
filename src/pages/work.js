@@ -240,7 +240,10 @@ const Title = styled(AniLink)`
 `
 
 const BackgroundTitle = styled.span`
-  color: rgba(0, 0, 0, 0.8);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  color: none;
+  -webkit-text-stroke: 1px black;
   font-size: 1.5rem;
   margin-top: 0.5rem;
   line-height: 1;
@@ -251,7 +254,7 @@ const BackgroundTitle = styled.span`
   -webkit-text-decoration: none;
   text-decoration: none;
   position: absolute;
-  z-index: 3;
+  z-index: -1;
   padding: 1rem;
   width: 100%;
   left: 6rem;
@@ -264,8 +267,13 @@ const BackgroundTitle = styled.span`
   `};
 
   ${media.tablet`
-    left: -17rem;
-    font-size: 2rem;
+    left: -10rem;
+    font-size: 6rem;
+    width: 41rem;
+    text-align: center;
+    top: -3rem;
+  }
+
   `};
 `
 
@@ -371,7 +379,7 @@ const SecondPage = props => {
                 >
                   {detail.name}
                 </Title>
-                <BackgroundTitle>{detail.number}</BackgroundTitle>
+                <BackgroundTitle>{detail.name}</BackgroundTitle>
               </Project>
             )
           })}

@@ -5,15 +5,22 @@ import { slideInUp } from "react-animations"
 
 import { colors, fonts, media } from "../../style-utils"
 
+import Dribble from "../icons/dribble"
+import Behance from "../icons/behance"
+import Vimeo from "../icons/vimeo"
+
 const OuterSection = styled.div`
   background-color: ${colors.lightGrey};
   animation: 1s ${keyframes`${slideInUp}`} cubic-bezier(0.51, 0.05, 0.38, 1.01);
   animation-fill-mode: forwards;
   animation-delay: 1.6s;
   transform: translateY(100%);
-  height: 10%;
+  height: 5rem;
+  margin-top: 3rem;
   ${media.tablet`
     margin-bottom: 0;
+    margin-top: unset;
+    height: 5rem;
   `};
 `
 
@@ -28,15 +35,14 @@ const fadeIn = keyframes`
 
 const Section = styled.div`
   margin: 0 auto;
+  height: 100%;
   text-align: center;
   padding-bottom: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 60%;
-  text-align: left;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  text-align: center;
+  align-items: center;
 
   animation: 0.6s ${fadeIn} cubic-bezier(0.51, 0.05, 0.38, 1.01);
   animation-fill-mode: forwards;
@@ -44,9 +50,15 @@ const Section = styled.div`
   animation-delay: 1.8s;
 `
 
-const Location = styled.div``
+const Location = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
-const Contacts = styled.div``
+const Contacts = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 const Title = styled.h2`
   font-size: 0.7rem;
@@ -59,7 +71,6 @@ const Box = styled.div`
   ${media.tablet`
     padding-right: 0.7rem;
     float: left;
-    width: 10rem;
   `};
 `
 
@@ -93,7 +104,8 @@ const List = styled.ul`
     font-size: 0.6rem;
     font-family: ${fonts.helvetica};
     font-weight: 100;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
     a {
       text-decoration: none;
       color: black;
@@ -108,7 +120,7 @@ const Paragraph = styled.p`
   font-size: 0.6rem;
   margin: 0;
   display: flex;
-  text-align: left;
+  text-align: center;
   line-height: 1.5;
 `
 
@@ -116,7 +128,7 @@ const SectionFooter = () => (
   <OuterSection>
     <Section id="contact">
       <Location>
-        <Title>CONTACT ME</Title>
+        <Title>Contact me</Title>
         <Box>
           <Paragraph>
             Pk103_basit@hotmail.com
@@ -127,16 +139,22 @@ const SectionFooter = () => (
       </Location>
 
       <Contacts>
-        <Title>FOLLOW ME</Title>
+        <Title>Follow me</Title>
         <List>
           <li>
-            <a href="/">Dribble</a>
+            <a href="https://dribbble.com/BasitPk103">
+              <Dribble />
+            </a>
           </li>
           <li>
-            <a href="/">Behance</a>
+            <a href="https://www.behance.net/basitellahi">
+              <Behance />
+            </a>
           </li>
           <li>
-            <a href="/">Vimeo</a>
+            <a href="https://vimeo.com/user33084808">
+              <Vimeo />
+            </a>
           </li>
         </List>
       </Contacts>

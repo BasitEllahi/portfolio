@@ -26,6 +26,7 @@ const Menu = styled.div`
 
 const HamburgerMenu = styled.nav`
   display: flex;
+  z-index: 107;
   ${media.tablet`
     display: none;
   `};
@@ -110,7 +111,6 @@ const BurgerLinks = styled(AniLink)`
     `};
   }
   &:active {
-    padding-top: 6px;
     ${media.desktop`
       padding-top: 0;
     `};
@@ -127,7 +127,7 @@ const MenuBottom = () => (
           <span />
           <span />
           <ul id="menu">
-            <BurgerLinks paintDrip to="/work" hex="#336AF3">
+            <BurgerLinks paintDrip to="/work" hex="#F9DD51">
               Work
             </BurgerLinks>
             <BurgerLinks to="/contact">About</BurgerLinks>

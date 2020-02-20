@@ -11,13 +11,14 @@ import { media } from "../style-utils"
 
 const Container = styled.div`
   position: relative;
-  height: 100vh;
+  min-height: 100%;
 
   ${media.tablet`
-    height: 100%;
+    min-height: 100%;
   `};
 
   ${media.desktop`
+    min-height: 100%;
     height: 100vh;
   `};
 `

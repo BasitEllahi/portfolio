@@ -13,7 +13,6 @@ const OuterSection = styled.div`
   ${media.desktop`
     background-color: transparent;
   `};
-  z-index: 1000;
 `
 
 const Section = styled.div`

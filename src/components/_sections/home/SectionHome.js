@@ -14,7 +14,7 @@ import Svg from "./SvgAnimation"
 const MainSection = styled.div`
   display: flex;
   flex-direction: column;
-  height: 80%;
+  height: 100%;
   width: 100%;
   ${media.tablet`
     height: 80%;
@@ -73,6 +73,7 @@ const Line = styled.div`
 const InfoSection = styled.div`
   background-color: ${colors.customWhite};
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   order: 2;
@@ -84,14 +85,16 @@ const InfoSection = styled.div`
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 17rem;
+  width: 80%;
   height: 100%;
   justify-content: center;
   align-items: flex-start;
+  margin-bottom: 2rem;
   margin-top: 1rem;
   ${media.tablet`
-    width: 17rem;
+    width: 60%;
     margin-top: unset;
+    margin-top: 1rem;
   `};
   ${media.desktop`
     width: 24rem;
@@ -100,12 +103,12 @@ const InfoBox = styled.div`
 
 const InfoSubTitle = styled.div`
   color: ${colors.darkGrey};
-  font-weight: 500;
+  font-weight: 200;
   font-size: 0.6rem;
   font-family: ${fonts.avenir};
 
   ${media.tablet`
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   `};
 `
 
@@ -125,21 +128,35 @@ const InfoTitle = styled.div`
   ${media.desktop`
     font-size: 3rem;
   `};
+
+  > div:nth-child(2) > span {
+    color: none !important;
+    text-stroke-width: 1px !important;
+    text-stroke-color: black !important;
+  }
 `
 
 const InfoP = styled.div`
   font-family: ${fonts.helvetica};
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 200;
   margin-bottom: 2rem;
   height: 5rem;
+  line-height: 1rem;
 `
 
 const WorkLink = styled(AniLink)`
   font-family: ${fonts.acumin};
-  font-size: 1.2rem;
-  color: black;
+  font-size: 1rem;
+  color: white;
   text-decoration: none;
+  background-color: #336af3;
+  width: 10rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
 
   :hover {
     color: black;
@@ -152,7 +169,7 @@ const InfoContainer = styled.div`
 const PhotoSection = styled.div`
   background-color: #ff3db7;
   width: 100%;
-  height: 16rem;
+  height: 18rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -173,20 +190,6 @@ const PhotoSection = styled.div`
     top: 0;
   `};
 `
-const flash = keyframes`
-  0% {
-    width: 70%;
-    transform: scale(0.6);
-  }
-  60% {
-    width: 80%;
-  }
-  100% {
-    width: 100%;
-    transform: scale(1);
-  }
-`
-
 const SectionHome = () => {
   let title = useRef(null)
 
@@ -277,7 +280,7 @@ const SectionHome = () => {
               <span className="home-line-inner">HELLO</span>
             </div>
             <div className="home-content-line">
-              <span className="home-line-inner">THERE</span>
+              <span id="second-text" className="home-line-inner">THERE</span>
             </div>
           </InfoTitle>
           <InfoContainer ref={el => (info = el)}>
@@ -299,7 +302,7 @@ const SectionHome = () => {
               hex="#336AF3"
               className="link-content-line"
             >
-              <span className="link-line-inner">See my work &gt;</span>
+              <span className="link-line-inner">See my work</span>
             </WorkLink>
           </InfoContainer>
         </InfoBox>

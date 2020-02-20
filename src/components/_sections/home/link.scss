@@ -190,6 +190,11 @@ $steps: 20;
 .home-line-inner {
   transform: translate(0px, 66px);
   width: 10rem;
+
+  #second-text {
+    color: none !important;
+    text-stroke-width: 1px !important;
+  }
 }
 
 @media (max-width: 996px) {
