@@ -34,6 +34,7 @@ module.exports = {
     acumin: "acumin",
     avenir: "avenir, arial, Serif",
     Black: "Black",
+    Montserrat: "Montserrat, Helvetica",
   },
   size: {
     xlDesltop: "1640",

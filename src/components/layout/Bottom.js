@@ -1,14 +1,15 @@
 import { Link } from "gatsby"
-import React, { Component } from "react"
+import React from "react"
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { colors, fonts, media } from "../../style-utils"
+import { fonts, media } from "../../style-utils"
 
 import "./hamburger.scss"
 
 const Container = styled.nav`
   display: none;
   ${media.tablet`
+    z-index: 1; 
     display: inline-block;
     width: auto;
     height: auto;

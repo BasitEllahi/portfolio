@@ -8,6 +8,8 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import { colors, fonts, media } from "../style-utils"
 
+import "../components/utils/text.scss"
+
 import Footer from "../components/layout/Footer"
 import Header from "../components/layout/Header"
 import Slider from "../components/_sections/workSlider/Slider"
@@ -16,7 +18,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
   padding: 0;
   position: relative;
-  background-color: black;
+  background-color: #f2f2f2;
   padding: 2rem;
   padding-bottom: 0;
   height: 100%;
@@ -31,9 +33,10 @@ const MainSection = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin-top: 4rem;
+  padding-top: 4rem;
   justify-content: center;
   align-items: center;
+  background-color: #176bfc;
 `
 
 const ProjectBox = styled.div`
@@ -98,10 +101,13 @@ const Project = styled.div`
   justify-self: center;
 
   :hover {
+    .ImgBox {
+      transform: scale(0.9);
+    }
     div {
       > div {
         animation: 0.5s ${scale} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
-        opacity: 0.7;
+        opacity: 0;
       }
 
       > img {
@@ -109,19 +115,24 @@ const Project = styled.div`
       }
       > svg {
         & .stroke-1 {
-          animation: 1.7s ${stroke} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
+          animation: 1.7s ${stroke} cubic-bezier(0.51, 0.05, 0.38, 1.01)
+            forwards;
           animation-fill-mode: forwards;
           animation-delay: 0.1s;
         }
 
         & .stroke-2 {
-          animation: 1.9s ${stroke} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
+          animation: 1.9s ${stroke} cubic-bezier(0.51, 0.05, 0.38, 1.01)
+            forwards;
           animation-fill-mode: forwards;
           animation-delay: 0.1s;
         }
       }
-      > span {
+      span {
         opacity: 1;
+      }
+      .maskt-title {
+        transform: scale(1.1);
       }
     }
   }
@@ -129,15 +140,14 @@ const Project = styled.div`
 const ProjectBack = styled.div`
   display: flex;
   flex-direction: column;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  background-color: #176bfc;
+  width: 100%;
+  height: 100%;
+  background-color: #2d2d2d;
   position: absolute;
-  bottom: 50%;
-  left: 5%;
-  right: 50%;
-  top: 84%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
   z-index: 1;
   transition: all 600ms ease;
   animation: 0.8s ${scaleBack} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
@@ -147,11 +157,11 @@ const ProjectBack = styled.div`
 const Arrow = styled.svg`
   display: flex;
   flex-direction: column;
-  width: 3rem;
-  height: 3rem;
+  width: 1.5rem;
+  height: 1.5rem;
   position: absolute;
   left: 5rem;
-  bottom: 2rem;
+  bottom: 1.2rem;
   z-index: 1;
   fill: none;
   transition: all 600ms ease;
@@ -187,6 +197,7 @@ const ImgBox = styled.div`
   position: relative;
   overflow: hidden;
   background-color: ${colors.lightGrey};
+  transition: all 400ms ease;
   & :after {
     display: flex;
     width: 4rem;
@@ -232,21 +243,18 @@ const Title = styled(AniLink)`
   left: -1rem;
   top: 3rem;
   ${media.phablet`
-    font-size: 3rem;
-    left: -3rem;
-    top: 3rem;
-    padding: 1rem;
+    font-size: 2rem;
+    left: 18rem;
+    top: 1rem;
+    padding: 0.8rem;
   `};
 `
 
 const BackgroundTitle = styled.span`
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  color: none;
-  -webkit-text-stroke: 1px black;
   font-size: 1.5rem;
   margin-top: 0.5rem;
   line-height: 1;
+  color: white;
   font-family: Black;
   font-weight: 200;
   text-align: center;
@@ -257,31 +265,40 @@ const BackgroundTitle = styled.span`
   z-index: -1;
   padding: 1rem;
   width: 100%;
-  left: 6rem;
-  top: -3rem;
+  left: 3rem;
+  top: -1rem;
+  transition: all 0.3s ease;
 
   ${media.phablet`
     font-size: 3rem;
-    left: 8rem;
-    top: 0;
+    left: -4rem;
+    top: 4rem;
+    width: 21rem;
   `};
 
   ${media.tablet`
-    left: -10rem;
+    left: -21rem;
     font-size: 6rem;
-    width: 41rem;
+    width: 61rem;
     text-align: center;
-    top: -3rem;
+    top: 4rem;
   }
 
-  `};
+`};
+`
+const TitleSecond = styled(BackgroundTitle)`
+  z-index: 2;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  color: none;
+  -webkit-text-stroke: 1px white;
 `
 
 const UnderTitle = styled.span`
-  color: #2d2d2d;
+  color: white;
   font-size: 0.6rem;
   line-height: 1;
-  font-family: ${fonts.helvetica};
+  font-family: ${fonts.Montserrat};
   font-weight: 200;
   text-align: left;
   margin-bottom: 0.3rem;
@@ -290,7 +307,7 @@ const UnderTitle = styled.span`
 const SvgTitle = styled.span`
   position: absolute;
   left: 1.5rem;
-  bottom: 2.8rem;
+  bottom: 1.2rem;
   font-size: 0.8rem;
   font-family: bebas;
   color: white;
@@ -351,7 +368,7 @@ const SecondPage = props => {
             return (
               <Project key={detail.id}>
                 <UnderTitle>{detail.role}</UnderTitle>
-                <ImgBox>
+                <ImgBox className="ImgBox">
                   <Image src={detail.cover.fluid.src} alt="de kreun" />
                   <SvgTitle x={0} y={0}>
                     Check case
@@ -377,9 +394,16 @@ const SecondPage = props => {
                   hex="#176bfc"
                   direction="up"
                 >
-                  {detail.name}
+                  {detail.number}
                 </Title>
-                <BackgroundTitle>{detail.name}</BackgroundTitle>
+                <div>
+                  <BackgroundTitle className="maskt-title">
+                    {detail.name}
+                  </BackgroundTitle>
+                  <TitleSecond className="maskt-title">
+                    {detail.name}
+                  </TitleSecond>
+                </div>
               </Project>
             )
           })}

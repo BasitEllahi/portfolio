@@ -57,7 +57,7 @@ module.exports = {
           urls: ["fonts/fonts.css"],
         },
         google: {
-          families: ["Poppin"],
+          families: ["Poppin", "Montserrat"],
         },
       },
     },
@@ -68,6 +68,9 @@ module.exports = {
           {
             family: `Poppins`,
             subsets: [`latin`],
+          },
+          {
+            family: `Montserrat`,
           },
         ],
       },

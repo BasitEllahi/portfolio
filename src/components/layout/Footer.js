@@ -16,7 +16,6 @@ const OuterSection = styled.div`
   animation-delay: 1.6s;
   transform: translateY(100%);
   height: 5rem;
-  margin-top: 3rem;
   ${media.tablet`
     margin-bottom: 0;
     margin-top: unset;

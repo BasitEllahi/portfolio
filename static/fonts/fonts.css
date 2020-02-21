@@ -23,4 +23,10 @@ This is the fade in animation for the back to top button
   src: url(Poppins-Black.ttf);
 }
 
+@font-face {
+  font-family: 'Black';
+  src: url(Poppins-Black.ttf);
+}
+
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap');
