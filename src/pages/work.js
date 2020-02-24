@@ -391,7 +391,7 @@ const SecondPage = props => {
                   paintDrip
                   to={`/post/${detail.slug}`}
                   duration={1}
-                  hex="#176bfc"
+                  hex="#EB4FB3"
                   direction="up"
                 >
                   {detail.number}

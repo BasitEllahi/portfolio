@@ -16,6 +16,7 @@ const MainSection = styled.div`
   flex-direction: column;
   height: 100%;
   width: 100%;
+  min-height: calc(100vh - 10rem);
   ${media.tablet`
     height: 80%;
   `};

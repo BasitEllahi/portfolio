@@ -77,10 +77,22 @@ const InnerList = styled.li`
 
 const VideoBox = styled.iframe`
   display: flex;
-  width: 35rem;
-  height: 46vh;
+  width: 100%;
+  max-height: 13rem;
   margin-bottom: 3rem;
   margin-top: 2rem;
+
+  ${media.phablet`
+    max-height: 25rem;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+  `};
+
+  ${media.tablet`
+    width: 35rem;
+    height: 46vh;
+    max-height: 100%;
+  `};
 `
 
 const BannerImg = styled(Img)`
@@ -103,7 +115,7 @@ const Image = styled(Img)`
   cursor: pointer;
 
   ${media.tablet`
-    width: 30rem;
+    width: 35rem;
   `};
 `
 
@@ -174,7 +186,7 @@ const Backbutton = styled(AniLink)`
   align-items: center;
   :hover {
     transition: all 0.3s ease;
-    background-color: #336af3;
+    background-color: #eb4fb3;
     color: white;
   }
 
@@ -252,7 +264,7 @@ const ProjectPage = data => {
             paintDrip
             to="/work"
             duration={1}
-            hex="#176bfc"
+            hex="#EB4FB3"
             direction="up"
           >
             Back to projects
