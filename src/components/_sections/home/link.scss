@@ -271,3 +271,11 @@ $steps: 20;
 .link-line-inner {
   transform: translate(0px, 66px);
 }
+
+.List {
+
+  li {
+    display: list-item;
+    margin-left: 1rem; 
+  }
+}

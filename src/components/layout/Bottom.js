@@ -131,7 +131,7 @@ const MenuBottom = () => (
             <BurgerLinks paintDrip to="/work" hex="#F9DD51">
               Work
             </BurgerLinks>
-            <BurgerLinks to="/contact">About</BurgerLinks>
+            <BurgerLinks to="/about">About</BurgerLinks>
             <BurgerLinks to="/team">Contact</BurgerLinks>
           </ul>
         </div>
@@ -141,7 +141,7 @@ const MenuBottom = () => (
       <Links paintDrip to="/work" hex="#336AF3">
         Work
       </Links>
-      <Links to="/contact">About</Links>
+      <Links to="/about">About</Links>
       <Links to="/team">Contact</Links>
     </Container>
   </Menu>
