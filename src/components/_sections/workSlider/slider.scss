@@ -47,16 +47,21 @@
   border-radius: 30px;
   color: white;
   cursor: pointer;
-  font-family: acumin;
-  font-weight: bold;
+  font-family: Bebas;
   font-size: 1rem;
   padding: 0.5rem 2.5rem ;
+  transition: all 0.3s ease;
   
   &:focus {
     outline-color: var(--color-focus);
     outline-offset: 2px;
     outline-style: solid;
     outline-width: 3px;
+  }
+
+  &:hover {
+    background-color: #F9DD51;
+    color:black;
   }
   
   &:active {
@@ -178,6 +183,10 @@
   pointer-events: auto;
   user-select: auto;
 filter: brightness(100%);
+
+& .slide__image-wrapper {
+  filter: brightness(80%);
+}    
   
   @media (hover: hover) {
     &:hover .slide__image-wrapper {
@@ -232,10 +241,10 @@ filter: brightness(100%);
 }
 
 .slide__headline {
-  font-size: 6vmin;
-  font-weight: 600;
+  font-size: 4vmin;
   position: relative;
   line-height: 1;
+  font-family: Black;
 }
 
 .slide__content {

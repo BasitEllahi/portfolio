@@ -299,7 +299,7 @@ const SectionHome = () => {
               paintDrip
               to="work"
               duration={1}
-              hex="#336AF3"
+              hex="#191919"
               className="link-content-line"
             >
               <span className="link-line-inner">See my work</span>

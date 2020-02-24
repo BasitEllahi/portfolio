@@ -49,7 +49,7 @@ const InfoBox = styled.div`
   margin-bottom: 2rem;
   font-size: 1rem;
   justify-content: space-between;
-
+  border-top: 1px solid #EBEBEB;
   ${media.tablet`
     flex-direction: row;
     justify-content: space-between;
@@ -157,18 +157,31 @@ const InfoTitle = styled.div`
   }
 `
 const Backbutton = styled(AniLink)`
-  color: black;
-  font-size: 0.7rem;
-  font-family: ${fonts.bebas};
+  color: #666;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: #ebebeb;
+  padding: 0.2rem;
+  font-size: 0.5rem;
+  width: 6rem;
+  text-align: center;
+  font-family: ${fonts.Montserrat};
   text-decoration: none;
-  font-weight: light;
+  font-weight: bold;
   display: flex;
-  jusfity-content: center;
+  justify-content: center;
+  border-radius: 28px;
   align-items: center;
-  & span {
-    font-size: 1rem;
-    margin-right: 0.5rem;
+  :hover {
+    transition: all 0.3s ease;
+    background-color: #336af3;
+    color: white;
   }
+
+  ${media.tablet`
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  `};
 `
 const ProjectPage = data => {
   const project = data.data.contentfulProject
@@ -242,7 +255,6 @@ const ProjectPage = data => {
             hex="#176bfc"
             direction="up"
           >
-            <span>&larr;</span>
             Back to projects
           </Backbutton>
           <InfoBox>
