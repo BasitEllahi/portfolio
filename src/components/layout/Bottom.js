@@ -69,7 +69,6 @@ const Links = styled(AniLink)`
   ${media.phoneXL`
     font-size: 0.8rem;
   `};
-  color: black;
   ${media.tablet`
     color: black;
   `};
@@ -128,21 +127,47 @@ const MenuBottom = () => (
           <span />
           <span />
           <ul id="menu">
-            <BurgerLinks paintDrip to="/work" hex="#F9DD51">
+            <BurgerLinks to="/">Home</BurgerLinks>
+            <BurgerLinks
+              paintDrip
+              to="/work"
+              hex="#F9DD51"
+              activeStyle={{ color: "#F9DD51" }}
+            >
               Work
             </BurgerLinks>
-            <BurgerLinks to="/about">About</BurgerLinks>
-            <BurgerLinks to="/team">Contact</BurgerLinks>
+            <BurgerLinks
+              to="/about"
+              paintDrip
+              hex="#F9DD51"
+              activeStyle={{ color: "#F9DD51" }}
+            >
+              About
+            </BurgerLinks>
           </ul>
         </div>
       </nav>
     </HamburgerMenu>
     <Container>
-      <Links paintDrip to="/work" hex="#336AF3">
+      <Links to="/" bg="#336AF3">
+        Home
+      </Links>
+      <Links
+        paintDrip
+        to="/work"
+        hex="#F9DD51"
+        activeStyle={{ color: "#336AF3" }}
+      >
         Work
       </Links>
-      <Links to="/about">About</Links>
-      <Links to="/team">Contact</Links>
+      <Links
+        paintDrip
+        to="/about"
+        hex="#F9DD51"
+        activeStyle={{ color: "#336AF3" }}
+      >
+        About
+      </Links>
     </Container>
   </Menu>
 )

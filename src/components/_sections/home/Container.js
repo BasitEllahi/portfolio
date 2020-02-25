@@ -26,12 +26,7 @@ const Container = props => {
 
     // tl.staggerTo(ContainerFirst, 1, { width: "0%", ease: Power3.easeInOut })
 
-    tl.to(
-      ContainerFirst,
-      props.time,
-      { xPercent: 100, ease: Power3.easeInOut },
-      "Start"
-    )
+    tl.to(ContainerFirst, props.time, { xPercent: 100, ease: Power3.easeInOut })
     /*
     tl.from(ContainerFirst, 1, {
       scaleX: 0,
