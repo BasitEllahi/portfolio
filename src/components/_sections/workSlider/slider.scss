@@ -47,11 +47,11 @@
   border-radius: 30px;
   color: white;
   cursor: pointer;
-  font-family: Bebas;
-  font-size: 1rem;
-  padding: 0.5rem 2.5rem ;
+  font-family: Montserrat;
+  padding: 0.3rem 2rem ;
   transition: all 0.3s ease;
-  
+  font-size: 0.8rem;
+
   &:focus {
     outline-color: var(--color-focus);
     outline-offset: 2px;

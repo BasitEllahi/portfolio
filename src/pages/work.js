@@ -128,7 +128,7 @@ const Project = styled.div`
           animation-delay: 0.1s;
         }
       }
-      span {
+      a {
         opacity: 1;
       }
       .maskt-title {
@@ -192,7 +192,7 @@ const ImgBox = styled.div`
   display: flex;
   flex-direction: row-reverse;
   width: 100%;
-  max-height: 25rem;
+  max-height: 15rem;
   margin-bottom: 1rem;
   position: relative;
   overflow: hidden;
@@ -224,7 +224,7 @@ const Image = styled.img`
   `};
 `
 
-const Title = styled(AniLink)`
+const Title = styled.span`
   color: white;
   font-size: 2rem;
   margin-top: 0.5rem;
@@ -304,16 +304,20 @@ const UnderTitle = styled.span`
   margin-bottom: 0.3rem;
 `
 
-const SvgTitle = styled.span`
+const SvgTitle = styled(AniLink)`
   position: absolute;
   left: 1.5rem;
   bottom: 1.2rem;
   font-size: 0.8rem;
-  font-family: bebas;
+  font-family: ${fonts.bebas};
+  text-decoration: none;
   color: white;
   z-index: 3;
   opacity: 0;
   transition: 0.3s;
+  :hover {
+    color: #eb4fb3;
+  }
 `
 
 const slideData = [
@@ -370,7 +374,15 @@ const SecondPage = props => {
                 <UnderTitle>{detail.role}</UnderTitle>
                 <ImgBox className="ImgBox">
                   <Image src={detail.cover.fluid.src} alt="de kreun" />
-                  <SvgTitle x={0} y={0}>
+                  <SvgTitle
+                    x={0}
+                    y={0}
+                    paintDrip
+                    to={`/post/${detail.slug}`}
+                    duration={1}
+                    hex="#EB4FB3"
+                    direction="up"
+                  >
                     Check case
                   </SvgTitle>
                   <ProjectBack />
@@ -387,15 +399,7 @@ const SecondPage = props => {
                     />
                   </Arrow>
                 </ImgBox>
-                <Title
-                  paintDrip
-                  to={`/post/${detail.slug}`}
-                  duration={1}
-                  hex="#EB4FB3"
-                  direction="up"
-                >
-                  {detail.number}
-                </Title>
+                <Title>{detail.number}</Title>
                 <div>
                   <BackgroundTitle className="maskt-title">
                     {detail.name}

@@ -141,17 +141,17 @@ const SectionFooter = () => (
         <Title>Follow me</Title>
         <List>
           <li>
-            <a href="https://dribbble.com/BasitPk103">
+            <a target="_black" href="https://dribbble.com/BasitPk103">
               <Dribble />
             </a>
           </li>
           <li>
-            <a href="https://www.behance.net/basitellahi">
+            <a target="_black" href="https://www.behance.net/basitellahi">
               <Behance />
             </a>
           </li>
           <li>
-            <a href="https://vimeo.com/user33084808">
+            <a target="_black" href="https://vimeo.com/user33084808">
               <Vimeo />
             </a>
           </li>

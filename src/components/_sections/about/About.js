@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react"
 
 import { TimelineLite, Power3 } from "gsap"
 import CSSRulePlugin from "gsap/CSSRulePlugin"
+import Fade from "react-reveal/Fade"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import styled from "styled-components"
 import Img from "gatsby-image"
@@ -399,66 +400,78 @@ const ProjectPage = data => {
               </YearInfo>
             </InfoBox>
             <ImageContainer>
-              <ImageMe src={Me} />
+              <Fade right delay={750}>
+                <ImageMe src={Me} />
+              </Fade>
             </ImageContainer>
           </InfoContainer>
           <AboutContainer>
             <AboutInfoContainer>
               <SkillBox>
-                <SkilTitle> Skills</SkilTitle>
+                <Fade bottom cascade>
+                  <SkilTitle> Skills</SkilTitle>
+                </Fade>
                 <SkillBigContainer>
-                  <SkillContainer>
-                    <SmallTitle>Motion & Animation</SmallTitle>
-                    <Skills className="List">
-                      <SkilItem> Adobe Creative Suite</SkilItem>
-                      <SkilItem> Vray rendering</SkilItem>
-                      <SkilItem> 2D Animation, Explainers</SkilItem>
-                      <SkilItem> Storyboards</SkilItem>
-                      <SkilItem> Cinema 4d</SkilItem>
-                      <SkilItem> SketchUp</SkilItem>
-                    </Skills>
-                  </SkillContainer>
-                  <SkillContainer>
-                    <SmallTitle>Design & Illustration</SmallTitle>
-                    <Skills className="List">
-                      <SkilItem>Illustrator, Sketch</SkilItem>
-                      <SkilItem>Isometric design</SkilItem>
-                      <SkilItem>Infographics</SkilItem>
-                    </Skills>
-                  </SkillContainer>
-                  <SkillContainer>
-                    <SmallTitle>Development</SmallTitle>
-                    <Skills className="List">
-                      <SkilItem>React framework</SkilItem>
-                      <SkilItem>Gatsby, Next js</SkilItem>
-                      <SkilItem>Javascript</SkilItem>
-                      <SkilItem>Graphql</SkilItem>
-                      <SkilItem>
-                        Css ( Css3, Styled Components, ant design, ...)
-                      </SkilItem>
-                      <SkilItem>Gsap animation</SkilItem>
-                      <SkilItem>Contentfull, GraphCMS</SkilItem>
-                    </Skills>
-                  </SkillContainer>
+                  <Fade bottom cascade>
+                    <SkillContainer>
+                      <SmallTitle>Motion & Animation</SmallTitle>
+                      <Skills className="List">
+                        <SkilItem> Adobe Creative Suite</SkilItem>
+                        <SkilItem> Vray rendering</SkilItem>
+                        <SkilItem> 2D Animation, Explainers</SkilItem>
+                        <SkilItem> Storyboards</SkilItem>
+                        <SkilItem> Cinema 4d</SkilItem>
+                        <SkilItem> SketchUp</SkilItem>
+                      </Skills>
+                    </SkillContainer>
+                  </Fade>
+                  <Fade bottom cascade>
+                    <SkillContainer>
+                      <SmallTitle>Design & Illustration</SmallTitle>
+                      <Skills className="List">
+                        <SkilItem>Illustrator, Sketch</SkilItem>
+                        <SkilItem>Isometric design</SkilItem>
+                        <SkilItem>Infographics</SkilItem>
+                      </Skills>
+                    </SkillContainer>
+                  </Fade>
+                  <Fade bottom cascade>
+                    <SkillContainer>
+                      <SmallTitle>Development</SmallTitle>
+                      <Skills className="List">
+                        <SkilItem>React framework</SkilItem>
+                        <SkilItem>Gatsby, Next js</SkilItem>
+                        <SkilItem>Javascript</SkilItem>
+                        <SkilItem>Graphql</SkilItem>
+                        <SkilItem>
+                          Css ( Css3, Styled Components, ant design, ...)
+                        </SkilItem>
+                        <SkilItem>Gsap animation</SkilItem>
+                        <SkilItem>Contentfull, GraphCMS</SkilItem>
+                      </Skills>
+                    </SkillContainer>
+                  </Fade>
                 </SkillBigContainer>
               </SkillBox>
-              <SkillBoxWork>
-                <SkilTitle> Work</SkilTitle>
-                <Skills>
-                  <SkilItem>
-                    <span>2014 - 2017</span>
-                    Devine Education @ Howest
-                  </SkilItem>
-                  <SkilItem>
-                    <span>2017 - 2018</span>
-                    Motion Designer @Mediamonks
-                  </SkilItem>
-                  <SkilItem>
-                    <span>2018 - Now</span>
-                    Frontend @Appeel.io
-                  </SkilItem>
-                </Skills>
-              </SkillBoxWork>
+              <Fade bottom cascade>
+                <SkillBoxWork>
+                  <SkilTitle> Work</SkilTitle>
+                  <Skills>
+                    <SkilItem>
+                      <span>2014 - 2017</span>
+                      Devine Education @ Howest
+                    </SkilItem>
+                    <SkilItem>
+                      <span>2017 - 2018</span>
+                      Motion Designer @Mediamonks
+                    </SkilItem>
+                    <SkilItem>
+                      <span>2018 - Now</span>
+                      Frontend @Appeel.io
+                    </SkilItem>
+                  </Skills>
+                </SkillBoxWork>
+              </Fade>
             </AboutInfoContainer>
           </AboutContainer>
         </ProjectBox>

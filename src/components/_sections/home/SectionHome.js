@@ -147,13 +147,13 @@ const InfoP = styled.div`
 `
 
 const WorkLink = styled(AniLink)`
-  font-family: ${fonts.acumin};
-  font-size: 1rem;
+  font-family: ${fonts.Montserrat};
+  font-size: 0.8rem;
   color: white;
   text-decoration: none;
   background-color: #336af3;
-  width: 10rem;
-  height: 3rem;
+  width: 8rem;
+  height: 2.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
