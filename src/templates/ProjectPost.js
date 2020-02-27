@@ -49,7 +49,7 @@ const InfoBox = styled.div`
   margin-bottom: 2rem;
   font-size: 1rem;
   justify-content: space-between;
-  border-top: 1px solid #EBEBEB;
+  border-top: 1px solid #ebebeb;
   ${media.tablet`
     flex-direction: row;
     justify-content: space-between;
@@ -100,6 +100,11 @@ const BannerImg = styled(Img)`
   object-fit: cover;
   cursor: pointer;
 `
+const BannerImgsvg = styled.img`
+  width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+`
 
 const ImgBox = styled.div`
   display: flex;
@@ -112,6 +117,18 @@ const Image = styled(Img)`
   width: 80%;
   max-height: 45rem;
   object-fit: cover;
+  border: 1px solid #eaeaea;
+  cursor: pointer;
+
+  ${media.tablet`
+    width: 35rem;
+  `};
+`
+const ImageSVG = styled.img`
+  width: 80%;
+  max-height: 45rem;
+  object-fit: cover;
+  border: 1px solid #eaeaea;
   cursor: pointer;
 
   ${media.tablet`
@@ -249,11 +266,35 @@ const ProjectPage = data => {
       .to(contentRole, 1, { y: 0, opacity: 1, ease: Power3.easeOut }, 0.4)
   }, [tl, tlInfo, tlImage])
 
-  const Photos = project.photos.map((img, i) => (
-    <ImgBox key={i}>
-      <Image fluid={img.localFile.childImageSharp.fluid} alt="img" />
-    </ImgBox>
-  ))
+  const Photos = project.photos.map((img, i) => {
+    const Svg = img.file.contentType.includes("svg")
+
+    let Type
+
+    if (Svg) {
+      Type = <ImageSVG src={img.localFile.url} alt="img" />
+    } else {
+      Type = <Image fluid={img.localFile.childImageSharp.fluid} alt="img" />
+    }
+
+    return <ImgBox key={i}>{Type}</ImgBox>
+  })
+
+  const Banner = () => {
+    const Svg = project.banner.file.contentType.includes("svg")
+
+    return Svg ? (
+      <BannerImgsvg
+        ref={el => (image = el)}
+        src={project.banner.localFile.url}
+      />
+    ) : (
+      <BannerImg
+        ref={el => (image = el)}
+        fluid={project.banner.localFile.childImageSharp.fluid}
+      />
+    )
+  }
 
   return (
     <div>
@@ -298,14 +339,7 @@ const ProjectPage = data => {
             </YearInfo>
           </InfoBox>
         </ProjectBox>
-        {project.banner && (
-          <div className="img-container">
-            <BannerImg
-              ref={el => (image = el)}
-              fluid={project.banner.localFile.childImageSharp.fluid}
-            />
-          </div>
-        )}
+        {project.banner && <div className="img-container">{Banner()}</div>}
         {project.video && (
           <VideoBox
             title="video"
@@ -340,6 +374,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+          url
+        }
+        file {
+          contentType
         }
       }
       body {
@@ -357,6 +395,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+          url
+        }
+        file {
+          contentType
         }
       }
       video
