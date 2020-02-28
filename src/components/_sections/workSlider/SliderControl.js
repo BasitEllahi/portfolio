@@ -9,7 +9,6 @@ import React from "react"
 import "./slider.scss"
 
 const SliderControl = ({ type, title, handleClick }) => {
-  console.warn(type)
 
   return (
     <button

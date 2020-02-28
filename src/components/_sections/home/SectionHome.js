@@ -236,7 +236,7 @@ const SectionHome = () => {
         {
           x: "10px",
           color: "black",
-          ease: Power4.easeInOut,
+          ease: Power3.easeInOut,
         },
         0.8
       )
@@ -316,5 +316,3 @@ const SectionHome = () => {
 }
 
 export default SectionHome
-
-// <Grain src={illustration} />

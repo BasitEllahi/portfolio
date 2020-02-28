@@ -26,19 +26,10 @@ const Container = props => {
 
     // tl.staggerTo(ContainerFirst, 1, { width: "0%", ease: Power3.easeInOut })
 
-    tl.to(ContainerFirst, props.time, { xPercent: 100, ease: Power3.easeInOut })
-    /*
-    tl.from(ContainerFirst, 1, {
-      scaleX: 0,
-      transformOrigin: "left",
-      ease: Power3.easeInOut,
-    }).to(
-      ContainerFirst,
-      1,
-      { scaleX: 0, transformOrigin: "right", ease: Power3.easeInOut },
-      "reveal"
-    )
-    */
+    return () => {
+      //tl.kill();
+      tl.staggerTo(ContainerFirst, props.time, { xPercent: 100, ease: Power3.easeInOut });
+    }
   }, [tl])
 
   return <Animation ref={el => (image = el)} color={props.color} />

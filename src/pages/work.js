@@ -3,7 +3,6 @@ import styled, { keyframes } from "styled-components"
 import { graphql } from "gatsby"
 import get from "lodash/get"
 import { TimelineLite, Power3 } from "gsap"
-import CSSRulePlugin from "gsap/CSSRulePlugin"
 import { slideOutLeft } from "react-animations"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 

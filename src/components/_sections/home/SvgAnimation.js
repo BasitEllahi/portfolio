@@ -316,10 +316,6 @@ const SvgBackgroundShapes = () => {
 
     let loopItem = 0
 
-    rect.addEventListener("animationend", () => {
-      console.warn("end")
-    })
-
     const changeText = () => {
       loopItem += 1
       if (loopItem === words.length) {

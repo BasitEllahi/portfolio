@@ -111,7 +111,6 @@ const Projects = props => {
   const section = document.getElementById("projectBox")
   const projects = get(props, "data.allContentfulProject.edges", [])
 
-  console.warn(projects)
   let currentPos = window.pageYOffset
 
   const update = () => {
