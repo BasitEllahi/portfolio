@@ -34,6 +34,15 @@
         transform: translate(0px, 66px);
       }
     }
+
+    .hero-content-line-work {
+      margin: 0;
+      height: 75px;
+      overflow: hidden;
+      .hero-content-line-inner-work {
+        transform: translate(0px, 75px);
+      }
+    }
   }
   p {
     font-size: 14px;

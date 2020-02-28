@@ -14,11 +14,13 @@ import {
 } from "../../utils/mouse"
 
 const MainSection = styled.div`
+/*
   display: none;
 
   ${media.tablet`
     display: flex;
   `};
+  */
 `
 
 const Cursor = () => {

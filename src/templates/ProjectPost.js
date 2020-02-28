@@ -46,11 +46,12 @@ const ProjectBox = styled.div`
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   font-size: 1rem;
   justify-content: space-between;
   border-top: 1px solid #ebebeb;
   ${media.tablet`
+    margin-bottom: 2rem;
     flex-direction: row;
     justify-content: space-between;
   `};

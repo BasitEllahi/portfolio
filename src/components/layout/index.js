@@ -17,6 +17,7 @@ import "./reset.scss"
 
 const Container = styled.div`
   position: relative;
+  width: 100vw;
 `
 const CursorSection = styled(Cursor)`
   display: none;
@@ -27,7 +28,7 @@ const CursorSection = styled(Cursor)`
 `
 
 const Wrapper = styled.div`
-  margin: 0 auto;
+  width: 100vw;
   padding: 0;
   position: relative;
   background-color: ${colors.customWhite};

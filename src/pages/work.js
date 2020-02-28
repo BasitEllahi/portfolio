@@ -1,33 +1,33 @@
-import React from "react"
+import React, { useEffect, useRef }  from "react"
 import styled, { keyframes } from "styled-components"
 import { graphql } from "gatsby"
 import get from "lodash/get"
-// import Img from "gatsby-image"
+import { TimelineLite, Power3 } from "gsap"
+import CSSRulePlugin from "gsap/CSSRulePlugin"
 import { slideOutLeft } from "react-animations"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import { colors, fonts, media } from "../style-utils"
 
 import "../components/utils/text.scss"
+import "../templates/project.scss"
 
 import Footer from "../components/layout/Footer"
 import Header from "../components/layout/Header"
-import Slider from "../components/_sections/workSlider/Slider"
+// import Slider from "../components/_sections/workSlider/Slider"
 
 const Wrapper = styled.div`
   margin: 0 auto;
   padding: 0;
   position: relative;
-  background-color: #f2f2f2;
-  padding: 2rem;
+  padding: 0.5rem;
   padding-bottom: 0;
   height: 100%;
-  @media (prefers-color-scheme: dark) {
-    body {
-      background-color: black;
-      color: white;
-    }
-  }
+  width: 95%;
+  ${media.tablet`
+    width: 80%;
+    padding: 2rem;
+  `};
 `
 const MainSection = styled.div`
   display: flex;
@@ -319,7 +319,58 @@ const SvgTitle = styled(AniLink)`
     color: #eb4fb3;
   }
 `
+const InfoBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  justify-content: space-between;
+  & h1 {
+    margin-bottom: 0px !important;
+  }
 
+  & p {
+    margin-bottom: 10px !important;
+  }
+  ${media.tablet`
+    margin-bottom: 2rem;
+    flex-direction: row;
+    justify-content: space-between;
+    & h1 {
+      margin-bottom: 24px;
+    }
+  `};
+`
+const InfoTitle = styled.div`
+  color: black;
+  font-weight: bold;
+  font-size: 3rem;
+  line-height: 1;
+  font-family: ${fonts.Montserrat};
+  display: flex;
+  jusfity-content: right;
+
+  & span {
+    color: ${colors.main};
+    margin-right: 0.5rem;
+  }
+`
+const Description = styled.p`
+  color: ${colors.darkGrey};
+  font-size: 0.8rem;
+  line-height: 1.2;
+  font-family: ${fonts.helvetica};
+  font-weight: 200;
+  margin-top: 0.5rem;
+  width: 100%;
+  ${media.tablet`
+    width: 90%;
+  `};
+  ${media.desktop`
+    width: 60%;
+  `};
+`
+/*
 const slideData = [
   {
     index: 0,
@@ -352,21 +403,56 @@ const slideData = [
     src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/typewriter.jpg",
   },
 ]
+*/
 
 const SecondPage = props => {
   const projects = get(props, "data.allContentfulProject.edges", [])
 
-  console.warn(projects)
+  let content = useRef(null)
+
+  const tl = new TimelineLite({ delay: 0.8 })
+
+  useEffect(() => {
+
+    // content vars
+    const headlineFirst = content.children[0].children[0]
+    const contentP = content.children[1]
+
+
+    // Content Animation
+
+    tl.staggerTo(
+      [headlineFirst.children],
+      1,
+      {
+        y: 0,
+        ease: Power3.easeOut,
+      },
+      0.15,
+      "Start"
+    ).to(contentP, 1, { y: 0, opacity: 1, ease: Power3.easeOut }, 0.4)
+  }, [tl])
 
   return (
     <div>
       <Header />
       <Wrapper>
-        <Slider heading="Example Slider" slides={slideData} />
+        <InfoBox>
+          <div className="hero-content-inner" ref={el => (content = el)}>
+            <h1>
+              <div className="hero-content-line-work">
+                <InfoTitle className="hero-content-line-inner-work">
+                  Projects
+                </InfoTitle>
+              </div>
+            </h1>
+            <Description>All my passion work down below. Ranging from Design to Design and Development.</Description>
+          </div>
+        </InfoBox>
       </Wrapper>
       <MainSection>
         <ProjectBox>
-          {projects.map(({ node: detail }) => {
+          {projects.map(({ node: detail }, i) => {
             if (!detail) return null
 
             return (
@@ -399,7 +485,7 @@ const SecondPage = props => {
                     />
                   </Arrow>
                 </ImgBox>
-                <Title>{detail.number}</Title>
+                <Title>0{i+1}</Title>
                 <div>
                   <BackgroundTitle className="maskt-title">
                     {detail.name}
