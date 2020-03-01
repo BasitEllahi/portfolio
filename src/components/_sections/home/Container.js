@@ -25,11 +25,13 @@ const Container = props => {
     // Content Animation
 
     // tl.staggerTo(ContainerFirst, 1, { width: "0%", ease: Power3.easeInOut })
+    tl.to(ContainerFirst, props.time, { xPercent: 100, ease: Power3.easeInOut });
 
+    /*
     return () => {
-      //tl.kill();
-      tl.staggerTo(ContainerFirst, props.time, { xPercent: 100, ease: Power3.easeInOut });
+      tl.kill(); 
     }
+    */
   }, [tl])
 
   return <Animation ref={el => (image = el)} color={props.color} />

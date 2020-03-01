@@ -116,6 +116,90 @@ const BurgerLinks = styled(AniLink)`
     `};
   }
 `
+const ALink = styled(Link)`
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  flex-grow: 1;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+  padding: 20px 10px;
+  font-weight: 700;
+  font-size: 0.7rem;
+  font-family: ${fonts.avenir};
+  border-bottom: 1px solid transparent;
+  background: white;
+  transition: all 0.3s;
+
+  & > span {
+    position: relative;
+  }
+  &:hover,
+  &:active {
+    user-select: none;
+    color: #336af3;
+    ${media.tablet`
+      color: white;
+    `};
+  }
+  &:active {
+    padding-top: 6px;
+    ${media.desktop`
+      padding-top: 0;
+    `};
+  }
+  ${media.phoneXL`
+    font-size: 0.8rem;
+  `};
+  ${media.tablet`
+    color: black;
+  `};
+  ${media.tablet`
+    font-size: 0.8rem;
+    display: inline-block;
+    flex-grow: unset;
+    background: transparent;
+    padding: 0px;
+    margin-left: 0vw;
+    margin-right: 3vw;
+    &:first-child {
+      margin-left: 0;
+    }
+  `};
+`
+
+const BLink = styled(Link)`
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  flex-grow: 1;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  padding: 20px 10px;
+  font-weight: 700;
+  font-size: 1.7rem;
+  font-family: ${fonts.avenir};
+  transition: all 0.3s;
+
+  & > span {
+    position: relative;
+  }
+  &:hover,
+  &:active {
+    user-select: none;
+    color: white;
+    ${media.tablet`
+      color: white;
+    `};
+  }
+  &:active {
+    ${media.desktop`
+      padding-top: 0;
+    `};
+  }
+`
 
 const MenuBottom = () => (
   <Menu>
@@ -127,12 +211,12 @@ const MenuBottom = () => (
           <span />
           <span />
           <ul id="menu">
-            <BurgerLinks to="/">Home</BurgerLinks>
+            <BLink to="/">Home</BLink>
             <BurgerLinks
               paintDrip
               to="/work"
               hex="#F9DD51"
-              activeStyle={{ color: "#F9DD51" }}
+              activeStyle={{ color: "#262626" }}
             >
               Work
             </BurgerLinks>
@@ -140,7 +224,7 @@ const MenuBottom = () => (
               to="/about"
               paintDrip
               hex="#F9DD51"
-              activeStyle={{ color: "#F9DD51" }}
+              activeStyle={{ color: "#262626" }}
             >
               About
             </BurgerLinks>
@@ -149,9 +233,9 @@ const MenuBottom = () => (
       </nav>
     </HamburgerMenu>
     <Container>
-      <Links to="/" bg="#336AF3">
+      <ALink to="/">
         Home
-      </Links>
+      </ALink>
       <Links
         paintDrip
         to="/work"
