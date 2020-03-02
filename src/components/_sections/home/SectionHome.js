@@ -288,11 +288,11 @@ const SectionHome = () => {
         <InfoBox>
           <InfoTitle ref={el => (title = el)}>
             <div className="home-content-line">
-              <span className="home-line-inner">HELLO HELLO</span>
+              <span className="home-line-inner">HELLO</span>
             </div>
             <div className="home-content-line">
               <span id="second-text" className="home-line-inner">
-                THERE THERE
+                THERE
               </span>
             </div>
           </InfoTitle>

@@ -440,7 +440,7 @@ const ProjectPage = data => {
                       <SmallTitle>Development</SmallTitle>
                       <Skills className="List">
                         <SkilItem>React framework</SkilItem>
-                        <SkilItem>Gatsby, Next js</SkilItem>
+                        <SkilItem>Gatsby, Next js, PWA</SkilItem>
                         <SkilItem>Javascript</SkilItem>
                         <SkilItem>Graphql</SkilItem>
                         <SkilItem>

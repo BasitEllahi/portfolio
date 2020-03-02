@@ -2,7 +2,8 @@ html {
   font-family: 'Lato', sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  
+
+  overflow-x: scroll;  
 }
 
 @media (min-width: 768px) {

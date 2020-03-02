@@ -107,11 +107,11 @@ const Project = styled.div`
     div {
       > div {
         animation: 0.5s ${scale} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
-        opacity: 0;
+        opacity: 1;
       }
 
       > img {
-        filter: grayscale(0);
+        filter: grayscale(1);
       }
       > svg {
         & .stroke-1 {
@@ -148,6 +148,7 @@ const ProjectBack = styled.div`
   left: 0;
   right: 0;
   top: 0;
+  opacity: 0;
   z-index: 1;
   transition: all 600ms ease;
   animation: 0.8s ${scaleBack} cubic-bezier(0.51, 0.05, 0.38, 1.01) forwards;
@@ -214,7 +215,6 @@ const Image = styled.img`
   object-fit: cover;
   z-index: 0;
   transition: all 600ms ease;
-  filter: grayscale(1);
 
   ${media.phoneXL`
     max-width: 17rem;
@@ -350,11 +350,15 @@ const InfoBox = styled.div`
 const InfoTitle = styled.div`
   color: black;
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 2rem;
   line-height: 1;
   font-family: ${fonts.Montserrat};
   display: flex;
   jusfity-content: right;
+
+  ${media.tablet`
+    font-size: 3rem;
+  `};
 
   & span {
     color: ${colors.main};
@@ -451,8 +455,8 @@ const SecondPage = props => {
               </div>
             </h1>
             <Description>
-              All my passion work down below. Ranging from Design to Design and
-              Development.
+              All my passion and client work down below. Ranging from motion to
+              design and development.
             </Description>
           </div>
         </InfoBox>

@@ -14,7 +14,7 @@ import {
 } from "../../utils/mouse"
 
 const MainSection = styled.div`
-  display: none;
+  display: flex;
 
   ${media.tablet`
     display: flex;
