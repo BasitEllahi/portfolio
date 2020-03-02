@@ -1,4 +1,4 @@
-import React, { useEffect, useRef }  from "react"
+import React, { useEffect, useRef } from "react"
 import styled, { keyframes } from "styled-components"
 import { graphql } from "gatsby"
 import get from "lodash/get"
@@ -450,7 +450,10 @@ const SecondPage = props => {
                 </InfoTitle>
               </div>
             </h1>
-            <Description>All my passion work down below. Ranging from Design to Design and Development.</Description>
+            <Description>
+              All my passion work down below. Ranging from Design to Design and
+              Development.
+            </Description>
           </div>
         </InfoBox>
       </Wrapper>
@@ -476,20 +479,8 @@ const SecondPage = props => {
                     Check case
                   </SvgTitle>
                   <ProjectBack />
-                  <Arrow viewBox="0 0 72 35" width="4rem" height="4rem">
-                    <path
-                      className="stroke-1"
-                      d="M7.5 16.5h41"
-                      id="arrow_svg__line"
-                    />
-                    <path
-                      className="stroke-2"
-                      d="M47.81 4.81l15 11.59a.61.61 0 010 .82l-15 11.59"
-                      id="arrow_svg__line2"
-                    />
-                  </Arrow>
                 </ImgBox>
-                <Title>0{i+1}</Title>
+                <Title>0{i + 1}</Title>
                 <div>
                   <BackgroundTitle className="maskt-title">
                     {detail.name}
@@ -539,3 +530,17 @@ export const query = graphql`
     }
   }
 `
+/*
+                  <Arrow viewBox="0 0 72 35" width="4rem" height="4rem">
+                    <path
+                      className="stroke-1"
+                      d="M7.5 16.5h41"
+                      id="arrow_svg__line"
+                    />
+                    <path
+                      className="stroke-2"
+                      d="M47.81 4.81l15 11.59a.61.61 0 010 .82l-15 11.59"
+                      id="arrow_svg__line2"
+                    />
+                  </Arrow>
+                  */
