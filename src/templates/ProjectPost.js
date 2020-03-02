@@ -127,12 +127,14 @@ const Image = styled(Img)`
 `
 const ImageSVG = styled.img`
   width: 80%;
+  max-width: 17rem;
   max-height: 45rem;
   object-fit: cover;
   border: 1px solid #eaeaea;
   cursor: pointer;
 
   ${media.tablet`
+    max-width: 35rem;
     width: 35rem;
   `};
 `
