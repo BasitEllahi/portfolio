@@ -132,8 +132,8 @@ const InfoTitle = styled.div`
 
   > div:nth-child(2) > span {
     color: none !important;
-    text-stroke-width: 1px !important;
-    text-stroke-color: black !important;
+    webkit-text-stroke-width: 1px !important;
+    webkit-text-stroke-color: black !important;
   }
 `
 
@@ -231,14 +231,24 @@ const SectionHome = () => {
         "Start"
       )
       .to(
-        [ContainerFirst.children, ContainerSecond.children],
-        1.5,
+        [ContainerFirst.children],
+        1.2,
         {
           x: "10px",
           color: "black",
           ease: Power3.easeInOut,
         },
-        0.8
+        1.3
+      )
+      .to(
+        [ContainerSecond.children],
+        1.2,
+        {
+          x: "10px",
+          color: "#EB4FB3",
+          ease: Power3.easeInOut,
+        },
+        1.3
       )
     tlInfo
       .to(
@@ -278,10 +288,12 @@ const SectionHome = () => {
         <InfoBox>
           <InfoTitle ref={el => (title = el)}>
             <div className="home-content-line">
-              <span className="home-line-inner">HELLO</span>
+              <span className="home-line-inner">HELLO HELLO</span>
             </div>
             <div className="home-content-line">
-              <span id="second-text" className="home-line-inner">THERE</span>
+              <span id="second-text" className="home-line-inner">
+                THERE THERE
+              </span>
             </div>
           </InfoTitle>
           <InfoContainer ref={el => (info = el)}>

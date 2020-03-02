@@ -8,6 +8,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import { colors, fonts, media } from "../style-utils"
 
+import Animation from "../components/_sections/home/Container"
 import "../components/utils/text.scss"
 import "../templates/project.scss"
 
@@ -168,7 +169,7 @@ const Arrow = styled.svg`
     stroke-dashoffset: 1000;
     stroke-dasharray: 1000;
     fill: none;
-    stroke: white;
+    stroke: black;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 3px;
@@ -178,12 +179,13 @@ const Arrow = styled.svg`
     stroke-dashoffset: 1000;
     stroke-dasharray: 1000;
     fill: none;
-    stroke: white;
+    stroke: black;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 3px;
   }
   :hover {
+    stroke: #eb4fb3;
   }
 `
 
@@ -310,10 +312,15 @@ const SvgTitle = styled(AniLink)`
   font-size: 0.8rem;
   font-family: ${fonts.bebas};
   text-decoration: none;
-  color: white;
+  background-color: white;
+  border: solid 1px black;
+  width: 4rem;
+  padding: 0.2rem;
+  color: #262626;
   z-index: 3;
   opacity: 0;
   transition: 0.3s;
+  text-align: center;
   :hover {
     color: #eb4fb3;
   }
@@ -412,12 +419,9 @@ const SecondPage = props => {
   const tl = new TimelineLite({ delay: 0.8 })
 
   useEffect(() => {
-
     // content vars
     const headlineFirst = content.children[0].children[0]
     const contentP = content.children[1]
-
-
     // Content Animation
 
     tl.staggerTo(
@@ -434,6 +438,7 @@ const SecondPage = props => {
 
   return (
     <div>
+      <Animation time={1} color="#EB4FB3" delay={0.3} />
       <Header />
       <Wrapper>
         <InfoBox>

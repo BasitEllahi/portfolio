@@ -5,6 +5,7 @@ import Footer from "../components/layout/Footer"
 import Header from "../components/layout/Header"
 
 import AboutPage from "../components/_sections/about/About"
+import Animation from "../components/_sections/home/Container"
 
 import { media } from "../style-utils"
 
@@ -24,6 +25,7 @@ const Container = styled.div`
 
 const About = () => (
   <Container>
+    <Animation time={1} color="#336AF3" delay={0.3} />
     <Header />
     <AboutPage />
     <Footer />
