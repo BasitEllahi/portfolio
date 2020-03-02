@@ -3,9 +3,9 @@ import { gsap } from "gsap"
 const customMouse = `pointer`
 
 export const handleMouseMove = (bigMouseCircle, smallMouseCircle) => e => {
+  const x = document.querySelector(".cursor").firstChild
 
-  var x = document.querySelector(".cursor").firstChild;
-  x.classList.remove("cursor__ball");
+  x.classList.remove("cursor__ball")
   gsap.to(bigMouseCircle.current, {
     duration: 0.4,
     x: e.clientX - 19,
