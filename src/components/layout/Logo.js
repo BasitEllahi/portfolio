@@ -1,17 +1,23 @@
-import { Link } from 'gatsby'
-import React from 'react'
-import styled from 'styled-components'
+import { Link } from "gatsby"
+import React from "react"
+import styled from "styled-components"
 
-import LogoImg from '../../assets/logo.svg'
+import LogoImg from "../../assets/logo.svg"
+
+const ALink = styled(Link)`
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+`
 
 const Img = styled.img`
   max-width: 4rem;
 `
 
 const Logo = () => (
-  <Link to="/">
+  <ALink to="/">
     <Img src={LogoImg} alt="Basit.io" />
-  </Link>
+  </ALink>
 )
 
 export default Logo

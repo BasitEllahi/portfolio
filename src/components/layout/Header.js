@@ -8,11 +8,11 @@ const OuterSection = styled.div`
   background-color: transparent;
   position: absolute;
   width: 100%;
+  height: 10%;
   position: relative;
   ${media.desktop`
     background-color: transparent;
   `};
-  z-index: 1000;
 `
 
 const Section = styled.div`
@@ -20,7 +20,10 @@ const Section = styled.div`
   text-align: center;
   padding-top: 1rem;
   padding: 1rem;
-  ${media.desktop`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  ${media.tablet`
     text-align: left;
     padding-top: 1rem;
   `};
@@ -28,31 +31,17 @@ const Section = styled.div`
 
 const MenuContainer = styled.div`
   float: right;
-  margin-top: 30px;
+  margin-top: 15px;
   & > * {
     vertical-align: middle;
   }
 `
 
-const Socials = styled.div`
-  display: none;
-  ${media.desktop`
-    line-height: 1;
-    text-align: left;
-    display: inline-block;
-    margin-left:60px;
-  `};
-`
-
 const SiteLogo = styled(Logo)`
   float: left;
-`
-
-const SocialLink = styled.a`
-  margin-left: 14px;
-  &:first-child {
-    margin-left: 0;
-  }
+  display: flex;
+  width: 3rem;
+  height: 3rem;
 `
 
 const SectionHeader = () => (

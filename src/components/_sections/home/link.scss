@@ -35,7 +35,7 @@ This is the fade in animation for the back to top button
 	position: relative;
 	font-size: 3rem;
 	line-height: 1;
-	color: #F0D66B;
+	color: #fc1c1c;
 	display: inline-block;
 	padding-right: 1rem;
 }
@@ -45,7 +45,7 @@ This is the fade in animation for the back to top button
 	font-weight: 900;
 	overflow: hidden;
 	line-height: 1;
-	color: #F0D66B;
+	color: #fc1c1c;
 }
 
 .link--kukuri:hover {
@@ -96,7 +96,7 @@ $steps: 20;
     margin: 0 auto;
     color: $primaryColor;
     font-size: 3rem;
-    font-family: "Exo", sans-serif;
+    font-family: "Black", sans-serif;
     font-weight: 600;
     text-align: center;
     text-transform: uppercase;
@@ -109,7 +109,7 @@ $steps: 20;
         position: absolute;
         top: 0;
         left: 0;
-        right: 0;
+        right: -7px;
         overflow: hidden;
         background: $secondaryColor;
         color: $primaryColor;
@@ -142,34 +142,140 @@ $steps: 20;
     
 }
 
-.cursor {
-  pointer-events: none;
-  z-index: 99999;
-  position: fixed;
-}
-.mobile .cursor {
-  opacity: 0;
-}
-.cursor__ball {
-    background: transparent;
-    border-radius: 50%;
+@media (min-width: 768px) {
+  .cursor {
+    pointer-events: none;
+    z-index: 99999;
     position: fixed;
-    border: 1px solid black;
-    top: 0;
-    left: 0;
-    width: 32px;
-    height: 32px;
-}
-.cursor__ball--small {
-  border: none;
-  width: 8px;
-  height: 8px;
-  background: #000000;
-}
-.darkmode .cursor__ball--small {
-  background: #fff;
+  }
+  .mobile .cursor {
+    opacity: 0;
+  }
+  .cursor__ball {
+      background: transparent;
+      border-radius: 50%;
+      position: fixed;
+      border: 1px solid black;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 32px;
+  }
+  .cursor__ball--small {
+    border: none;
+    width: 8px;
+    height: 8px;
+    background: #000000;
+  }
+  .darkmode .cursor__ball--small {
+    background: #fff;
+  }
 }
 
 #home-illustration {
   cursor: pointer;
+}
+
+// letter aniamtion
+
+.home-content-line {
+  margin: 0;
+  overflow: hidden;
+  height: 66px;
+  width: 100%;
+  display: flex;
+  margin-right: 1rem;
+}
+
+.home-line-inner {
+  transform: translate(0px, 66px);
+  width: 10rem;
+
+  #second-text {
+    color: none !important;
+    text-stroke-width: 1px !important;
+  }
+}
+
+@media (max-width: 996px) {
+  .home-line-inner {
+    width: 7.5rem;
+  }
+  .home-content-line {
+    height: 40px;
+    margin-right: unset;
+  }
+}
+
+.sub-content-line {
+  margin: 0;
+  overflow: hidden;
+  height: 26px;
+  width: 100%;
+  display: flex;
+}
+
+.sub-line-inner {
+  transform: translate(0px, 26px);
+}
+
+.p-content-line {
+  margin: 0;
+  overflow: hidden;
+  height: 66px;
+  width: 100%;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .p-content-line {
+    height: 100%;
+  }
+
+  .home-content-line {
+    height: 40px;
+    margin-right: unset;
+  }
+  .home-line-inner {
+    width: 7.5rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .home-content-line {
+    margin: 0;
+    overflow: hidden;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    margin-right: 0;
+  }
+  .home-line-inner {
+    width: 7.5rem;
+  }
+}
+
+.p-line-inner {
+  transform: translate(0px, 66px);
+}
+
+
+.link-content-line {
+  margin: 0;
+  overflow: hidden;
+  height: 66px;
+  width: 100%;
+  display: flex;
+}
+
+.link-line-inner {
+  transform: translate(0px, 66px);
+}
+
+.List {
+
+  li {
+    display: list-item;
+    margin-left: 1rem; 
+  }
 }

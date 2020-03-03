@@ -6,6 +6,7 @@ const sizes = {
   midDesktop: 1100,
   desktop: 992,
   tablet: 768,
+  phabletXL: 600,
   phablet: 500,
   phoneXL: 414,
 }
@@ -33,6 +34,8 @@ module.exports = {
     helvetica: "Helvetica, arial, Serif",
     acumin: "acumin",
     avenir: "avenir, arial, Serif",
+    Black: "Black",
+    Montserrat: "Montserrat, Helvetica",
   },
   size: {
     xlDesltop: "1640",

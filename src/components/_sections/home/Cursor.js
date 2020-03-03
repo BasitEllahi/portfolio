@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react"
 import styled from "styled-components"
+import { media } from "../../../style-utils"
 
 import "./link.scss"
 
@@ -14,6 +15,10 @@ import {
 
 const MainSection = styled.div`
   display: flex;
+
+  ${media.tablet`
+    display: flex;
+  `};
 `
 
 const Cursor = () => {

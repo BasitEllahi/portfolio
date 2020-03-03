@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:700|IBM+Plex+Sans:500&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Playfair+Display:700|IBM+Plex+Sans:500&display=swap');
 
 :root {
-  --color-primary: #F0D66B;
+  --color-primary: #EB4FB3;
   --color-secondary: #101118;
   --color-accent: #1D1F2F;
   --color-focus: #6D64F7;
@@ -44,19 +44,24 @@
 .btn {
   background-color: var(--color-primary);
   border: none;
-  border-radius: 10px;
-  color: black;
+  border-radius: 30px;
+  color: white;
   cursor: pointer;
-  font-family: acumin;
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 0.5rem 2.5rem ;
-  
+  font-family: Montserrat;
+  padding: 0.3rem 2rem ;
+  transition: all 0.3s ease;
+  font-size: 0.8rem;
+
   &:focus {
     outline-color: var(--color-focus);
     outline-offset: 2px;
     outline-style: solid;
     outline-width: 3px;
+  }
+
+  &:hover {
+    background-color: #F9DD51;
+    color:black;
   }
   
   &:active {
@@ -85,6 +90,9 @@
     height: var(--size);
     padding: 0;
     width: var(--size);
+    display: flex;
+    justify-content: center;
+
     
     &:focus {
       outline: none;
@@ -175,6 +183,10 @@
   pointer-events: auto;
   user-select: auto;
 filter: brightness(100%);
+
+& .slide__image-wrapper {
+  filter: brightness(80%);
+}    
   
   @media (hover: hover) {
     &:hover .slide__image-wrapper {
@@ -229,10 +241,10 @@ filter: brightness(100%);
 }
 
 .slide__headline {
-  font-size: 6vmin;
-  font-weight: 600;
+  font-size: 4vmin;
   position: relative;
   line-height: 1;
+  font-family: Black;
 }
 
 .slide__content {
