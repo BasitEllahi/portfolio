@@ -49,10 +49,7 @@ export default class Layout extends PureComponent {
         <Helmet title={data.site.siteMetadata.title}>
           <html lang="nl" />
           <meta name="viewport" content="width=device-width" />
-          <link
-            rel="stylesheet"
-            href="https://unpkg.com/kursor/dist/kursor.css"
-          />
+          <meta name="description" content="Basit Ellahi portfolio" />
         </Helmet>
         <CursorSection />
         <Wrapper>{children}</Wrapper>
