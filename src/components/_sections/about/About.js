@@ -373,7 +373,7 @@ const ProjectPage = data => {
                   </div>
                 </h1>
                 <Description>
-                  I’m a Belgium-based Front end , motion designer interested in
+                  I’m a Belgium-based Digital creative and interested in
                   designing, developing and animating interactive products with
                   a comprehensive user-centered design process from user
                   research to beautiful pixels. I am a young digital dreamer
@@ -416,7 +416,6 @@ const ProjectPage = data => {
                     <SkillContainer>
                       <SmallTitle>Motion & Animation</SmallTitle>
                       <Skills className="List">
-                        <SkilItem> Adobe Creative Suite</SkilItem>
                         <SkilItem> Vray rendering</SkilItem>
                         <SkilItem> 2D Animation, Explainers</SkilItem>
                         <SkilItem> Storyboards</SkilItem>
@@ -427,8 +426,9 @@ const ProjectPage = data => {
                   </Fade>
                   <Fade bottom cascade>
                     <SkillContainer>
-                      <SmallTitle>Design & Illustration</SmallTitle>
+                      <SmallTitle>UX / UI</SmallTitle>
                       <Skills className="List">
+                        <SkilItem> Adobe Creative Suite</SkilItem>
                         <SkilItem>Illustrator, Sketch</SkilItem>
                         <SkilItem>Isometric design</SkilItem>
                         <SkilItem>Infographics</SkilItem>

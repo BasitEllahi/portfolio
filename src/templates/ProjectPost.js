@@ -128,14 +128,15 @@ const Image = styled(Img)`
 const ImageSVG = styled.img`
   width: 80%;
   max-width: 17rem;
-  max-height: 45rem;
-  object-fit: cover;
+  width: 17rem;
+  max-height: 20rem;
   border: 1px solid #eaeaea;
   cursor: pointer;
 
   ${media.tablet`
     max-width: 35rem;
     width: 35rem;
+    max-height: 45rem;
   `};
 `
 
@@ -174,6 +175,29 @@ const Description = styled.p`
     width: 60%;
   `};
 `
+const FullProject = styled.div`
+  color: ${colors.darkGrey};
+  font-size: 0.7rem;
+  line-height: 1.2;
+  font-family: ${fonts.acumin};
+  font-weight: 200;
+  margin-top: 2rem;
+  width: 100%;
+  ${media.tablet`
+    width: 90%;
+  `};
+  ${media.desktop`
+    width: 60%;
+  `};
+  a {
+    text-decoration: none;
+    color: Black;
+
+    :hover {
+      color: #3369f3;
+    }
+  }
+`
 
 const InfoTitle = styled.div`
   color: black;
@@ -187,6 +211,10 @@ const InfoTitle = styled.div`
     color: ${colors.main};
     margin-right: 0.5rem;
   }
+`
+
+const RoleBox = styled.div`
+  width: 10rem;
 `
 const Backbutton = styled(AniLink)`
   color: #666;
@@ -322,7 +350,16 @@ const ProjectPage = data => {
                   </InfoTitle>
                 </div>
               </h1>
-              <Description>{project.body.body}</Description>
+              <Description>
+                {project.body.body}
+                {project.link && (
+                  <FullProject>
+                    <a href={project.link} target="blank">
+                      Full Project
+                    </a>
+                  </FullProject>
+                )}
+              </Description>
             </div>
             <YearInfo ref={el => (year = el)}>
               <List>
@@ -333,10 +370,10 @@ const ProjectPage = data => {
                   </div>
                 </InnerList>
                 <InnerList className="date-content-line">
-                  <div className="date-line-inner">
+                  <RoleBox className="date-line-inner">
                     <Title>Role: </Title>
-                    <UnderTitle> {project.role}</UnderTitle>
-                  </div>
+                    <UnderTitle>{project.role}</UnderTitle>
+                  </RoleBox>
                 </InnerList>
               </List>
             </YearInfo>
@@ -370,6 +407,7 @@ export const query = graphql`
       name
       role
       year
+      link
       banner {
         localFile {
           childImageSharp {

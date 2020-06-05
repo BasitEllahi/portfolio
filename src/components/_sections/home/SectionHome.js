@@ -299,13 +299,12 @@ const SectionHome = () => {
           <InfoContainer ref={el => (info = el)}>
             <InfoSubTitle className="sub-content-line">
               <span className="sub-line-inner">
-                DEV, UI, WEBSITES, INTERIOR, ANIMATION
+                DEV, UI, WEBSITES, ANIMATION
               </span>
             </InfoSubTitle>
             <InfoP className="p-content-line">
               <span className="p-line-inner">
-                I am Basit Ellahi, and i am a passionate developer and motion
-                designer. Living in Belgium
+                I am Basit Ellahi, and i am a passionate digital creative. Living in Belgium
               </span>
             </InfoP>
             <WorkLink

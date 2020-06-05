@@ -298,17 +298,17 @@ const SvgBackgroundShapes = () => {
 
     const words = [
       {
-        name: "Designer",
+        name: "UI UX",
         color: "#336AF3",
         colorStroke: "white",
       },
       {
-        name: "Developer",
+        name: "HTML CSS",
         color: "#EB4FB3",
         colorStroke: "white",
       },
       {
-        name: "Motion",
+        name: "ANIMATION",
         color: "#F9DD51",
         colorStroke: "black",
       },
