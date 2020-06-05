@@ -175,6 +175,29 @@ const Description = styled.p`
     width: 60%;
   `};
 `
+const FullProject = styled.div`
+  color: ${colors.darkGrey};
+  font-size: 0.7rem;
+  line-height: 1.2;
+  font-family: ${fonts.acumin};
+  font-weight: 200;
+  margin-top: 2rem;
+  width: 100%;
+  ${media.tablet`
+    width: 90%;
+  `};
+  ${media.desktop`
+    width: 60%;
+  `};
+  a {
+    text-decoration: none;
+    color: Black;
+
+    :hover {
+      color: #3369f3;
+    }
+  }
+`
 
 const InfoTitle = styled.div`
   color: black;
@@ -323,7 +346,16 @@ const ProjectPage = data => {
                   </InfoTitle>
                 </div>
               </h1>
-              <Description>{project.body.body}</Description>
+              <Description>
+                {project.body.body}
+                {project.link && (
+                  <FullProject>
+                    <a href={project.link} target="blank">
+                      Full Project
+                    </a>
+                  </FullProject>
+                )}
+              </Description>
             </div>
             <YearInfo ref={el => (year = el)}>
               <List>
@@ -336,7 +368,7 @@ const ProjectPage = data => {
                 <InnerList className="date-content-line">
                   <div className="date-line-inner">
                     <Title>Role: </Title>
-                    <UnderTitle> {project.role}</UnderTitle>
+                    <UnderTitle>{project.role}</UnderTitle>
                   </div>
                 </InnerList>
               </List>
@@ -371,6 +403,7 @@ export const query = graphql`
       name
       role
       year
+      link
       banner {
         localFile {
           childImageSharp {
