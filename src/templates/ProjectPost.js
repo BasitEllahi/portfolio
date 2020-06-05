@@ -212,6 +212,10 @@ const InfoTitle = styled.div`
     margin-right: 0.5rem;
   }
 `
+
+const RoleBox = styled.div`
+  width: 10rem;
+`
 const Backbutton = styled(AniLink)`
   color: #666;
   margin-top: 1rem;
@@ -366,10 +370,10 @@ const ProjectPage = data => {
                   </div>
                 </InnerList>
                 <InnerList className="date-content-line">
-                  <div className="date-line-inner">
+                  <RoleBox className="date-line-inner">
                     <Title>Role: </Title>
                     <UnderTitle>{project.role}</UnderTitle>
-                  </div>
+                  </RoleBox>
                 </InnerList>
               </List>
             </YearInfo>
