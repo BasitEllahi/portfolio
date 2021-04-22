@@ -425,12 +425,10 @@ const ProjectPage = data => {
                   </Fade>
                   <Fade bottom cascade>
                     <SkillContainer>
-                      <SmallTitle>UX / UI</SmallTitle>
                       <SmallTitle>UX & UI</SmallTitle>
                       <Skills className="List">
                         <SkilItem> Adobe Creative Suite</SkilItem>
                         <SkilItem>Illustrator, Sketch</SkilItem>
-                        <SkilItem>Illustrator, Sketch, Adobe Suite</SkilItem>
                         <SkilItem>Wireframes, User Experience</SkilItem>
                         <SkilItem>UI Elements, Dashboard, Mobile</SkilItem>
                         <SkilItem>Isometric design</SkilItem>
