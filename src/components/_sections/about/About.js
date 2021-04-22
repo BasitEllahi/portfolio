@@ -373,7 +373,7 @@ const ProjectPage = data => {
                   </div>
                 </h1>
                 <Description>
-                  I’m a Belgium-based Front end , motion designer interested in
+                  I’m a Belgium-based Front end , designer interested in
                   designing, developing and animating interactive products with
                   a comprehensive user-centered design process from user
                   research to beautiful pixels. I am a young digital dreamer
@@ -420,16 +420,16 @@ const ProjectPage = data => {
                         <SkilItem> Vray rendering</SkilItem>
                         <SkilItem> 2D Animation, Explainers</SkilItem>
                         <SkilItem> Storyboards</SkilItem>
-                        <SkilItem> Cinema 4d</SkilItem>
-                        <SkilItem> SketchUp</SkilItem>
                       </Skills>
                     </SkillContainer>
                   </Fade>
                   <Fade bottom cascade>
                     <SkillContainer>
-                      <SmallTitle>Design & Illustration</SmallTitle>
+                      <SmallTitle>UX & UI</SmallTitle>
                       <Skills className="List">
-                        <SkilItem>Illustrator, Sketch</SkilItem>
+                        <SkilItem>Illustrator, Sketch, Adobe Suite</SkilItem>
+                        <SkilItem>Wireframes, User Experience</SkilItem>
+                        <SkilItem>UI Elements, Dashboard, Mobile</SkilItem>
                         <SkilItem>Isometric design</SkilItem>
                         <SkilItem>Infographics</SkilItem>
                       </Skills>
@@ -439,7 +439,7 @@ const ProjectPage = data => {
                     <SkillContainer>
                       <SmallTitle>Development</SmallTitle>
                       <Skills className="List">
-                        <SkilItem>React framework</SkilItem>
+                        <SkilItem>React framework, Craft</SkilItem>
                         <SkilItem>Gatsby, Next js, PWA</SkilItem>
                         <SkilItem>Javascript</SkilItem>
                         <SkilItem>Graphql</SkilItem>
@@ -447,7 +447,7 @@ const ProjectPage = data => {
                           Css ( Css3, Styled Components, ant design, ...)
                         </SkilItem>
                         <SkilItem>Gsap animation</SkilItem>
-                        <SkilItem>Contentfull, GraphCMS</SkilItem>
+                        <SkilItem>Contentfull, GraphCMS, CraftCMS</SkilItem>
                       </Skills>
                     </SkillContainer>
                   </Fade>
@@ -466,8 +466,12 @@ const ProjectPage = data => {
                       Motion Designer @Mediamonks
                     </SkilItem>
                     <SkilItem>
-                      <span>2018 - Now</span>
+                      <span>2018 - 2020</span>
                       Frontend @Appeel.io
+                    </SkilItem>
+                    <SkilItem>
+                      <span>2020 - Now</span>
+                      Frontend / UX UI @Superkraft
                     </SkilItem>
                   </Skills>
                 </SkillBoxWork>

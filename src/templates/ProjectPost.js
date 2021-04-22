@@ -189,6 +189,19 @@ const InfoTitle = styled.div`
     margin-right: 0.5rem;
   }
 `
+const InfoLink = styled.a`
+  color:#2355F5;
+  font-size: 0.8rem;
+  line-height: 1;
+  font-family: ${fonts.acumin};
+  display: flex;
+  text-decoration: none;
+  transition: 0.3s;
+  :hover {
+    color: black;
+  }
+`
+
 const Backbutton = styled(AniLink)`
   color: #666;
   margin-top: 1rem;
@@ -324,6 +337,8 @@ const ProjectPage = data => {
                 </div>
               </h1>
               <Description>{project.body.body}</Description>
+              {project.link && <InfoLink href={project.link}>Check out</InfoLink> }
+              
             </div>
             <YearInfo ref={el => (year = el)}>
               <List>
@@ -371,6 +386,7 @@ export const query = graphql`
       name
       role
       year
+      link
       banner {
         localFile {
           childImageSharp {
