@@ -205,7 +205,7 @@ const InfoTitle = styled.div`
   line-height: 1;
   font-family: ${fonts.acumin};
   display: flex;
-  jusfity-content: right;
+  justify-content: right;
 
   & span {
     color: ${colors.main};
@@ -214,15 +214,20 @@ const InfoTitle = styled.div`
 `
 const InfoLink = styled.a`
   color:#2355F5;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   line-height: 1;
   font-family: ${fonts.acumin};
   display: flex;
   text-decoration: none;
   transition: 0.3s;
+  margin-top: 1rem;
   :hover {
     color: black;
   }
+`
+
+const RoleBox = styled.div `
+  width: 10rem;
 `
 
 const Backbutton = styled(AniLink)`
@@ -276,6 +281,8 @@ const ProjectPage = data => {
 
     const contentYear = year.children[0].children[0].children[0]
     const contentRole = year.children[0].children[1].children[0]
+
+    console.warn(headlineFirst)
 
     // Content Animation
 
@@ -359,10 +366,10 @@ const ProjectPage = data => {
                   </InfoTitle>
                 </div>
               </h1>
-              <Description>{project.body.body}</Description>
-              {project.link && <InfoLink href={project.link}>Check out</InfoLink> }
-              
-            </div>
+              <Description>{project.body.body}
+              {project.link && <InfoLink href={project.link}>Check out</InfoLink> } 
+              </Description>      
+            </div>       
             <YearInfo ref={el => (year = el)}>
               <List>
                 <InnerList className="date-content-line">
@@ -374,7 +381,7 @@ const ProjectPage = data => {
                 <InnerList className="date-content-line">
                   <RoleBox className="date-line-inner">
                     <Title>Role: </Title>
-                    <UnderTitle>{project.role}</UnderTitle>
+                    <UnderTitle>{project.role && project.role}</UnderTitle>
                   </RoleBox>
                 </InnerList>
               </List>
