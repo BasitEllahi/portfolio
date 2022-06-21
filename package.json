@@ -20,7 +20,7 @@
     "gatsby-plugin-offline": "^3.0.17",
     "gatsby-plugin-react-helmet": "^3.1.13",
     "gatsby-plugin-sass": "^2.1.20",
-    "gatsby-plugin-sharp": "^2.3.2",
+    "gatsby-plugin-sharp": "^4.17.0",
     "gatsby-plugin-transition-link": "^1.16.1",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-react-router-scroll": "^4.3.0",
