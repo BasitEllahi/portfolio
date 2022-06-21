@@ -470,7 +470,10 @@ const SecondPage = props => {
               <Project key={detail.id}>
                 <UnderTitle>{detail.role}</UnderTitle>
                 <ImgBox className="ImgBox">
-                  <Image src={detail.cover.fluid.src} alt="de kreun" />
+                  <Image
+                    src={detail.cover.localFile.childImageSharp.fluid.src}
+                    alt="de kreun"
+                  />
                   <SvgTitle
                     x={0}
                     y={0}
@@ -484,7 +487,10 @@ const SecondPage = props => {
                   </SvgTitle>
                   <ProjectBack />
                 </ImgBox>
-                <Title>0{i + 1}</Title>
+                <Title>
+0
+{i + 1}
+                </Title>
                 <div>
                   <BackgroundTitle className="maskt-title">
                     {detail.name}
@@ -519,13 +525,21 @@ export const query = graphql`
             body
           }
           cover {
-            fluid {
-              src
+            localFile {
+              childImageSharp {
+                fluid {
+                  src
+                }
+              }
             }
           }
           photos {
-            fluid {
-              ...GatsbyContentfulFluid
+            localFile {
+              childImageSharp {
+                fluid {
+                  src
+                }
+              }
             }
           }
           video

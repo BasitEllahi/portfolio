@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from "react"
 
 import { graphql } from "gatsby"
-import { TimelineLite, Power3 } from "gsap"
+import { TimelineLite, Power3, gsap } from "gsap"
 import CSSRulePlugin from "gsap/CSSRulePlugin"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import styled from "styled-components"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import Footer from "../components/layout/Footer"
 import Header from "../components/layout/Header"
@@ -96,7 +96,7 @@ const VideoBox = styled.iframe`
   `};
 `
 
-const BannerImg = styled(Img)`
+const BannerImg = styled(GatsbyImage)`
   width: 100%;
   object-fit: cover;
   cursor: pointer;
@@ -114,7 +114,7 @@ const ImgBox = styled.div`
   margin-bottom: 5rem;
 `
 
-const Image = styled(Img)`
+const Image = styled(GatsbyImage)`
   width: 80%;
   max-height: 45rem;
   object-fit: cover;
@@ -213,7 +213,7 @@ const InfoTitle = styled.div`
   }
 `
 const InfoLink = styled.a`
-  color:#2355F5;
+  color: #2355f5;
   font-size: 0.7rem;
   line-height: 1;
   font-family: ${fonts.acumin};
@@ -226,7 +226,7 @@ const InfoLink = styled.a`
   }
 `
 
-const RoleBox = styled.div `
+const RoleBox = styled.div`
   width: 10rem;
 `
 
@@ -268,9 +268,9 @@ const ProjectPage = data => {
 
   const imageReveal = CSSRulePlugin.getRule(".img-container:after")
 
-  const tl = new TimelineLite({ delay: 0.8 })
-  const tlImage = new TimelineLite({ delay: 1 })
-  const tlInfo = new TimelineLite({ delay: 0.8 })
+  const tl = gsap.timeline({ delay: 0.8 })
+  const tlImage = gsap.timeline({ delay: 1 })
+  const tlInfo = gsap.timeline({ delay: 0.8 })
 
   useEffect(() => {
     // Images Vars
@@ -286,7 +286,7 @@ const ProjectPage = data => {
 
     // Content Animation
 
-    tl.staggerTo(
+    tl.to(
       [headlineFirst.children],
       1,
       {
@@ -297,10 +297,10 @@ const ProjectPage = data => {
       "Start"
     ).to(contentP, 1, { y: 0, opacity: 1, ease: Power3.easeOut }, 0.4)
 
-    tlImage.staggerTo(imageReveal, 1, { width: "0%", ease: Power3.easeInOut })
+    tlImage.to(imageReveal, 1, { width: "0%", ease: Power3.easeInOut })
 
     tlInfo
-      .staggerTo(
+      .to(
         [contentYear],
         1,
         {
@@ -317,11 +317,19 @@ const ProjectPage = data => {
     const Svg = img.file.contentType.includes("svg")
 
     let Type
+    console.warn(img)
 
     if (Svg) {
-      Type = <ImageSVG src={img.localFile.url} alt="img" />
+      Type = (
+        <ImageSVG src={img.localFile.childImageSharp.fluid.src} alt="img" />
+      )
     } else {
-      Type = <Image fluid={img.localFile.childImageSharp.fluid} alt="img" />
+      Type = (
+        <Image
+          image={img.localFile.childImageSharp.gatsbyImageData}
+          alt="img"
+        />
+      )
     }
 
     return <ImgBox key={i}>{Type}</ImgBox>
@@ -333,12 +341,12 @@ const ProjectPage = data => {
     return Svg ? (
       <BannerImgsvg
         ref={el => (image = el)}
-        src={project.banner.localFile.url}
+        src={project.banner.localFile.childImageSharp.fluid.src}
       />
     ) : (
       <BannerImg
         ref={el => (image = el)}
-        fluid={project.banner.localFile.childImageSharp.fluid}
+        image={project.banner.localFile.childImageSharp.gatsbyImageData}
       />
     )
   }
@@ -366,10 +374,13 @@ const ProjectPage = data => {
                   </InfoTitle>
                 </div>
               </h1>
-              <Description>{project.body.body}
-              {project.link && <InfoLink href={project.link}>Check out</InfoLink> } 
-              </Description>      
-            </div>       
+              <Description>
+                {project.body.body}
+                {project.link && (
+                  <InfoLink href={project.link}>Check out</InfoLink>
+                )}
+              </Description>
+            </div>
             <YearInfo ref={el => (year = el)}>
               <List>
                 <InnerList className="date-content-line">
@@ -420,8 +431,9 @@ export const query = graphql`
       banner {
         localFile {
           childImageSharp {
-            fluid(quality: 100) {
-              ...GatsbyImageSharpFluid
+            gatsbyImageData
+            fluid {
+              src
             }
           }
           url
@@ -433,16 +445,12 @@ export const query = graphql`
       body {
         body
       }
-      cover {
-        fluid {
-          src
-        }
-      }
       photos {
         localFile {
           childImageSharp {
+            gatsbyImageData
             fluid {
-              ...GatsbyImageSharpFluid
+              src
             }
           }
           url

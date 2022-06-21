@@ -8,7 +8,7 @@ import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import get from "lodash/get"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import { colors, fonts, media } from "../../../style-utils"
@@ -55,7 +55,7 @@ const ImgBox = styled.div`
   cursor: pointer;
 `
 
-const Image = styled(Img)`
+const Image = styled(GatsbyImage)`
   max-width: 20rem;
   max-height: 25rem;
   object-fit: cover;
@@ -232,13 +232,21 @@ export const query = graphql`
             body
           }
           cover {
-            fluid {
-              ...GatsbyContentfulFluid
+            localFile {
+              childImageSharp {
+                fluid {
+                  src
+                }
+              }
             }
           }
           photos {
-            fluid {
-              ...GatsbyContentfulFluid
+            localFile {
+              childImageSharp {
+                fluid {
+                  src
+                }
+              }
             }
           }
           video
