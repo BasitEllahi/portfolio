@@ -31,7 +31,6 @@
     "gsap": "^3.6.1",
     "kursor": "^0.1.6",
     "lodash": "^4.17.21",
-    "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-animations": "^1.0.0",
@@ -45,7 +44,8 @@
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "eslint": "^6.6.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "sass": "^1.52.1"
   },
   "keywords": [
     "gatsby"
