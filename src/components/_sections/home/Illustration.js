@@ -6,6 +6,7 @@ import svgIllustration from "../../../assets/web-illustration.svg"
 const ImageContainer = styled.div`
   display: flex;
   max-width: 100%;
+  width: 100%;
 `
 
 const Image = styled.img`
