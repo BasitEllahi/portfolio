@@ -373,14 +373,9 @@ const ProjectPage = data => {
                   </div>
                 </h1>
                 <Description>
-                  I’m a Belgium-based Digital creative and interested in
-                  I’m a Belgium-based Front end , designer interested in
-                  designing, developing and animating interactive products with
-                  a comprehensive user-centered design process from user
-                  research to beautiful pixels. I am a young digital dreamer
-                  influenced by technology, design and people, always lean
-                  towards simplicity and human touch. I ve graduated Devine from
-                  the Howest University Kortrijk.
+                  I’m a Belgium-based Digital creative that is highly interested in Frontend development creating interactive products, web applications with a
+                  comprehensive user-centered design process from user research
+                  to beautiful pixels.
                 </Description>
               </div>
               <YearInfo ref={el => (year = el)}>
@@ -394,7 +389,7 @@ const ProjectPage = data => {
                   <InnerList className="date-content-line">
                     <div className="date-line-inner">
                       <Title>AGE: </Title>
-                      <UnderTitle>25 years</UnderTitle>
+                      <UnderTitle>27 years</UnderTitle>
                     </div>
                   </InnerList>
                 </List>
@@ -428,8 +423,7 @@ const ProjectPage = data => {
                       <SmallTitle>UX & UI</SmallTitle>
                       <Skills className="List">
                         <SkilItem> Adobe Creative Suite</SkilItem>
-                        <SkilItem>Illustrator, Sketch</SkilItem>
-                        <SkilItem>Wireframes, User Experience</SkilItem>
+                        <SkilItem>Illustrator, Figma</SkilItem>
                         <SkilItem>UI Elements, Dashboard, Mobile</SkilItem>
                         <SkilItem>Isometric design</SkilItem>
                         <SkilItem>Infographics</SkilItem>
@@ -440,15 +434,17 @@ const ProjectPage = data => {
                     <SkillContainer>
                       <SmallTitle>Development</SmallTitle>
                       <Skills className="List">
-                        <SkilItem>React framework, Craft</SkilItem>
+                        <SkilItem>React framework</SkilItem>
                         <SkilItem>Gatsby, Next js, PWA</SkilItem>
-                        <SkilItem>Javascript</SkilItem>
+                        <SkilItem>Javascript esc6, testing, Storybook</SkilItem>
                         <SkilItem>Graphql</SkilItem>
                         <SkilItem>
-                          Css ( Css3, Styled Components, ant design, ...)
+                          Css ( Css3, Styled Components, ant design, tailwind)
                         </SkilItem>
-                        <SkilItem>Gsap animation</SkilItem>
-                        <SkilItem>Contentfull, GraphCMS, CraftCMS</SkilItem>
+                        <SkilItem>Gsap animation, THREE JS</SkilItem>
+                        <SkilItem>
+                          Headless cms, Contentfull, GraphCMS, CraftCMS
+                        </SkilItem>
                       </Skills>
                     </SkillContainer>
                   </Fade>
@@ -464,15 +460,19 @@ const ProjectPage = data => {
                     </SkilItem>
                     <SkilItem>
                       <span>2017 - 2018</span>
-                      Motion Designer @Mediamonks
+                      Motion Designer, Developer @Mediamonks
+                    </SkilItem>
+                    <SkilItem>
+                      <span>2018 - 2019</span>
+                      Frontend developer @Mind4energy
                     </SkilItem>
                     <SkilItem>
                       <span>2018 - 2020</span>
-                      Frontend @Appeel.io
+                      Frontend developer @Appeel.io
                     </SkilItem>
                     <SkilItem>
                       <span>2020 - Now</span>
-                      Frontend / UX UI @Superkraft
+                      Frontend developer @Superkraft
                     </SkilItem>
                   </Skills>
                 </SkillBoxWork>

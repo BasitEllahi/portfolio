@@ -3,17 +3,22 @@ import styled from "styled-components"
 
 import svgIllustration from "../../../assets/web-illustration.svg"
 
+const ImageContainer = styled.div`
+  display: flex;
+  max-width: 100%;
+`
+
 const Image = styled.img`
   display: flex;
   width: 100%;
-  height: 100%100%;
+  height: 100%;
 `
 
 const Illustration = () => {
   return (
-    <div>
+    <ImageContainer>
       <Image src={svgIllustration} />
-    </div>
+    </ImageContainer>
   )
 }
 
