@@ -321,7 +321,7 @@ const ProjectPage = data => {
 
     if (Svg) {
       Type = (
-        <ImageSVG src={img.localFile.childImageSharp.fluid.src} alt="img" />
+        <ImageSVG src={img.localFile.url} alt="img" />
       )
     } else {
       Type = (
@@ -338,10 +338,12 @@ const ProjectPage = data => {
   const Banner = () => {
     const Svg = project.banner.file.contentType.includes("svg")
 
+    console.warn(Svg)
+
     return Svg ? (
       <BannerImgsvg
         ref={el => (image = el)}
-        src={project.banner.localFile.childImageSharp.fluid.src}
+        src={project.banner.localFile.url}
       />
     ) : (
       <BannerImg
@@ -377,7 +379,7 @@ const ProjectPage = data => {
               <Description>
                 {project.body.body}
                 {project.link && (
-                  <InfoLink href={project.link}>Check out</InfoLink>
+                  <InfoLink href={project.link}>Check out website</InfoLink>
                 )}
               </Description>
             </div>
