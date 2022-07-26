@@ -9,6 +9,7 @@ import { colors, fonts, media } from "../../../style-utils"
 import "./link.scss"
 
 import Svg from "./SvgAnimation"
+import SvgIllustration from "./Illustration"
 // import SvgRect from "./SvgAnimationRect"
 
 const MainSection = styled.div`
@@ -168,9 +169,9 @@ const InfoContainer = styled.div`
 `
 
 const PhotoSection = styled.div`
-  background-color: #ff3db7;
+  background-color: #336af3;
   width: 100%;
-  height: 18rem;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,9 +179,10 @@ const PhotoSection = styled.div`
     cubic-bezier(0.51, 0.05, 0.38, 1.01);
   animation-delay: 1.3s;
   order: 1;
+  padding: 2rem;
 
   ${media.tablet`
-    height: 20rem;
+    height: 100%;
   `};
 
   ${media.desktop`
@@ -304,7 +306,8 @@ const SectionHome = () => {
             </InfoSubTitle>
             <InfoP className="p-content-line">
               <span className="p-line-inner">
-                I am Basit Ellahi, and i am a passionate digital creative. Living in Belgium
+                I am Basit Ellahi, and i am a passionate digital creative.
+                Living in Belgium
               </span>
             </InfoP>
             <WorkLink
@@ -320,7 +323,8 @@ const SectionHome = () => {
         </InfoBox>
       </InfoSection>
       <PhotoSection>
-        <Svg />
+        {/* <Svg /> */}
+        <SvgIllustration />
       </PhotoSection>
     </MainSection>
   )
