@@ -20,7 +20,7 @@
     "gatsby-plugin-offline": "^3.0.17",
     "gatsby-plugin-react-helmet": "^3.1.13",
     "gatsby-plugin-sass": "^2.1.20",
-    "gatsby-plugin-sharp": "^4.17.0",
+    "gatsby-plugin-sharp": "^4.19.0",
     "gatsby-plugin-transition-link": "^1.16.1",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-react-router-scroll": "^4.3.0",
@@ -28,7 +28,7 @@
     "gatsby-source-contentful": "^7.15.0",
     "gatsby-source-filesystem": "^2.1.35",
     "gatsby-transformer-remark": "^2.6.37",
-    "gatsby-transformer-sharp": "^2.3.5",
+    "gatsby-transformer-sharp": "^4.19.0",
     "gsap": "^3.6.1",
     "kursor": "^0.1.6",
     "lodash": "^4.17.21",
@@ -40,13 +40,15 @@
     "react-reveal": "^1.2.2",
     "react-text-reveal": "^1.1.2",
     "react-transition-group": "^4.3.0",
+    "sharp": "^0.30.7",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "eslint": "^6.6.0",
     "prettier": "^1.18.2",
-    "sass": "^1.52.1"
+    "sass": "^1.52.1",
+    "yarn-upgrade-all": "^0.7.1"
   },
   "keywords": [
     "gatsby"

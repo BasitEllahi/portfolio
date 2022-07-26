@@ -9,6 +9,7 @@ import { colors, fonts, media } from "../../../style-utils"
 import "./link.scss"
 
 import Svg from "./SvgAnimation"
+import SvgIllustration from "./Illustration"
 // import SvgRect from "./SvgAnimationRect"
 
 const MainSection = styled.div`
@@ -304,7 +305,8 @@ const SectionHome = () => {
             </InfoSubTitle>
             <InfoP className="p-content-line">
               <span className="p-line-inner">
-                I am Basit Ellahi, and i am a passionate digital creative. Living in Belgium
+                I am Basit Ellahi, and i am a passionate digital creative.
+                Living in Belgium
               </span>
             </InfoP>
             <WorkLink
@@ -320,7 +322,8 @@ const SectionHome = () => {
         </InfoBox>
       </InfoSection>
       <PhotoSection>
-        <Svg />
+        {/* <Svg /> */}
+        <SvgIllustration />
       </PhotoSection>
     </MainSection>
   )
