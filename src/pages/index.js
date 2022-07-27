@@ -27,7 +27,7 @@ const Container = styled.div`
 
 const IndexPage = () => (
   <Container>
-    <MouseCursor />
+    <MouseCursor hover />
     <Header />
     <SectionHome />
     <Footer />

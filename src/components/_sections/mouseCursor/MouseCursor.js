@@ -22,6 +22,17 @@ function MouseCursor(props) {
       el.addEventListener("mouseover", () => textEnter())
       el.addEventListener("mouseout", () => textLeave())
     })
+    window.document.querySelectorAll("button").forEach(el => {
+      console.warn(el)
+      el.addEventListener("mouseover", () => textEnter())
+      el.addEventListener("mouseout", () => textLeave())
+    })
+
+    window.document.querySelectorAll("img").forEach(el => {
+      console.warn(el)
+      el.addEventListener("mouseover", () => textEnter())
+      el.addEventListener("mouseout", () => textLeave())
+    })
   }
 
   useEffect(() => {
@@ -48,9 +59,8 @@ function MouseCursor(props) {
     text: {
       height: 1,
       width: 1,
-      x: mousePosition.x - 50,
-      y: mousePosition.y - 50,
-      mixBlendMode: "difference",
+      x: mousePosition.x,
+      y: mousePosition.y,
     },
   }
 
