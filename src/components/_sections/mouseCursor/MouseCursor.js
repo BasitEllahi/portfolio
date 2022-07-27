@@ -5,7 +5,8 @@ import React from "react"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 
-function MouseCursor() {
+function MouseCursor(props) {
+  const { hover } = props
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0,
@@ -45,6 +46,22 @@ function MouseCursor() {
       y: mousePosition.y - 16,
     },
     text: {
+      height: 1,
+      width: 1,
+      x: mousePosition.x - 50,
+      y: mousePosition.y - 50,
+      mixBlendMode: "difference",
+    },
+  }
+
+  const variantsHover = {
+    default: {
+      x: mousePosition.x - 1,
+      y: mousePosition.y - 1,
+      height: 0,
+      width: 0,
+    },
+    text: {
       height: 100,
       width: 100,
       x: mousePosition.x - 50,
@@ -56,7 +73,7 @@ function MouseCursor() {
   return (
     <motion.div
       className="cursor"
-      variants={variants}
+      variants={hover ? variantsHover : variants}
       animate={cursorVariant}
     />
   )

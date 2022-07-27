@@ -11,7 +11,6 @@ import MouseCursor from "../components/_sections/mouseCursor/MouseCursor"
 
 import { media } from "../style-utils"
 
-
 const Container = styled.div`
   position: relative;
   min-height: 100%;

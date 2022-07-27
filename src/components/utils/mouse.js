@@ -1,3 +1,4 @@
+/*
 import { gsap } from "gsap"
 
 const customMouse = `pointer`
@@ -147,3 +148,5 @@ export const handleMouseHoverEnter = (
     })
   }
 }
+
+*/

@@ -28,7 +28,7 @@ const Container = styled.div`
 const About = () => (
   <Container>
     <Animation time={1} color="#336AF3" delay={0.3} />
-    <MouseCursor />
+    <MouseCursor hover={true} />
     <Header />
     <AboutPage />
     <Footer />

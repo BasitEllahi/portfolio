@@ -11,6 +11,8 @@ import styled from "styled-components"
 import { StaticQuery, graphql } from "gatsby"
 import { colors, media } from "../../style-utils"
 
+import MouseCursor from "../_sections/mouseCursor/MouseCursor"
+
 import "./reset.scss"
 
 const Container = styled.div`
@@ -53,7 +55,7 @@ export default class Layout extends PureComponent {
           <meta name="description" content="Basit Ellahi portfolio" />
         </Helmet>
         {/* <CursorSection /> */}
-
+        <MouseCursor hover={false} />
         <Wrapper>{children}</Wrapper>
       </Container>
     )

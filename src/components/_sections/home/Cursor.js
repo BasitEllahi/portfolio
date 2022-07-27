@@ -1,3 +1,5 @@
+/*
+
 import React, { useEffect, useState, useRef } from "react"
 import styled from "styled-components"
 import { media } from "../../../style-utils"
@@ -95,3 +97,5 @@ const Cursor = () => {
 }
 
 export default Cursor
+
+*/

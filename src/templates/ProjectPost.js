@@ -355,7 +355,7 @@ const ProjectPage = data => {
 
   return (
     <div>
-      <MouseCursor />
+      <MouseCursor hover={true} />
       <Header />
       <MainSection>
         <ProjectBox id="project">
