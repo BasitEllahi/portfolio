@@ -11,21 +11,22 @@ import styled from "styled-components"
 import { StaticQuery, graphql } from "gatsby"
 import { colors, media } from "../../style-utils"
 
-import Cursor from "../_sections/home/Cursor"
-
 import "./reset.scss"
 
 const Container = styled.div`
   position: relative;
   width: 100vw;
 `
-const CursorSection = styled(Cursor)`
+
+/*
+const CursorSection = styled(Cursor)`s
   display: none;
 
   ${media.tablet`
     display: flex;
   `};
 `
+*/
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -51,7 +52,8 @@ export default class Layout extends PureComponent {
           <meta name="viewport" content="width=device-width" />
           <meta name="description" content="Basit Ellahi portfolio" />
         </Helmet>
-        <CursorSection />
+        {/* <CursorSection /> */}
+
         <Wrapper>{children}</Wrapper>
       </Container>
     )

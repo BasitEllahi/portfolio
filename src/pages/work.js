@@ -9,6 +9,8 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { colors, fonts, media } from "../style-utils"
 
 import Animation from "../components/_sections/home/Container"
+import MouseCursor from "../components/_sections/mouseCursor/MouseCursor"
+
 import "../components/utils/text.scss"
 import "../templates/project.scss"
 
@@ -442,6 +444,7 @@ const SecondPage = props => {
 
   return (
     <div>
+      <MouseCursor />
       <Animation time={1} color="#EB4FB3" delay={0.3} />
       <Header />
       <Wrapper>

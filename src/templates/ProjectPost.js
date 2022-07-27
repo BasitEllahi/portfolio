@@ -9,6 +9,8 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 import Footer from "../components/layout/Footer"
 import Header from "../components/layout/Header"
+
+import MouseCursor from "../components/_sections/mouseCursor/MouseCursor"
 import "./project.scss"
 
 import { colors, fonts, media } from "../style-utils"
@@ -353,6 +355,7 @@ const ProjectPage = data => {
 
   return (
     <div>
+      <MouseCursor />
       <Header />
       <MainSection>
         <ProjectBox id="project">

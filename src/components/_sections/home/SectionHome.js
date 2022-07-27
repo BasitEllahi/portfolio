@@ -142,7 +142,7 @@ const InfoP = styled.div`
   font-family: ${fonts.helvetica};
   font-size: 0.8rem;
   font-weight: 200;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem !important;
   height: 5rem;
   line-height: 1rem;
 `
@@ -153,12 +153,13 @@ const WorkLink = styled(AniLink)`
   color: white;
   text-decoration: none;
   background-color: #336af3;
-  width: 8rem;
-  height: 2.2rem;
+  width: 8rem !important;
+  height: 2.2rem !important;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 30px;
+  margin-top: 4rem;
 
   :hover {
     color: black;
