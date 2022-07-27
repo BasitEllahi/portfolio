@@ -58,8 +58,8 @@ function MouseCursor(props) {
     default: {
       x: mousePosition.x - 1,
       y: mousePosition.y - 1,
-      height: 0,
-      width: 0,
+      height: 1,
+      width: 1,
     },
     text: {
       height: 100,

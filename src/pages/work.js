@@ -444,7 +444,7 @@ const SecondPage = props => {
 
   return (
     <div>
-      <MouseCursor hover={true} />
+      <MouseCursor hover />
       <Animation time={1} color="#EB4FB3" delay={0.3} />
       <Header />
       <Wrapper>
