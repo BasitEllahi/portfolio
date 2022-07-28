@@ -10,7 +10,9 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import Footer from "../components/layout/Footer"
 import Header from "../components/layout/Header"
 
-import MouseCursor from "../components/_sections/mouseCursor/MouseCursor"
+import Layout from "../components/layout"
+
+// import MouseCursor from "../components/_sections/mouseCursor/MouseCursor"
 import "./project.scss"
 
 import { colors, fonts, media } from "../style-utils"
@@ -284,8 +286,6 @@ const ProjectPage = data => {
     const contentYear = year.children[0].children[0].children[0]
     const contentRole = year.children[0].children[1].children[0]
 
-    console.warn(headlineFirst)
-
     // Content Animation
 
     tl.to(
@@ -319,7 +319,6 @@ const ProjectPage = data => {
     const Svg = img.file.contentType.includes("svg")
 
     let Type
-    console.warn(img)
 
     if (Svg) {
       Type = (
@@ -354,70 +353,71 @@ const ProjectPage = data => {
   }
 
   return (
-    <div>
-      <MouseCursor hover={true} />
-      <Header />
-      <MainSection>
-        <ProjectBox id="project">
-          <Backbutton
-            paintDrip
-            to="/work"
-            duration={1}
-            hex="#EB4FB3"
-            direction="up"
-          >
-            Back to projects
-          </Backbutton>
-          <InfoBox>
-            <div className="hero-content-inner" ref={el => (content = el)}>
-              <h1>
-                <div className="hero-content-line">
-                  <InfoTitle className="hero-content-line-inner">
-                    {project.name}
-                  </InfoTitle>
-                </div>
-              </h1>
-              <Description>
-                {project.body.body}
-                {project.link && (
-                  <InfoLink href={project.link}>Check out</InfoLink>
-                )}
-              </Description>
-            </div>
-            <YearInfo ref={el => (year = el)}>
-              <List>
-                <InnerList className="date-content-line">
-                  <div className="date-line-inner">
-                    <Title>Year: </Title>
-                    <UnderTitle>{project.year}</UnderTitle>
+    <Layout>
+      <div>
+        <Header />
+        <MainSection>
+          <ProjectBox id="project">
+            <Backbutton
+              paintDrip
+              to="/work"
+              duration={1}
+              hex="#EB4FB3"
+              direction="up"
+            >
+              Back to projects
+            </Backbutton>
+            <InfoBox>
+              <div className="hero-content-inner" ref={el => (content = el)}>
+                <h1>
+                  <div className="hero-content-line">
+                    <InfoTitle className="hero-content-line-inner">
+                      {project.name}
+                    </InfoTitle>
                   </div>
-                </InnerList>
-                <InnerList className="date-content-line">
-                  <RoleBox className="date-line-inner">
-                    <Title>Role: </Title>
-                    <UnderTitle>{project.role && project.role}</UnderTitle>
-                  </RoleBox>
-                </InnerList>
-              </List>
-            </YearInfo>
-          </InfoBox>
-        </ProjectBox>
-        {project.banner && <div className="img-container">{Banner()}</div>}
-        {project.video && (
-          <VideoBox
-            title="video"
-            src={project.video}
-            width="640"
-            height="360"
-            frameBorder="0"
-            allow="autoplay; fullscreen"
-            allowFullScreen
-          />
-        )}
-        {Photos}
-      </MainSection>
-      <Footer />
-    </div>
+                </h1>
+                <Description>
+                  {project.body.body}
+                  {project.link && (
+                    <InfoLink href={project.link}>Check out</InfoLink>
+                  )}
+                </Description>
+              </div>
+              <YearInfo ref={el => (year = el)}>
+                <List>
+                  <InnerList className="date-content-line">
+                    <div className="date-line-inner">
+                      <Title>Year: </Title>
+                      <UnderTitle>{project.year}</UnderTitle>
+                    </div>
+                  </InnerList>
+                  <InnerList className="date-content-line">
+                    <RoleBox className="date-line-inner">
+                      <Title>Role: </Title>
+                      <UnderTitle>{project.role && project.role}</UnderTitle>
+                    </RoleBox>
+                  </InnerList>
+                </List>
+              </YearInfo>
+            </InfoBox>
+          </ProjectBox>
+          {project.banner && <div className="img-container">{Banner()}</div>}
+          {project.video && (
+            <VideoBox
+              title="video"
+              src={project.video}
+              width="640"
+              height="360"
+              frameBorder="0"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+            />
+          )}
+          {Photos}
+        </MainSection>
+        <Footer />
+      </div>
+    </Layout>
   )
 }
 

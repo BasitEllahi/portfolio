@@ -45,7 +45,7 @@ export default class Layout extends PureComponent {
   }
 
   printLayout = data => {
-    const { children } = this.props
+    const { children, location } = this.props
 
     return (
       <Container>
@@ -55,7 +55,7 @@ export default class Layout extends PureComponent {
           <meta name="description" content="Basit Ellahi portfolio" />
         </Helmet>
         {/* <CursorSection /> */}
-        <MouseCursor hover={false} />
+        {/* <MouseCursor hover={true} location={location} /> */}
         <Wrapper>{children}</Wrapper>
       </Container>
     )

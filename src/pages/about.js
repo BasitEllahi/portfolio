@@ -6,8 +6,9 @@ import Header from "../components/layout/Header"
 
 import AboutPage from "../components/_sections/about/About"
 import Animation from "../components/_sections/home/Container"
+import Layout from "../components/layout"
 
-import MouseCursor from "../components/_sections/mouseCursor/MouseCursor"
+// import MouseCursor from "../components/_sections/mouseCursor/MouseCursor"
 
 import { media } from "../style-utils"
 
@@ -26,13 +27,14 @@ const Container = styled.div`
 `
 
 const About = () => (
-  <Container>
-    <Animation time={1} color="#336AF3" delay={0.3} />
-    <MouseCursor hover={true} />
-    <Header />
-    <AboutPage />
-    <Footer />
-  </Container>
+  <Layout>
+    <Container>
+      <Animation time={1} color="#336AF3" delay={0.3} />
+      <Header />
+      <AboutPage />
+      <Footer />
+    </Container>
+  </Layout>
 )
 
 export default About

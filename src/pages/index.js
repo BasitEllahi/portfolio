@@ -7,7 +7,8 @@ import Header from "../components/layout/Header"
 import SectionHome from "../components/_sections/home/SectionHome"
 import Animation from "../components/_sections/home/Container"
 
-import MouseCursor from "../components/_sections/mouseCursor/MouseCursor"
+// import MouseCursor from "../components/_sections/mouseCursor/MouseCursor"
+import Layout from "../components/layout"
 
 import { media } from "../style-utils"
 
@@ -26,14 +27,16 @@ const Container = styled.div`
 `
 
 const IndexPage = () => (
-  <Container>
-    <MouseCursor hover />
-    <Header />
-    <SectionHome />
-    <Footer />
-    <Animation time={1.6} color="#262626" delay={1} />
-    <Animation time={1.3} color="#336AF3" delay={1} />
-  </Container>
+  <Layout>
+    <Container>
+      {/* <MouseCursor hover /> */}
+      <Header />
+      <SectionHome />
+      <Footer />
+      <Animation time={1.6} color="#262626" delay={1} />
+      <Animation time={1.3} color="#336AF3" delay={1} />
+    </Container>
+  </Layout>
 )
 
 export default IndexPage

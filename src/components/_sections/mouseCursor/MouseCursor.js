@@ -2,14 +2,17 @@
 // eslint-disable-next-line import/no-duplicates
 import React from "react"
 // eslint-disable-next-line import/no-duplicates
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef} from "react"
 import { motion } from "framer-motion"
 
 function MouseCursor(props) {
-  const { hover } = props
+  const { hover, location } = props
+  const myRef = useRef({
+    location: null,
+  })
   const [mousePosition, setMousePosition] = useState({
-    x: 0,
-    y: 0,
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2,
   })
   const [cursorVariant, setCursorVariant] = useState("default")
 
@@ -18,18 +21,15 @@ function MouseCursor(props) {
 
   const handleLinkHoverEvents = () => {
     window.document.querySelectorAll("a").forEach(el => {
-      console.warn(el)
       el.addEventListener("mouseover", () => textEnter())
       el.addEventListener("mouseout", () => textLeave())
     })
     window.document.querySelectorAll("button").forEach(el => {
-      console.warn(el)
       el.addEventListener("mouseover", () => textEnter())
       el.addEventListener("mouseout", () => textLeave())
     })
 
     window.document.querySelectorAll("img").forEach(el => {
-      console.warn(el)
       el.addEventListener("mouseover", () => textEnter())
       el.addEventListener("mouseout", () => textLeave())
     })
@@ -49,39 +49,41 @@ function MouseCursor(props) {
     return () => {
       window.removeEventListener("mousemove", mouseMove)
     }
-  }, [])
+  })
 
   const variants = {
     default: {
       x: mousePosition.x - 16,
       y: mousePosition.y - 16,
+      height: 1,
+      width: 1,
     },
     text: {
       height: 1,
       width: 1,
-      x: mousePosition.x,
-      y: mousePosition.y,
+      x: mousePosition.x - 75,
+      y: mousePosition.y - 75,
+      mixBlendMode: "difference",
     },
   }
 
   const variantsHover = {
     default: {
-      x: mousePosition.x - 1,
-      y: mousePosition.y - 1,
-      height: 1,
-      width: 1,
+      x: mousePosition.x - 16,
+      y: mousePosition.y - 16,
     },
     text: {
-      height: 100,
-      width: 100,
-      x: mousePosition.x - 50,
-      y: mousePosition.y - 50,
+      height: 150,
+      width: 150,
+      x: mousePosition.x - 75,
+      y: mousePosition.y - 75,
       mixBlendMode: "difference",
     },
   }
 
   return (
     <motion.div
+      ref={myRef}
       className="cursor"
       variants={hover ? variantsHover : variants}
       animate={cursorVariant}

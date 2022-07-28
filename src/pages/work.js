@@ -9,7 +9,8 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { colors, fonts, media } from "../style-utils"
 
 import Animation from "../components/_sections/home/Container"
-import MouseCursor from "../components/_sections/mouseCursor/MouseCursor"
+// import MouseCursor from "../components/_sections/mouseCursor/MouseCursor"
+import Layout from "../components/layout"
 
 import "../components/utils/text.scss"
 import "../templates/project.scss"
@@ -443,72 +444,74 @@ const SecondPage = props => {
   }, [tl])
 
   return (
-    <div>
-      <MouseCursor hover />
-      <Animation time={1} color="#EB4FB3" delay={0.3} />
-      <Header />
-      <Wrapper>
-        <InfoBox>
-          <div className="hero-content-inner" ref={el => (content = el)}>
-            <h1>
-              <div className="hero-content-line-work">
-                <InfoTitle className="hero-content-line-inner-work">
-                  Projects
-                </InfoTitle>
-              </div>
-            </h1>
-            <Description>
-              All my passion and client work down below. Ranging from motion to
-              design and development.
-            </Description>
-          </div>
-        </InfoBox>
-      </Wrapper>
-      <MainSection>
-        <ProjectBox>
-          {projects.map(({ node: detail }, i) => {
-            if (!detail) return null
-
-            return (
-              <Project key={detail.id}>
-                <UnderTitle>{detail.role}</UnderTitle>
-                <ImgBox className="ImgBox">
-                  <Image
-                    src={detail.cover.localFile.childImageSharp.fluid.src}
-                    alt="de kreun"
-                  />
-                  <SvgTitle
-                    x={0}
-                    y={0}
-                    paintDrip
-                    to={`/post/${detail.slug}`}
-                    duration={1}
-                    hex="#EB4FB3"
-                    direction="up"
-                  >
-                    Check case
-                  </SvgTitle>
-                  <ProjectBack />
-                </ImgBox>
-                <Title>
-0
-{i + 1}
-                </Title>
-                <div>
-                  <BackgroundTitle className="maskt-title">
-                    {detail.name}
-                  </BackgroundTitle>
-                  <TitleSecond className="maskt-title">
-                    {detail.name}
-                  </TitleSecond>
+    <Layout>
+      <div>
+        {/* <MouseCursor hover /> */}
+        <Animation time={1} color="#EB4FB3" delay={0.3} />
+        <Header />
+        <Wrapper>
+          <InfoBox>
+            <div className="hero-content-inner" ref={el => (content = el)}>
+              <h1>
+                <div className="hero-content-line-work">
+                  <InfoTitle className="hero-content-line-inner-work">
+                    Projects
+                  </InfoTitle>
                 </div>
-              </Project>
-            )
-          })}
-        </ProjectBox>
-      </MainSection>
-      <Footer />
-    </div>
+              </h1>
+              <Description>
+                All my passion and client work down below. Ranging from motion to
+                design and development.
+              </Description>
+            </div>
+          </InfoBox>
+        </Wrapper>
+        <MainSection>
+          <ProjectBox>
+            {projects.map(({ node: detail }, i) => {
+              if (!detail) return null
+  
+              return (
+                <Project key={detail.id}>
+                  <UnderTitle>{detail.role}</UnderTitle>
+                  <ImgBox className="ImgBox">
+                    <Image
+                      src={detail.cover.localFile.childImageSharp.fluid.src}
+                      alt="de kreun"
+                    />
+                    <SvgTitle
+                      x={0}
+                      y={0}
+                      paintDrip
+                      to={`/post/${detail.slug}`}
+                      duration={1}
+                      hex="#EB4FB3"
+                      direction="up"
+                    >
+                      Check case
+                    </SvgTitle>
+                    <ProjectBack />
+                  </ImgBox>
+                  <Title>
+                    0
+                    {i + 1}
+                  </Title>
+                  <div>
+                    <BackgroundTitle className="maskt-title">
+                      {detail.name}
+                    </BackgroundTitle>
+                    <TitleSecond className="maskt-title">
+                      {detail.name}
+                    </TitleSecond>
+                  </div>
+                </Project>
+              )
+            })}
+          </ProjectBox>
+        </MainSection>
+        <Footer />
+      </div>
+    </Layout>
   )
 }
 

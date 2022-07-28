@@ -33,6 +33,10 @@ html {
   z-index: 100000;
 }
 
+.tl-wrapper {
+  transform: unset !important;
+}
+
 
 body {
   margin: 0;

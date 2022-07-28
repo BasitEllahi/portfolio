@@ -143,6 +143,8 @@ $steps: 20;
 }
 
 @media (min-width: 768px) {
+
+  /*
   .cursor {
     pointer-events: none;
     z-index: 99999;
@@ -170,6 +172,7 @@ $steps: 20;
   .darkmode .cursor__ball--small {
     background: #fff;
   }
+  */
 }
 
 #home-illustration {
