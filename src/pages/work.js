@@ -147,11 +147,13 @@ const Project = styled.div`
   flex-direction: column;
   height: 100%;
   width: 45%;
+  max-height: 25rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
   position: relative;
   justify-self: center;
   ${media.desktop`
+    max-height: unset;
     height: 30rem;
     width: 30rem;
   `};
