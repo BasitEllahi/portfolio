@@ -24,9 +24,9 @@ const Wrapper = styled.div`
   padding-bottom: 0;
   height: 100%;
   width: 95%;
+  max-width: 1400px;
   ${media.tablet`
-    width: 80%;
-    padding: 2rem;
+    width: 100%;
   `};
 `
 const MainSection = styled.div`
@@ -36,19 +36,70 @@ const MainSection = styled.div`
   padding-top: 4rem;
   justify-content: center;
   align-items: center;
-  background-color: #176bfc;
+  background-color: #f8f8f8;
+`
+const FilterSection = styled.div`
+  background-color: #f8f8f8;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  & div {
+    max-width: 1400px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: baseline;
+    display: flex;
+    flex-direction: row;
+  }
+`
+const FilterList = styled.ul`
+  color: black;
+  font-weight: 400;
+  text-decoration: none;
+  list-style: none;
+  font-size: 1.2rem;
+  line-height: 1;
+  font-family: ${fonts.Montserrat};
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  ${media.tablet`
+    font-size: 1.4rem;
+  `};
+
+  & li {
+    margin-right: 1rem;
+    transition: 0.3s;
+    font-size: 1rem;
+
+    &:hover {
+      color: #d95aaf;
+    }
+  }
+
+  & span {
+    color: ${colors.main};
+    margin-right: 0.5rem;
+  }
 `
 
 const ProjectBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 100%;
   justify-content: center;
   transition: transform 0.3s;
   will-change: transform;
+  max-width: 1400px;
   ${media.desktop`
     justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   `};
 `
 const scale = keyframes`
@@ -95,10 +146,15 @@ const Project = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 45%;
   margin-top: 2rem;
   margin-bottom: 2rem;
   position: relative;
   justify-self: center;
+  ${media.desktop`
+    height: 30rem;
+    width: 30rem;
+  `};
 
   :hover {
     .ImgBox {
@@ -194,7 +250,7 @@ const ImgBox = styled.div`
   display: flex;
   flex-direction: row-reverse;
   width: 100%;
-  max-height: 15rem;
+  max-height: 100%;
   margin-bottom: 1rem;
   position: relative;
   overflow: hidden;
@@ -210,18 +266,15 @@ const ImgBox = styled.div`
 `
 
 const Image = styled.img`
-  max-width: 15rem;
-  max-height: 25rem;
   object-fit: cover;
   z-index: 0;
   transition: all 600ms ease;
 
   ${media.phoneXL`
-    max-width: 17rem;
+
   `};
 
   ${media.phablet`
-    max-width: 20rem;
   `};
 `
 
@@ -232,21 +285,26 @@ const Title = styled.span`
   line-height: 1;
   font-family: bebas;
   font-weight: 200;
-  text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
   position: absolute;
-  z-index: 2;
-
-  text-shadow: 0px 1px 4px rgba(150, 150, 150, 0.36);
-  background-color: #eb4fb3;
+  z-index: -1;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  color: none;
+  -webkit-text-stroke: 1px black;
+  /*text-shadow: 0px 1px 4px rgba(150, 150, 150, 0.36);*/
   padding: 0.5rem;
-  left: -1rem;
+  right: 0;
   top: 3rem;
+  display: flex;
+  width: auto;
+  opacity: 0.1;
+
   ${media.phablet`
-    font-size: 2rem;
-    left: 18rem;
-    top: 1rem;
+    font-size: 12rem;
+    right: -5rem;
+    top: -5rem;
     padding: 0.8rem;
   `};
 `
@@ -255,7 +313,7 @@ const BackgroundTitle = styled.span`
   font-size: 1.5rem;
   margin-top: 0.5rem;
   line-height: 1;
-  color: white;
+  color: black;
   font-family: Black;
   font-weight: 200;
   text-align: center;
@@ -279,7 +337,7 @@ const BackgroundTitle = styled.span`
 
   ${media.tablet`
     left: -21rem;
-    font-size: 6rem;
+    font-size: 3rem;
     width: 61rem;
     text-align: center;
     top: 4rem;
@@ -292,11 +350,11 @@ const TitleSecond = styled(BackgroundTitle)`
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   color: none;
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 1px black;
 `
 
 const UnderTitle = styled.span`
-  color: white;
+  color: black;
   font-size: 0.6rem;
   line-height: 1;
   font-family: ${fonts.Montserrat};
@@ -365,6 +423,26 @@ const InfoTitle = styled.div`
     margin-right: 0.5rem;
   }
 `
+
+const InfoTitleSmall = styled.span`
+  color: black;
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1;
+  font-family: ${fonts.Montserrat};
+  display: flex;
+  jusfity-content: right;
+
+  ${media.tablet`
+    font-size: 2rem;
+  `};
+
+  & span {
+    color: ${colors.main};
+    margin-right: 0.5rem;
+  }
+`
+
 const Description = styled.p`
   color: ${colors.darkGrey};
   font-size: 0.8rem;
@@ -420,6 +498,12 @@ const SecondPage = props => {
 
   let content = useRef(null)
 
+  let speed = 0
+
+  let position = 0
+
+  let rounded = 0
+
   const tl = new TimelineLite({ delay: 0.8 })
 
   useEffect(() => {
@@ -427,6 +511,24 @@ const SecondPage = props => {
     const headlineFirst = content.children[0].children[0]
     const contentP = content.children[1]
     // Content Animation
+    const scroll = e => {
+      speed += e.deltaY * 0.0002
+      console.warn(speed)
+    }
+
+    const raf = () => {
+      position += speed
+      speed *= 0.8
+      rounded = Math.round(position)
+      const diff = rounded - position
+
+      position += Math.sign(diff) * Math.pow(Math.abs(diff), 0.7) * 0.015
+      window.requestAnimationFrame(raf)
+    }
+
+    raf()
+
+    window.addEventListener("wheel", scroll)
 
     tl.staggerTo(
       [headlineFirst.children],
@@ -438,6 +540,10 @@ const SecondPage = props => {
       0.15,
       "Start"
     ).to(contentP, 1, { y: 0, opacity: 1, ease: Power3.easeOut }, 0.4)
+
+    return () => {
+      window.removeEventListener("wheel", scroll)
+    }
   }, [tl])
 
   return (
@@ -461,6 +567,23 @@ const SecondPage = props => {
           </div>
         </InfoBox>
       </Wrapper>
+      <FilterSection>
+        <div>
+          <h3>
+            <div className="hero-content-line-work">
+              <InfoTitleSmall className="hero-content-line-inner-work">
+                Our work
+              </InfoTitleSmall>
+            </div>
+          </h3>
+          <FilterList>
+            <li>All</li>
+            <li>Website</li>
+            <li>Design</li>
+            <li>Animation</li>
+          </FilterList>
+        </div>
+      </FilterSection>
       <MainSection>
         <ProjectBox>
           {projects.map(({ node: detail }, i) => {
@@ -488,8 +611,8 @@ const SecondPage = props => {
                   <ProjectBack />
                 </ImgBox>
                 <Title>
-0
-{i + 1}
+                  {i < 9 && "0"}
+                  {i + 1}
                 </Title>
                 <div>
                   <BackgroundTitle className="maskt-title">

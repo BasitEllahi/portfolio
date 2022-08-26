@@ -317,12 +317,11 @@ const ProjectPage = data => {
     const Svg = img.file.contentType.includes("svg")
 
     let Type
+
     console.warn(img)
 
     if (Svg) {
-      Type = (
-        <ImageSVG src={img.localFile.url} alt="img" />
-      )
+      Type = <ImageSVG src={img.localFile.url} alt="img" />
     } else {
       Type = (
         <Image
