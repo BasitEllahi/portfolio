@@ -1,4 +1,7 @@
-import React, { useEffect, useRef } from "react"
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable react/jsx-no-bind */
+import React, { useEffect, useRef, useState } from "react"
 import styled, { keyframes } from "styled-components"
 import { graphql } from "gatsby"
 import get from "lodash/get"
@@ -24,9 +27,9 @@ const Wrapper = styled.div`
   padding-bottom: 0;
   height: 100%;
   width: 95%;
+  max-width: 1400px;
   ${media.tablet`
-    width: 80%;
-    padding: 2rem;
+    width: 100%;
   `};
 `
 const MainSection = styled.div`
@@ -36,19 +39,85 @@ const MainSection = styled.div`
   padding-top: 4rem;
   justify-content: center;
   align-items: center;
-  background-color: #176bfc;
+  background-color: #f8f8f8;
+`
+const FilterSection = styled.div`
+  background-color: #f8f8f8;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  ${media.tablet`
+    padding: 2rem;
+  `};
+  & div {
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: baseline;
+    ${media.tablet`
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    `};
+  }
+`
+const FilterList = styled.ul`
+  color: black;
+  font-weight: 400;
+  text-decoration: none;
+  list-style: none;
+  font-size: 1.2rem;
+  line-height: 1;
+  font-family: ${fonts.Montserrat};
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: unset;
+  margin: 0;
+  ${media.tablet`
+    font-size: 1.4rem;
+  `};
+
+  & li {
+    margin-right: 1rem;
+    transition: 0.3s;
+    font-size: 1rem;
+
+    &:hover {
+      color: #d95aaf;
+    }
+  }
+
+  & span {
+    color: ${colors.main};
+    margin-right: 0.5rem;
+  }
+`
+
+const LiButton = styled.li`
+  color: ${props => (props.active ? "#eb4fb3" : "black")};
 `
 
 const ProjectBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 100%;
   justify-content: center;
   transition: transform 0.3s;
   will-change: transform;
+  max-width: 1400px;
+  padding: 2rem;
   ${media.desktop`
     justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
   `};
 `
 const scale = keyframes`
@@ -95,10 +164,25 @@ const Project = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 75%;
+  max-height: 25rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
   position: relative;
   justify-self: center;
+  ${media.tablet`
+    width: 45%;
+  `};
+  ${media.desktop`
+    max-height: unset;
+    height: 25rem;
+    width: 25rem;
+  `};
+  ${media.midDesktop`
+    max-height: unset;
+    height: 25rem;
+    width: 25rem;
+  `};
 
   :hover {
     .ImgBox {
@@ -194,12 +278,13 @@ const ImgBox = styled.div`
   display: flex;
   flex-direction: row-reverse;
   width: 100%;
-  max-height: 15rem;
+  max-height: 100%;
   margin-bottom: 1rem;
   position: relative;
   overflow: hidden;
   background-color: ${colors.lightGrey};
   transition: all 400ms ease;
+  border: 1px solid grey;
   & :after {
     display: flex;
     width: 4rem;
@@ -210,18 +295,16 @@ const ImgBox = styled.div`
 `
 
 const Image = styled.img`
-  max-width: 15rem;
-  max-height: 25rem;
   object-fit: cover;
   z-index: 0;
   transition: all 600ms ease;
+  width: 100%;
 
   ${media.phoneXL`
-    max-width: 17rem;
+
   `};
 
   ${media.phablet`
-    max-width: 20rem;
   `};
 `
 
@@ -232,21 +315,26 @@ const Title = styled.span`
   line-height: 1;
   font-family: bebas;
   font-weight: 200;
-  text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
   position: absolute;
-  z-index: 2;
-
-  text-shadow: 0px 1px 4px rgba(150, 150, 150, 0.36);
-  background-color: #eb4fb3;
+  z-index: -1;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  color: none;
+  -webkit-text-stroke: 1px black;
+  /*text-shadow: 0px 1px 4px rgba(150, 150, 150, 0.36);*/
   padding: 0.5rem;
-  left: -1rem;
+  right: 0;
   top: 3rem;
+  display: flex;
+  width: auto;
+  opacity: 0.1;
+
   ${media.phablet`
-    font-size: 2rem;
-    left: 18rem;
-    top: 1rem;
+    font-size: 7rem;
+    right: 0rem;
+    top: -5rem;
     padding: 0.8rem;
   `};
 `
@@ -255,7 +343,7 @@ const BackgroundTitle = styled.span`
   font-size: 1.5rem;
   margin-top: 0.5rem;
   line-height: 1;
-  color: white;
+  color: black;
   font-family: Black;
   font-weight: 200;
   text-align: center;
@@ -279,7 +367,7 @@ const BackgroundTitle = styled.span`
 
   ${media.tablet`
     left: -21rem;
-    font-size: 6rem;
+    font-size: 3rem;
     width: 61rem;
     text-align: center;
     top: 4rem;
@@ -292,11 +380,11 @@ const TitleSecond = styled(BackgroundTitle)`
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   color: none;
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 1px black;
 `
 
 const UnderTitle = styled.span`
-  color: white;
+  color: black;
   font-size: 0.6rem;
   line-height: 1;
   font-family: ${fonts.Montserrat};
@@ -307,22 +395,24 @@ const UnderTitle = styled.span`
 
 const SvgTitle = styled(AniLink)`
   position: absolute;
-  left: 1.5rem;
-  bottom: 1.2rem;
-  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  bottom: 0;
+  font-size: 2rem;
   font-family: ${fonts.bebas};
   text-decoration: none;
-  background-color: white;
-  border: solid 1px black;
-  width: 4rem;
+  width: 100%;
+  height: 100%;
   padding: 0.2rem;
-  color: #262626;
+  color: #eb4fb3;
   z-index: 3;
   opacity: 0;
   transition: 0.3s;
   text-align: center;
   :hover {
-    color: #eb4fb3;
+    color: white;
   }
 `
 const InfoBox = styled.div`
@@ -365,6 +455,26 @@ const InfoTitle = styled.div`
     margin-right: 0.5rem;
   }
 `
+
+const InfoTitleSmall = styled.span`
+  color: black;
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1;
+  font-family: ${fonts.Montserrat};
+  display: flex;
+  jusfity-content: right;
+
+  ${media.tablet`
+    font-size: 2rem;
+  `};
+
+  & span {
+    color: ${colors.main};
+    margin-right: 0.5rem;
+  }
+`
+
 const Description = styled.p`
   color: ${colors.darkGrey};
   font-size: 0.8rem;
@@ -380,45 +490,18 @@ const Description = styled.p`
     width: 60%;
   `};
 `
-/*
-const slideData = [
-  {
-    index: 0,
-    headline: "De Kreun",
-    button: "Shop now",
-    src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/forest.jpg",
-  },
-  {
-    index: 1,
-    headline: "In The Wilderness",
-    button: "Book travel",
-    src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/forest.jpg",
-  },
-  {
-    index: 2,
-    headline: "For Your Current Mood",
-    button: "Listen",
-    src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/guitar.jpg",
-  },
-  {
-    index: 3,
-    headline: "Focus On The Writing",
-    button: "Get Focused",
-    src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/typewriter.jpg",
-  },
-  {
-    index: 4,
-    headline: "Focus On The Writing",
-    button: "Get Focused",
-    src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/typewriter.jpg",
-  },
-]
-*/
 
 const SecondPage = props => {
+  const [tag, setCount] = useState("All")
   const projects = get(props, "data.allContentfulProject.edges", [])
 
   let content = useRef(null)
+
+  let speed = 0
+
+  let position = 0
+
+  let rounded = 0
 
   const tl = new TimelineLite({ delay: 0.8 })
 
@@ -427,6 +510,24 @@ const SecondPage = props => {
     const headlineFirst = content.children[0].children[0]
     const contentP = content.children[1]
     // Content Animation
+    const scroll = e => {
+      speed += e.deltaY * 0.0002
+      // console.warn(speed)
+    }
+
+    const raf = () => {
+      position += speed
+      speed *= 0.8
+      rounded = Math.round(position)
+      const diff = rounded - position
+
+      position += Math.sign(diff) * Math.pow(Math.abs(diff), 0.7) * 0.015
+      window.requestAnimationFrame(raf)
+    }
+
+    raf()
+
+    window.addEventListener("wheel", scroll)
 
     tl.staggerTo(
       [headlineFirst.children],
@@ -438,7 +539,36 @@ const SecondPage = props => {
       0.15,
       "Start"
     ).to(contentP, 1, { y: 0, opacity: 1, ease: Power3.easeOut }, 0.4)
+
+    return () => {
+      window.removeEventListener("wheel", scroll)
+    }
   }, [tl])
+
+  const ShowArticles = () => {
+    const projectsFilter = get(props, "data.allContentfulProject.edges", [])
+    const AllArticles = projectsFilter.filter(object => {
+      console.warn(object)
+
+      return object.node.tag === tag
+    })
+
+    /* const articles = AllArticles.filter(articleObject => {
+      if (articleObject.categoriesServices[0]) {
+        return articleObject.categoriesServices.find(tagObject => {
+          return tagObject.title === tag
+        })
+      }
+
+      return null
+    }) */
+
+    if (AllArticles.length < 1) {
+      return projectsFilter
+    }
+
+    return AllArticles
+  }
 
   return (
     <div>
@@ -461,9 +591,47 @@ const SecondPage = props => {
           </div>
         </InfoBox>
       </Wrapper>
+      <FilterSection>
+        <div>
+          <h3>
+            <div className="hero-content-line-work">
+              <InfoTitleSmall className="hero-content-line-inner-work">
+                Our work
+              </InfoTitleSmall>
+            </div>
+          </h3>
+          <FilterList>
+            <LiButton
+              onClick={() => setCount("All")}
+              active={tag === "All" && true}
+            >
+              All
+            </LiButton>
+            <LiButton
+              onClick={() => setCount("development")}
+              active={tag === "development"}
+            >
+              Website
+            </LiButton>
+            <LiButton
+              onClick={() => setCount("design")}
+              active={tag === "design"}
+            >
+              Design
+            </LiButton>
+            <LiButton
+              onClick={() => setCount("motion")}
+              active={tag === "motion"}
+            >
+              Animation
+            </LiButton>
+          </FilterList>
+        </div>
+      </FilterSection>
       <MainSection>
         <ProjectBox>
-          {projects.map(({ node: detail }, i) => {
+          {}
+          {ShowArticles().map(({ node: detail }, i) => {
             if (!detail) return null
 
             return (
@@ -488,16 +656,18 @@ const SecondPage = props => {
                   <ProjectBack />
                 </ImgBox>
                 <Title>
-0
-{i + 1}
+                  {i < 9 && "0"}
+                  {i + 1}
                 </Title>
                 <div>
+                  {/*
                   <BackgroundTitle className="maskt-title">
                     {detail.name}
                   </BackgroundTitle>
                   <TitleSecond className="maskt-title">
                     {detail.name}
                   </TitleSecond>
+                */}
                 </div>
               </Project>
             )
@@ -521,6 +691,7 @@ export const query = graphql`
           role
           name
           number
+          tag
           body {
             body
           }
