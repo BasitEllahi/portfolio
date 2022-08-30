@@ -40,18 +40,26 @@ const MainSection = styled.div`
 `
 const FilterSection = styled.div`
   background-color: #f8f8f8;
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
   justify-content: center;
   width: 100%;
   border-bottom: 1px solid grey;
+  ${media.tablet`
+    padding: 2rem;
+  `};
   & div {
     max-width: 1400px;
     width: 100%;
-    justify-content: space-between;
-    align-items: baseline;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: start;
+    align-items: baseline;
+    ${media.tablet`
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    `};
   }
 `
 const FilterList = styled.ul`
@@ -65,7 +73,8 @@ const FilterList = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
+  padding: unset;
+  margin: 0;
   ${media.tablet`
     font-size: 1.4rem;
   `};
@@ -95,11 +104,13 @@ const ProjectBox = styled.div`
   transition: transform 0.3s;
   will-change: transform;
   max-width: 1400px;
+  padding: 2rem;
   ${media.desktop`
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
   `};
 `
 const scale = keyframes`
@@ -146,16 +157,24 @@ const Project = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 45%;
+  width: 75%;
   max-height: 25rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
   position: relative;
   justify-self: center;
+  ${media.tablet`
+    width: 45%;
+  `};
   ${media.desktop`
     max-height: unset;
-    height: 30rem;
-    width: 30rem;
+    height: 25rem;
+    width: 25rem;
+  `};
+  ${media.midDesktop`
+    max-height: unset;
+    height: 25rem;
+    width: 25rem;
   `};
 
   :hover {
@@ -258,6 +277,7 @@ const ImgBox = styled.div`
   overflow: hidden;
   background-color: ${colors.lightGrey};
   transition: all 400ms ease;
+  border: 1px solid grey;
   & :after {
     display: flex;
     width: 4rem;
@@ -271,6 +291,7 @@ const Image = styled.img`
   object-fit: cover;
   z-index: 0;
   transition: all 600ms ease;
+  width: 100%;
 
   ${media.phoneXL`
 
@@ -304,8 +325,8 @@ const Title = styled.span`
   opacity: 0.1;
 
   ${media.phablet`
-    font-size: 12rem;
-    right: -5rem;
+    font-size: 7rem;
+    right: 0rem;
     top: -5rem;
     padding: 0.8rem;
   `};
@@ -367,22 +388,24 @@ const UnderTitle = styled.span`
 
 const SvgTitle = styled(AniLink)`
   position: absolute;
-  left: 1.5rem;
-  bottom: 1.2rem;
-  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  bottom: 0;
+  font-size: 2rem;
   font-family: ${fonts.bebas};
   text-decoration: none;
-  background-color: white;
-  border: solid 1px black;
-  width: 4rem;
+  width: 100%;
+  height: 100%;
   padding: 0.2rem;
-  color: #262626;
+  color: #eb4fb3;
   z-index: 3;
   opacity: 0;
   transition: 0.3s;
   text-align: center;
   :hover {
-    color: #eb4fb3;
+    color: white;
   }
 `
 const InfoBox = styled.div`
@@ -460,40 +483,6 @@ const Description = styled.p`
     width: 60%;
   `};
 `
-/*
-const slideData = [
-  {
-    index: 0,
-    headline: "De Kreun",
-    button: "Shop now",
-    src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/forest.jpg",
-  },
-  {
-    index: 1,
-    headline: "In The Wilderness",
-    button: "Book travel",
-    src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/forest.jpg",
-  },
-  {
-    index: 2,
-    headline: "For Your Current Mood",
-    button: "Listen",
-    src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/guitar.jpg",
-  },
-  {
-    index: 3,
-    headline: "Focus On The Writing",
-    button: "Get Focused",
-    src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/typewriter.jpg",
-  },
-  {
-    index: 4,
-    headline: "Focus On The Writing",
-    button: "Get Focused",
-    src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/typewriter.jpg",
-  },
-]
-*/
 
 const SecondPage = props => {
   const projects = get(props, "data.allContentfulProject.edges", [])
@@ -515,7 +504,7 @@ const SecondPage = props => {
     // Content Animation
     const scroll = e => {
       speed += e.deltaY * 0.0002
-      console.warn(speed)
+      // console.warn(speed)
     }
 
     const raf = () => {
@@ -547,6 +536,25 @@ const SecondPage = props => {
       window.removeEventListener("wheel", scroll)
     }
   }, [tl])
+
+  const ShowArticles = () => {
+    const AllArticles = data.articles.nodes
+
+    const articles = AllArticles.filter(articleObject => {
+      if (articleObject.categoriesServices[0]) {
+        return articleObject.categoriesServices.find(tagObject => {
+          return tagObject.title === tag
+        })
+      }
+      return null
+    })
+
+    if (articles.length < 1) {
+      return AllArticles
+    } else {
+      return articles
+    }
+  }
 
   return (
     <div>
@@ -617,12 +625,14 @@ const SecondPage = props => {
                   {i + 1}
                 </Title>
                 <div>
+                  {/*
                   <BackgroundTitle className="maskt-title">
                     {detail.name}
                   </BackgroundTitle>
                   <TitleSecond className="maskt-title">
                     {detail.name}
                   </TitleSecond>
+                */}
                 </div>
               </Project>
             )
@@ -646,6 +656,7 @@ export const query = graphql`
           role
           name
           number
+          tag
           body {
             body
           }

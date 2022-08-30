@@ -205,7 +205,7 @@ const InfoTitle = styled.div`
   line-height: 1;
   font-family: ${fonts.acumin};
   display: flex;
-  justify-content: right;
+  justify-content: left;
 
   & span {
     color: ${colors.main};
