@@ -1,4 +1,7 @@
-import React, { useEffect, useRef } from "react"
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable react/jsx-no-bind */
+import React, { useEffect, useRef, useState } from "react"
 import styled, { keyframes } from "styled-components"
 import { graphql } from "gatsby"
 import get from "lodash/get"
@@ -93,6 +96,10 @@ const FilterList = styled.ul`
     color: ${colors.main};
     margin-right: 0.5rem;
   }
+`
+
+const LiButton = styled.li`
+  color: ${props => (props.active ? "#eb4fb3" : "black")};
 `
 
 const ProjectBox = styled.div`
@@ -485,6 +492,7 @@ const Description = styled.p`
 `
 
 const SecondPage = props => {
+  const [tag, setCount] = useState("All")
   const projects = get(props, "data.allContentfulProject.edges", [])
 
   let content = useRef(null)
@@ -538,22 +546,28 @@ const SecondPage = props => {
   }, [tl])
 
   const ShowArticles = () => {
-    const AllArticles = data.articles.nodes
+    const projectsFilter = get(props, "data.allContentfulProject.edges", [])
+    const AllArticles = projectsFilter.filter(object => {
+      console.warn(object)
 
-    const articles = AllArticles.filter(articleObject => {
+      return object.node.tag === tag
+    })
+
+    /* const articles = AllArticles.filter(articleObject => {
       if (articleObject.categoriesServices[0]) {
         return articleObject.categoriesServices.find(tagObject => {
           return tagObject.title === tag
         })
       }
-      return null
-    })
 
-    if (articles.length < 1) {
-      return AllArticles
-    } else {
-      return articles
+      return null
+    }) */
+
+    if (AllArticles.length < 1) {
+      return projectsFilter
     }
+
+    return AllArticles
   }
 
   return (
@@ -587,16 +601,37 @@ const SecondPage = props => {
             </div>
           </h3>
           <FilterList>
-            <li>All</li>
-            <li>Website</li>
-            <li>Design</li>
-            <li>Animation</li>
+            <LiButton
+              onClick={() => setCount("All")}
+              active={tag === "All" && true}
+            >
+              All
+            </LiButton>
+            <LiButton
+              onClick={() => setCount("development")}
+              active={tag === "development"}
+            >
+              Website
+            </LiButton>
+            <LiButton
+              onClick={() => setCount("design")}
+              active={tag === "design"}
+            >
+              Design
+            </LiButton>
+            <LiButton
+              onClick={() => setCount("motion")}
+              active={tag === "motion"}
+            >
+              Animation
+            </LiButton>
           </FilterList>
         </div>
       </FilterSection>
       <MainSection>
         <ProjectBox>
-          {projects.map(({ node: detail }, i) => {
+          {}
+          {ShowArticles().map(({ node: detail }, i) => {
             if (!detail) return null
 
             return (
