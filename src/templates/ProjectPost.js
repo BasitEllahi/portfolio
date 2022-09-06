@@ -201,11 +201,15 @@ const FullProject = styled.div`
 
 const InfoTitle = styled.div`
   color: black;
-  font-size: 2.5rem;
+  font-size: 1.9rem;
   line-height: 1;
   font-family: ${fonts.acumin};
   display: flex;
   justify-content: left;
+
+  ${media.tablet`
+    font-size: 2.5rem;
+  `};
 
   & span {
     color: ${colors.main};
