@@ -87,9 +87,6 @@ const FilterList = styled.ul`
     transition: 0.3s;
     font-size: 0.8rem;
 
-    &:hover {
-      color: ${props => (props.active ? "white" : "black")};
-    }
     ${media.tablet`
       font-size: 1rem;
     `};
@@ -102,13 +99,13 @@ const FilterList = styled.ul`
 `
 
 const LiButton = styled.li`
-  color: ${props => (props.active ? "white" : "#CCCCCC")};
+  color: ${props => (props.active ? "#ffc1f6" : "#CCCCCC")};
   background-color: ${props => (props.active ? "#D95AAF" : "white")};
   padding: 0.7rem;
   border-radius: 20px;
 
   &:hover {
-    color: ${props => (props.active ? "white" : "black")};
+    color: ${props => (props.active ? "#ffc1f6" : "black")};
   }
 `
 
