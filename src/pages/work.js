@@ -492,7 +492,7 @@ const Description = styled.p`
 `
 
 const SecondPage = props => {
-  const [tag, setCount] = useState("All")
+  const [tag, setCount] = useState("development")
   const projects = get(props, "data.allContentfulProject.edges", [])
 
   let content = useRef(null)
