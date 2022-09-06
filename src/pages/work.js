@@ -85,11 +85,14 @@ const FilterList = styled.ul`
   & li {
     margin-right: 1rem;
     transition: 0.3s;
-    font-size: 1rem;
+    font-size: 0.8rem;
 
     &:hover {
-      color: #d95aaf;
+      color: ${props => (props.active ? "white" : "black")};
     }
+    ${media.tablet`
+      font-size: 1rem;
+    `};
   }
 
   & span {
@@ -99,7 +102,14 @@ const FilterList = styled.ul`
 `
 
 const LiButton = styled.li`
-  color: ${props => (props.active ? "#eb4fb3" : "black")};
+  color: ${props => (props.active ? "white" : "#CCCCCC")};
+  background-color: ${props => (props.active ? "#D95AAF" : "white")};
+  padding: 0.7rem;
+  border-radius: 20px;
+
+  &:hover {
+    color: ${props => (props.active ? "white" : "black")};
+  }
 `
 
 const ProjectBox = styled.div`
