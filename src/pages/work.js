@@ -85,10 +85,10 @@ const FilterList = styled.ul`
   & li {
     margin-right: 1rem;
     transition: 0.3s;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 
     ${media.tablet`
-      font-size: 1rem;
+      font-size: 0.8rem;
     `};
   }
 
