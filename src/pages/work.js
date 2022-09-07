@@ -690,7 +690,7 @@ export default SecondPage
 
 export const query = graphql`
   query GetWorks {
-    allContentfulProject(sort: { fields: createdAt, order: DESC }) {
+    allContentfulProject(sort: { fields: year, order: DESC }) {
       edges {
         node {
           id
