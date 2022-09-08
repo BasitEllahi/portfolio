@@ -1,6 +1,9 @@
 import { Link } from "gatsby"
-import React from "react"
+import React, { useEffect, createRef } from "react"
+import lottie from "lottie-web"
 import styled from "styled-components"
+
+import jsonData from "../../assets/json/logo.json"
 
 import LogoImg from "../../assets/logo.svg"
 
@@ -10,14 +13,31 @@ const ALink = styled(Link)`
   height: 3rem;
 `
 
-const Img = styled.img`
+const Logocontainer = styled.div`
   max-width: 4rem;
 `
 
-const Logo = () => (
-  <ALink to="/">
-    <Img src={LogoImg} alt="Basit.io" />
-  </ALink>
-)
+const Logo = () => {
+  const animationContainer = createRef()
+
+  useEffect(() => {
+    const anim = lottie.loadAnimation({
+      container: animationContainer.current,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: jsonData,
+    })
+
+    return () => anim.destroy() // optional clean up for unmounting
+  }, [])
+
+  return (
+    <ALink to="/">
+      {/* <Img src={LogoImg} alt="Basit.io" /> */}
+      <Logocontainer ref={animationContainer} />
+    </ALink>
+  )
+}
 
 export default Logo
