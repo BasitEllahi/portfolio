@@ -658,7 +658,7 @@ const SecondPage = props => {
                     hex="#EB4FB3"
                     direction="up"
                   >
-                    Check case
+                    {detail.name}
                   </SvgTitle>
                   <ProjectBack />
                 </ImgBox>
