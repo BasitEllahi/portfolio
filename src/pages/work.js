@@ -36,10 +36,13 @@ const MainSection = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding-top: 4rem;
+  padding-top: 2rem;
   justify-content: center;
   align-items: center;
   background-color: #f8f8f8;
+  ${media.tablet`
+    padding-top: 4rem;
+  `};
 `
 const FilterSection = styled.div`
   background-color: #f8f8f8;
@@ -99,13 +102,13 @@ const FilterList = styled.ul`
 `
 
 const LiButton = styled.li`
-  color: ${props => (props.active ? "#ffc1f6" : "#CCCCCC")};
-  background-color: ${props => (props.active ? "#D95AAF" : "white")};
+  color: ${props => (props.active ? "white" : "#CCCCCC")};
+  background-color: ${props => (props.active ? "#4169EA" : "white")};
   padding: 0.7rem;
   border-radius: 20px;
 
   &:hover {
-    color: ${props => (props.active ? "#ffc1f6" : "black")};
+    color: ${props => (props.active ? "white" : "black")};
   }
 `
 
@@ -171,14 +174,14 @@ const Project = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 75%;
+  width: 90%;
   max-height: 25rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
   position: relative;
   justify-self: center;
   ${media.tablet`
-    width: 45%;
+    width: 65%;
   `};
   ${media.desktop`
     max-height: unset;
@@ -291,7 +294,8 @@ const ImgBox = styled.div`
   overflow: hidden;
   background-color: ${colors.lightGrey};
   transition: all 400ms ease;
-  border: 1px solid grey;
+  /*border: 1px solid grey;*/
+  box-shadow: 0px 0px 16px -2px rgba(0,0,0,0.2);
   & :after {
     display: flex;
     width: 4rem;
