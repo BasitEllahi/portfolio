@@ -1,16 +1,15 @@
 import React, { useEffect, useRef } from "react"
 import { TimelineLite, Power3, Power4 } from "gsap"
 import styled, { keyframes } from "styled-components"
-import Fade from "react-reveal/Fade"
 import { fadeInRight, slideOutLeft } from "react-animations"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import { colors, fonts, media } from "../../../style-utils"
+
 import "./link.scss"
 
-import Svg from "./SvgAnimation"
 import SvgIllustration from "./Illustration"
-// import SvgRect from "./SvgAnimationRect"
+
 
 const MainSection = styled.div`
   display: flex;
