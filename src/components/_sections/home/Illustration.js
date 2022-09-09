@@ -35,6 +35,20 @@ const Illustration = () => {
       animationData: jsonData2,
     })
 
+    if (typeof window !== "undefined") {
+      const move = e => {
+        console.warn(e.clientY)
+
+        if (e.clientY < 350) {
+          anim.setDirection(1)
+        } else {
+          anim.setDirection(-1)
+        }
+      }
+
+      window.addEventListener("mousemove", move)
+    }
+
     return () => anim.destroy() // optional clean up for unmounting
   }, [])
 
