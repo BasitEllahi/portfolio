@@ -4,8 +4,9 @@ import lottie from "lottie-web"
 import styled from "styled-components"
 
 import jsonData from "../../assets/json/logo.json"
+// import jsonData2 from "../../assets/json/after_effects_animation.json"
 
-import LogoImg from "../../assets/logo.svg"
+// import LogoImg from "../../assets/logo.svg"
 
 const ALink = styled(Link)`
   display: flex;
