@@ -50,6 +50,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-sass`,
+    `gatsby-plugin-netlify`,
     {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
