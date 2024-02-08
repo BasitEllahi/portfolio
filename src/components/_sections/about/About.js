@@ -425,8 +425,6 @@ const ProjectPage = data => {
                         <SkilItem> Adobe Creative Suite</SkilItem>
                         <SkilItem>Illustrator, Figma</SkilItem>
                         <SkilItem>UI Elements, Dashboard, Mobile</SkilItem>
-                        <SkilItem>Isometric design</SkilItem>
-                        <SkilItem>Infographics</SkilItem>
                       </Skills>
                     </SkillContainer>
                   </Fade>
@@ -434,10 +432,10 @@ const ProjectPage = data => {
                     <SkillContainer>
                       <SmallTitle>Development</SmallTitle>
                       <Skills className="List">
-                        <SkilItem>React framework</SkilItem>
+                        <SkilItem>React framework, Vue Js, Php</SkilItem>
                         <SkilItem>Gatsby, Next js, PWA</SkilItem>
                         <SkilItem>Javascript esc6, testing, Storybook</SkilItem>
-                        <SkilItem>Graphql</SkilItem>
+                        <SkilItem>Graphql, Sql</SkilItem>
                         <SkilItem>
                           Css ( Css3, Styled Components, ant design, tailwind)
                         </SkilItem>
