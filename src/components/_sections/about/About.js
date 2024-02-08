@@ -389,7 +389,7 @@ const ProjectPage = data => {
                   <InnerList className="date-content-line">
                     <div className="date-line-inner">
                       <Title>AGE: </Title>
-                      <UnderTitle>27 years</UnderTitle>
+                      <UnderTitle>29 years</UnderTitle>
                     </div>
                   </InnerList>
                 </List>
