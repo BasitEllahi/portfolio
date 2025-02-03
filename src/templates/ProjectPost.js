@@ -140,6 +140,22 @@ const ImageSVG = styled.img`
   `};
 `
 
+const ImageGIF = styled.img`
+  width: 80%;
+  max-width: 17rem;
+  width: 17rem;
+  max-height: 20rem;
+  border: 1px solid #eaeaea;
+  cursor: pointer;
+
+  ${media.tablet`
+    max-width: 35rem;
+    width: 35rem;
+    max-height: 45rem;
+  `};
+`;
+
+
 const Title = styled.span`
   color: black;
   font-size: 0.8rem;
@@ -327,7 +343,7 @@ const ProjectPage = data => {
     if (isSvg) {
       Type = <ImageSVG src={img.localFile.url} alt="img" />;
     } else if (isGif) {
-      Type = <img src={img.localFile.url} alt="GIF" style={{ width: "100%", height: "auto" }} />;
+      Type = <ImageGIF src={img.localFile.url} alt="GIF Image" />;
     } else {
       Type = (
         <Image
