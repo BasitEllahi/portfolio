@@ -389,7 +389,7 @@ const ProjectPage = data => {
                   <InnerList className="date-content-line">
                     <div className="date-line-inner">
                       <Title>AGE: </Title>
-                      <UnderTitle>29 years</UnderTitle>
+                      <UnderTitle>30 years</UnderTitle>
                     </div>
                   </InnerList>
                 </List>
@@ -412,8 +412,7 @@ const ProjectPage = data => {
                     <SkillContainer>
                       <SmallTitle>Motion & Animation</SmallTitle>
                       <Skills className="List">
-                        <SkilItem> Vray rendering</SkilItem>
-                        <SkilItem> 2D Animation, Explainers</SkilItem>
+                        <SkilItem> 2D Animation </SkilItem>
                         <SkilItem> Storyboards</SkilItem>
                       </Skills>
                     </SkillContainer>
@@ -434,10 +433,10 @@ const ProjectPage = data => {
                       <Skills className="List">
                         <SkilItem>React framework, Vue Js, Php</SkilItem>
                         <SkilItem>Gatsby, Next js, PWA</SkilItem>
-                        <SkilItem>Javascript esc6, testing, Storybook</SkilItem>
+                        <SkilItem>Javascript esc6, Typescript, Storybook</SkilItem>
                         <SkilItem>Graphql, Sql</SkilItem>
                         <SkilItem>
-                          Css ( Css3, Styled Components, ant design, tailwind)
+                          Css ( Css3, Styled Components, ant design, tailwind, Bootstrap)
                         </SkilItem>
                         <SkilItem>Gsap animation, THREE JS</SkilItem>
                         <SkilItem>
@@ -461,16 +460,16 @@ const ProjectPage = data => {
                       Motion Designer, Developer @Mediamonks
                     </SkilItem>
                     <SkilItem>
-                      <span>2018 - 2019</span>
-                      Frontend developer @Mind4energy
-                    </SkilItem>
-                    <SkilItem>
                       <span>2018 - 2020</span>
                       Frontend developer @Appeel.io
                     </SkilItem>
                     <SkilItem>
-                      <span>2020 - Now</span>
+                      <span>2020 - 2023</span>
                       Frontend developer @Superkraft
+                    </SkilItem>
+                    <SkilItem>
+                      <span>2023 - Now</span>
+                      Frontend developer @Soleras
                     </SkilItem>
                   </Skills>
                 </SkillBoxWork>
