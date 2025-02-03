@@ -389,7 +389,7 @@ const ProjectPage = data => {
                   <InnerList className="date-content-line">
                     <div className="date-line-inner">
                       <Title>AGE: </Title>
-                      <UnderTitle>27 years</UnderTitle>
+                      <UnderTitle>30 years</UnderTitle>
                     </div>
                   </InnerList>
                 </List>
@@ -471,8 +471,12 @@ const ProjectPage = data => {
                       Frontend developer @Appeel.io
                     </SkilItem>
                     <SkilItem>
-                      <span>2020 - Now</span>
+                      <span>2020 - 2023</span>
                       Frontend developer @Superkraft
+                    </SkilItem>
+                    <SkilItem>
+                      <span>2023 - Now</span>
+                      Frontend developer @Soleras
                     </SkilItem>
                   </Skills>
                 </SkillBoxWork>
