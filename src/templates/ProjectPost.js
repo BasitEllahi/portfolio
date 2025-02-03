@@ -261,6 +261,7 @@ const Backbutton = styled(AniLink)`
     margin-bottom: 2rem;
   `};
 `
+
 const ProjectPage = data => {
   const project = data.data.contentfulProject
 
@@ -285,8 +286,6 @@ const ProjectPage = data => {
 
     const contentYear = year.children[0].children[0].children[0]
     const contentRole = year.children[0].children[1].children[0]
-
-    console.warn(headlineFirst)
 
     // Content Animation
 
@@ -318,21 +317,24 @@ const ProjectPage = data => {
   }, [tl, tlInfo, tlImage])
 
   const Photos = project.photos.map((img, i) => {
-    const Svg = img.file.contentType.includes("svg")
+    const fileType = img.file.contentType
+    
+    let Type;
 
-    let Type
+    const isSvg = fileType.includes("svg")
+    const isGif = fileType.includes("gif")
 
-    console.warn(img)
-
-    if (Svg) {
-      Type = <ImageSVG src={img.localFile.url} alt="img" />
+    if (isSvg) {
+      Type = <ImageSVG src={img.localFile.url} alt="img" />;
+    } else if (isGif) {
+      Type = <img src={img.localFile.url} alt="GIF" style={{ width: "100%", height: "auto" }} />;
     } else {
       Type = (
         <Image
           image={img.localFile.childImageSharp.gatsbyImageData}
           alt="img"
         />
-      )
+      );
     }
 
     return <ImgBox key={i}>{Type}</ImgBox>
@@ -340,8 +342,6 @@ const ProjectPage = data => {
 
   const Banner = () => {
     const Svg = project.banner.file.contentType.includes("svg")
-
-    console.warn(Svg)
 
     return Svg ? (
       <BannerImgsvg
