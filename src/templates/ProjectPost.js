@@ -353,7 +353,7 @@ const Photos = project.photos.map((img, i) => {
         loop
         muted
         playsInline
-        style={{ width: "100%", maxHeight: "45rem", border: "1px solid #eaeaea" }}
+        style={{ width: "100%", maxHeight: "45rem" }}
       >
         <source src={img.localFile?.url} type={fileType} />
         Your browser does not support the video tag.
