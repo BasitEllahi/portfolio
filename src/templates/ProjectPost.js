@@ -332,37 +332,41 @@ const ProjectPage = data => {
       .to(contentRole, 1, { y: 0, opacity: 1, ease: Power3.easeOut }, 0.4)
   }, [tl, tlInfo, tlImage])
 
-  const Photos = project.photos.map((img, i) => {
-    const fileType = img.file.contentType
-    
-    let Type;
+const Photos = project.photos.map((img, i) => {
+  if (!img || !img.file || !img.file.contentType) return null; // Prevent errors
 
-    const isSvg = fileType.includes("svg")
-    const isGif = fileType.includes("gif")
-    const isVideo = fileType.includes("video");
+  const fileType = img.file.contentType;
+  let Type;
 
-    if (isSvg) {
-      Type = <ImageSVG src={img.localFile.url} alt="img" />;
-    } else if (isGif) {
-      Type = <ImageGIF src={img.localFile.url} alt="GIF Image" />;
-  else if (isVideo) {
+  const isSvg = fileType.includes("svg");
+  const isGif = fileType.includes("gif");
+  const isVideo = fileType.includes("video"); // Works for mp4 and other formats
+
+  if (isSvg) {
+    Type = <ImageSVG src={img.localFile.url} alt="img" />;
+  } else if (isGif) {
+    Type = <ImageGIF src={img.localFile.url} alt="GIF Image" />;
+  } else if (isVideo) {
     Type = (
-      <video autoPlay loop muted playsInline style={{ width: "100%", maxHeight: "45rem", border: "1px solid #eaeaea" }}>
-        <source src={img.localFile.url} type={fileType} />
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{ width: "100%", maxHeight: "45rem", border: "1px solid #eaeaea" }}
+      >
+        <source src={img.localFile?.url} type={fileType} />
         Your browser does not support the video tag.
       </video>
-    )
-    } else {
-      Type = (
-        <Image
-          image={img.localFile.childImageSharp.gatsbyImageData}
-          alt="img"
-        />
-      );
-    }
+    );
+  } else {
+    Type = img.localFile?.childImageSharp?.gatsbyImageData ? (
+      <Image image={img.localFile.childImageSharp.gatsbyImageData} alt="img" />
+    ) : null;
+  }
 
-    return <ImgBox key={i}>{Type}</ImgBox>
-  })
+  return Type ? <ImgBox key={i}>{Type}</ImgBox> : null;
+});
 
   const Banner = () => {
     const Svg = project.banner.file.contentType.includes("svg")
