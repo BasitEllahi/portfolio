@@ -368,21 +368,37 @@ const Photos = project.photos.map((img, i) => {
   return Type ? <ImgBox key={i}>{Type}</ImgBox> : null;
 });
 
-  const Banner = () => {
-    const Svg = project.banner.file.contentType.includes("svg")
+const Banner = () => {
+  const isSvg = project.banner.file.contentType.includes("svg");
+  const isVideo = project.banner.file.contentType.includes("video");
 
-    return Svg ? (
-      <BannerImgsvg
-        ref={el => (image = el)}
-        src={project.banner.localFile.url}
-      />
-    ) : (
-      <BannerImg
-        ref={el => (image = el)}
-        image={project.banner.localFile.childImageSharp.gatsbyImageData}
-      />
-    )
+  if (isVideo) {
+    return (
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{ width: "100%", height: "auto", objectFit: "cover" }}
+      >
+        <source src={project.banner.localFile.url} type={project.banner.file.contentType} />
+        Your browser does not support the video tag.
+      </video>
+    );
   }
+
+  return isSvg ? (
+    <BannerImgsvg
+      ref={el => (image = el)}
+      src={project.banner.localFile.url}
+    />
+  ) : (
+    <BannerImg
+      ref={el => (image = el)}
+      image={project.banner.localFile.childImageSharp.gatsbyImageData}
+    />
+  );
+};
 
   return (
     <div>
