@@ -1,10 +1,7 @@
-import React, { useEffect, createRef } from "react"
+import React, { useEffect, useRef } from "react"
 import lottie from "lottie-web"
 import styled from "styled-components"
 
-import svgIllustration from "../../../assets/web-illustration.svg"
-
-// import jsonData2 from "../../../assets/json/after_effects_animation.json"
 import jsonData2 from "../../../assets/json/data.json"
 
 const ImageContainer = styled.div`
@@ -13,11 +10,6 @@ const ImageContainer = styled.div`
   width: 100%;
 `
 
-const Image = styled.img`
-  display: flex;
-  width: 100%;
-  height: 100%;
-`
 const Logocontainer = styled.div`
   display: flex;
   width: 100%;
@@ -25,10 +17,13 @@ const Logocontainer = styled.div`
 `
 
 const Illustration = () => {
-  const animationContainer = createRef()
+  const animationContainer = useRef(null)
+  const currentSpeed = useRef(0)
+  const targetSpeed = useRef(0)
+  const animRef = useRef(null)
 
   useEffect(() => {
-    const anim = lottie.loadAnimation({
+    animRef.current = lottie.loadAnimation({
       container: animationContainer.current,
       renderer: "svg",
       loop: true,
@@ -36,30 +31,35 @@ const Illustration = () => {
       animationData: jsonData2,
     })
 
-    if (typeof window !== "undefined") {
-      const move = e => {
-        console.warn(e.clientY)
-
-        if (e.clientY < 350) {
-          anim.setDirection(1)
-        } else {
-          anim.setDirection(-1)
-        }
-      }
-
-      window.addEventListener("mousemove", move)
+    const handleMouseMove = e => {
+      const midpoint = window.innerHeight / 2
+      const delta = (e.clientY - midpoint) / midpoint // range [-1, 1]
+      targetSpeed.current = delta // map to animation speed
     }
 
-    return () => anim.destroy() // optional clean up for unmounting
+    const animate = () => {
+      const diff = targetSpeed.current - currentSpeed.current
+      currentSpeed.current += diff * 0.1 // easing factor (0.1 = smooth, <1)
+      if (animRef.current) {
+        animRef.current.setSpeed(currentSpeed.current)
+      }
+      requestAnimationFrame(animate)
+    }
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true })
+    animate()
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove)
+      animRef.current.destroy()
+    }
   }, [])
 
   return (
     <ImageContainer>
-      {/* <Image src={svgIllustration} /> */}
       <Logocontainer ref={animationContainer} />
     </ImageContainer>
   )
 }
 
 export default Illustration
-//       <Animation ref={el => (image = el)} color={props.color} />
