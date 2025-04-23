@@ -168,7 +168,7 @@ const InfoContainer = styled.div`
 `
 
 const PhotoSection = styled.div`
-  background-color: #336af3;
+  background-color: #FE5944;
   width: 100%;
   height: 100%;
   display: flex;
