@@ -18,9 +18,10 @@ const Logocontainer = styled.div`
 // Linear Interpolation (lerp) function
 const lerp = (start, end, t) => start + (end - start) * t;
 
-// Ease-in-out function
-const easeInOut = (t) => {
-  return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+// Fast easing function (less smoothing)
+const easeInOutFast = (t) => {
+  // A quicker easing function that ramps up faster
+  return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 };
 
 const Illustration = () => {
@@ -45,8 +46,8 @@ const Illustration = () => {
       const progress = e.clientX / window.innerWidth;  // Mouse X position as a percentage of the window width
       const targetFrame = progress * anim.totalFrames;  // Calculate the target frame based on mouse X
 
-      // Apply easing to smooth the transition between frames
-      const easedProgress = easeInOut(progress);
+      // Apply faster easing to smooth the transition between frames
+      const easedProgress = easeInOutFast(progress); // Apply fast easing
       const easedFrame = lerp(lastFrame, targetFrame, easedProgress); // Smooth transition between frames
 
       anim.goToAndStop(easedFrame, true);  // Move animation to the calculated frame
