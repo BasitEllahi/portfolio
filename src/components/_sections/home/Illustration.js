@@ -4,7 +4,8 @@ import styled from "styled-components"
 
 import svgIllustration from "../../../assets/web-illustration.svg"
 
-import jsonData2 from "../../../assets/json/after_effects_animation.json"
+// import jsonData2 from "../../../assets/json/after_effects_animation.json"
+import jsonData2 from "../../../assets/json/data.json"
 
 const ImageContainer = styled.div`
   display: flex;
