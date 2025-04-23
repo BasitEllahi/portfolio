@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import lottie from "lottie-web"
 import styled from "styled-components"
 
@@ -14,6 +14,7 @@ const Logocontainer = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
+  transition: transform 0.2s ease-out;
 `
 
 const Illustration = () => {
@@ -21,9 +22,10 @@ const Illustration = () => {
   const currentSpeed = useRef(0)
   const targetSpeed = useRef(0)
   const animRef = useRef(null)
+  const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
-    animRef.current = lottie.loadAnimation({
+    const anim = lottie.loadAnimation({
       container: animationContainer.current,
       renderer: "svg",
       loop: true,
@@ -31,29 +33,58 @@ const Illustration = () => {
       animationData: jsonData2,
     })
 
+    animRef.current = anim
+
+    // Handle mouse movement for scrubbing and speed control
     const handleMouseMove = e => {
-      const midpoint = window.innerHeight / 2
-      const delta = (e.clientY - midpoint) / midpoint // range [-1, 1]
-      targetSpeed.current = delta // map to animation speed
+      // Horizontal movement (scrub animation)
+      const progress = e.clientX / window.innerWidth
+      anim.goToAndStop(progress * anim.totalFrames, true)
+
+      // Vertical movement (control speed/direction)
+      const mid = window.innerHeight / 2
+      const normalizedY = (e.clientY - mid) / mid
+      targetSpeed.current = Math.max(-2, Math.min(2, normalizedY)) // Clamp speed
     }
 
-    const animate = () => {
+    // Easing function for smooth speed change
+    const updateSpeed = () => {
       const diff = targetSpeed.current - currentSpeed.current
-      currentSpeed.current += diff * 0.1 // easing factor (0.1 = smooth, <1)
-      if (animRef.current) {
-        animRef.current.setSpeed(currentSpeed.current)
-      }
-      requestAnimationFrame(animate)
+      currentSpeed.current += diff * 0.05 // Smoothing factor
+      anim.setSpeed(currentSpeed.current)
+      requestAnimationFrame(updateSpeed)
     }
 
+    // Mouse hover interaction to reverse the animation or trigger other effects
+    const handleMouseEnter = () => setIsHovered(true)
+    const handleMouseLeave = () => setIsHovered(false)
+
+    // Adding event listeners
     window.addEventListener("mousemove", handleMouseMove, { passive: true })
-    animate()
+    animationContainer.current.addEventListener("mouseenter", handleMouseEnter)
+    animationContainer.current.addEventListener("mouseleave", handleMouseLeave)
+
+    // Start the speed update loop
+    updateSpeed()
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove)
-      animRef.current.destroy()
+      animationContainer.current.removeEventListener("mouseenter", handleMouseEnter)
+      animationContainer.current.removeEventListener("mouseleave", handleMouseLeave)
+      anim.destroy()
     }
   }, [])
+
+  useEffect(() => {
+    if (animRef.current) {
+      // Reverse animation on hover
+      if (isHovered) {
+        animRef.current.setDirection(-1) // Reverse
+      } else {
+        animRef.current.setDirection(1) // Forward
+      }
+    }
+  }, [isHovered])
 
   return (
     <ImageContainer>
