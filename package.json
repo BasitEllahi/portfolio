@@ -32,7 +32,6 @@
     "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^4.25.0",
     "gsap": "^3.6.1",
-    "kursor": "^0.1.6",
     "lodash": "^4.17.21",
     "lottie-web": "^5.9.6",
     "prop-types": "^15.7.2",
@@ -43,7 +42,7 @@
     "react-reveal": "^1.2.2",
     "react-text-reveal": "^1.1.2",
     "react-transition-group": "^4.3.0",
-    "sharp": "^0.31.0",
+    "sharp": "^0.30.7",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
@@ -52,9 +51,6 @@
     "prettier": "^1.18.2",
     "sass": "^1.52.1",
     "yarn-upgrade-all": "^0.7.1"
-  },
-  "resolutions": {
-    "sharp": "0.31.0"
   },
   "keywords": [
     "gatsby"

@@ -1,6 +1,7 @@
 require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
+  path: `.env.${process.env.GATSBY_ENV || process.env.NODE_ENV}`,
 })
+
 
 
 module.exports = {
