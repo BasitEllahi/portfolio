@@ -27,6 +27,7 @@ module.exports = {
     lightWhite: "#F1F1F1",
     darkGrey: "#B3B3B3",
     lightGrey: "#F2F2F2",
+    black: "#141414ff",
   },
   fonts: {
     sansSerif: "arial",
@@ -36,6 +37,8 @@ module.exports = {
     avenir: "avenir, arial, Serif",
     Black: "Black",
     Montserrat: "Montserrat, Helvetica",
+    Roboto: "Roboto",
+    Raleway: "Raleway",
   },
   size: {
     xlDesltop: "1640",

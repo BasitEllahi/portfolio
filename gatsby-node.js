@@ -47,3 +47,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 }
+
+exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
+  const config = getConfig()
+
+  config.plugins = (config.plugins || []).filter(
+    p => p?.constructor?.name !== "ESLintWebpackPlugin"
+  )
+  actions.replaceWebpackConfig(config)
+}

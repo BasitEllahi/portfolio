@@ -5,7 +5,7 @@ import CSSRulePlugin from "gsap/CSSRulePlugin"
 import Fade from "react-reveal/Fade"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import styled from "styled-components"
-import Img from "gatsby-image"
+// import Img from "gatsby-image"
 
 import Me from "../../../assets/myself.svg"
 
